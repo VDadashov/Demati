@@ -1,0 +1,96 @@
+﻿@model Blog
+
+@{
+    ViewData["Title"] = "Update";
+    List<BlogCategory> blogCategories = ViewBag.BlogCategories;
+    SelectList selectListItemsBlogCategories = new SelectList(blogCategories, nameof(BlogCategory.Id), nameof(BlogCategory.Name));
+}
+
+<style>
+    input {
+        color: #fff !important;
+    }
+
+    .text-danger {
+        font-size: 15px !important;
+    }
+
+    .ck {
+        color: black;
+    }
+</style>
+
+
+<div class="content-wrapper">
+    <div style="padding-inline:12px;" class="d-sm-flex align-items-center justify-content-between mb-4">
+        <h1 style="font-size:24px;" class="h3 mb-0 text-gray-800">Blog Update</h1>
+        <a asp-action="index" asp-controller="blog" asp-area="manage" type="button" class="btn btn-primary btn-icon-text">
+            Go Home
+        </a>
+    </div>
+
+    <div class="col-12 grid-margin stretch-card">
+        <div class="card">
+            <div class="card-body">
+                <form class="forms-sample" method="post" enctype="multipart/form-data">
+                    <div class="form-group">
+                        <label asp-for="Title"></label>
+                        <input asp-for="Title" minlength="3" class="form-control" placeholder="Title">
+                        <span class="text-danger" asp-validation-for="Title"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Description"></label>
+                        <textarea asp-for="Description" minlength="120" style="color:black !important" class="form-control" placeholder="Description"></textarea>
+                        <span class="text-danger" asp-validation-for="Description"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="BlogCategoryId">Category</label>
+                        <select style="color:white !important" asp-for=BlogCategoryId class="form-control" asp-items="selectListItemsBlogCategories">
+                        </select>
+                        <span class="text-danger" asp-validation-for="BlogCategoryId"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="MainFile"></label>
+                        <input asp-for="MainFile" class="form-control-file" accept="image/*" />
+                        <span class="text-danger" asp-validation-for="MainFile"></span>
+                    </div>
+                    <button type="submit" class="btn btn-primary mr-2">Edit</button>
+                    <button asp-area="manage" asp-controller="blog" asp-action="index" class="btn btn-dark">Cancel</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(document).ready(function () {
+        $(".forms-sample").validate({
+            rules: {
+                Name: {
+                    required: true,
+                    minlength: 3
+                },
+                FileImage: {
+                    required: true
+                }
+            },
+            messages: {
+                Name: {
+                    required: "Name field is required",
+                    minlength: "Name must be at least 3 characters long"
+                },
+                FileImage: {
+                    required: "Please select an image"
+                }
+            }
+        });
+    });
+</script>
+
+@section Scripts{
+    @await Html.PartialAsync("_Validation")
+    @await Html.PartialAsync("_Plugin")
+}
+
+
+

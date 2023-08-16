@@ -1,0 +1,269 @@
+is_global = true
+build_property.TargetFramework = net6.0
+build_property.TargetPlatformMinVersion = 
+build_property.UsingMicrosoftNETSdkWeb = true
+build_property.ProjectTypeGuids = 
+build_property.InvariantGlobalization = 
+build_property.PlatformNeutralAssembly = 
+build_property.EnforceExtendedAnalyzerRules = 
+build_property._SupportedPlatformList = Linux,macOS,Windows
+build_property.RootNamespace = Demati
+build_property.RootNamespace = Demati
+build_property.ProjectDir = C:\Users\Vusal Dadasov\OneDrive\Masaüstü\Demati-FinalProject_BackEnd-master\Demati\Demati\
+build_property.RazorLangVersion = 6.0
+build_property.SupportLocalizedComponentNames = 
+build_property.GenerateRazorMetadataSourceChecksumAttributes = 
+build_property.MSBuildProjectDirectory = C:\Users\Vusal Dadasov\OneDrive\Masaüstü\Demati-FinalProject_BackEnd-master\Demati\Demati
+build_property._RazorSourceGeneratorDebug = 
+
+[C:/Users/Vusal Dadasov/OneDrive/Masaüstü/Demati-FinalProject_BackEnd-master/Demati/Demati/Areas/Manage/Views/Blog/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcTWFuYWdlXFZpZXdzXEJsb2dcQ3JlYXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Vusal Dadasov/OneDrive/Masaüstü/Demati-FinalProject_BackEnd-master/Demati/Demati/Areas/Manage/Views/Blog/Detail.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcTWFuYWdlXFZpZXdzXEJsb2dcRGV0YWlsLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Vusal Dadasov/OneDrive/Masaüstü/Demati-FinalProject_BackEnd-master/Demati/Demati/Areas/Manage/Views/Blog/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcTWFuYWdlXFZpZXdzXEJsb2dcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Vusal Dadasov/OneDrive/Masaüstü/Demati-FinalProject_BackEnd-master/Demati/Demati/Areas/Manage/Views/Blog/Update.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcTWFuYWdlXFZpZXdzXEJsb2dcVXBkYXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Vusal Dadasov/OneDrive/Masaüstü/Demati-FinalProject_BackEnd-master/Demati/Demati/Areas/Manage/Views/Brand/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcTWFuYWdlXFZpZXdzXEJyYW5kXENyZWF0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Vusal Dadasov/OneDrive/Masaüstü/Demati-FinalProject_BackEnd-master/Demati/Demati/Areas/Manage/Views/Brand/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcTWFuYWdlXFZpZXdzXEJyYW5kXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Vusal Dadasov/OneDrive/Masaüstü/Demati-FinalProject_BackEnd-master/Demati/Demati/Areas/Manage/Views/Brand/Update.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcTWFuYWdlXFZpZXdzXEJyYW5kXFVwZGF0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Vusal Dadasov/OneDrive/Masaüstü/Demati-FinalProject_BackEnd-master/Demati/Demati/Areas/Manage/Views/Category/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcTWFuYWdlXFZpZXdzXENhdGVnb3J5XENyZWF0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Vusal Dadasov/OneDrive/Masaüstü/Demati-FinalProject_BackEnd-master/Demati/Demati/Areas/Manage/Views/Category/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcTWFuYWdlXFZpZXdzXENhdGVnb3J5XERlbGV0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Vusal Dadasov/OneDrive/Masaüstü/Demati-FinalProject_BackEnd-master/Demati/Demati/Areas/Manage/Views/Category/Detail.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcTWFuYWdlXFZpZXdzXENhdGVnb3J5XERldGFpbC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Vusal Dadasov/OneDrive/Masaüstü/Demati-FinalProject_BackEnd-master/Demati/Demati/Areas/Manage/Views/Category/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcTWFuYWdlXFZpZXdzXENhdGVnb3J5XEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Vusal Dadasov/OneDrive/Masaüstü/Demati-FinalProject_BackEnd-master/Demati/Demati/Areas/Manage/Views/Category/Update.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcTWFuYWdlXFZpZXdzXENhdGVnb3J5XFVwZGF0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Vusal Dadasov/OneDrive/Masaüstü/Demati-FinalProject_BackEnd-master/Demati/Demati/Areas/Manage/Views/Dashboard/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcTWFuYWdlXFZpZXdzXERhc2hib2FyZFxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Vusal Dadasov/OneDrive/Masaüstü/Demati-FinalProject_BackEnd-master/Demati/Demati/Areas/Manage/Views/Order/Detail.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcTWFuYWdlXFZpZXdzXE9yZGVyXERldGFpbC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Vusal Dadasov/OneDrive/Masaüstü/Demati-FinalProject_BackEnd-master/Demati/Demati/Areas/Manage/Views/Order/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcTWFuYWdlXFZpZXdzXE9yZGVyXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Vusal Dadasov/OneDrive/Masaüstü/Demati-FinalProject_BackEnd-master/Demati/Demati/Areas/Manage/Views/Product/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcTWFuYWdlXFZpZXdzXFByb2R1Y3RcQ3JlYXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Vusal Dadasov/OneDrive/Masaüstü/Demati-FinalProject_BackEnd-master/Demati/Demati/Areas/Manage/Views/Product/Detail.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcTWFuYWdlXFZpZXdzXFByb2R1Y3RcRGV0YWlsLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Vusal Dadasov/OneDrive/Masaüstü/Demati-FinalProject_BackEnd-master/Demati/Demati/Areas/Manage/Views/Product/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcTWFuYWdlXFZpZXdzXFByb2R1Y3RcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Vusal Dadasov/OneDrive/Masaüstü/Demati-FinalProject_BackEnd-master/Demati/Demati/Areas/Manage/Views/Product/Update.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcTWFuYWdlXFZpZXdzXFByb2R1Y3RcVXBkYXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Vusal Dadasov/OneDrive/Masaüstü/Demati-FinalProject_BackEnd-master/Demati/Demati/Areas/Manage/Views/Shared/_error-404.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcTWFuYWdlXFZpZXdzXFNoYXJlZFxfZXJyb3ItNDA0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Vusal Dadasov/OneDrive/Masaüstü/Demati-FinalProject_BackEnd-master/Demati/Demati/Areas/Manage/Views/Shared/_Layout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcTWFuYWdlXFZpZXdzXFNoYXJlZFxfTGF5b3V0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Vusal Dadasov/OneDrive/Masaüstü/Demati-FinalProject_BackEnd-master/Demati/Demati/Areas/Manage/Views/Shared/_Plugin.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcTWFuYWdlXFZpZXdzXFNoYXJlZFxfUGx1Z2luLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Vusal Dadasov/OneDrive/Masaüstü/Demati-FinalProject_BackEnd-master/Demati/Demati/Areas/Manage/Views/Shared/_ProductImagePartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcTWFuYWdlXFZpZXdzXFNoYXJlZFxfUHJvZHVjdEltYWdlUGFydGlhbC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Vusal Dadasov/OneDrive/Masaüstü/Demati-FinalProject_BackEnd-master/Demati/Demati/Areas/Manage/Views/Shared/_SweetAlert.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcTWFuYWdlXFZpZXdzXFNoYXJlZFxfU3dlZXRBbGVydC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Vusal Dadasov/OneDrive/Masaüstü/Demati-FinalProject_BackEnd-master/Demati/Demati/Areas/Manage/Views/Shared/_Validation.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcTWFuYWdlXFZpZXdzXFNoYXJlZFxfVmFsaWRhdGlvbi5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Vusal Dadasov/OneDrive/Masaüstü/Demati-FinalProject_BackEnd-master/Demati/Demati/Areas/Manage/Views/User/ChangeRole.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcTWFuYWdlXFZpZXdzXFVzZXJcQ2hhbmdlUm9sZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Vusal Dadasov/OneDrive/Masaüstü/Demati-FinalProject_BackEnd-master/Demati/Demati/Areas/Manage/Views/User/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcTWFuYWdlXFZpZXdzXFVzZXJcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Vusal Dadasov/OneDrive/Masaüstü/Demati-FinalProject_BackEnd-master/Demati/Demati/Areas/Manage/Views/_ViewImports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcTWFuYWdlXFZpZXdzXF9WaWV3SW1wb3J0cy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Vusal Dadasov/OneDrive/Masaüstü/Demati-FinalProject_BackEnd-master/Demati/Demati/Areas/Manage/Views/_ViewStart.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcTWFuYWdlXFZpZXdzXF9WaWV3U3RhcnQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Vusal Dadasov/OneDrive/Masaüstü/Demati-FinalProject_BackEnd-master/Demati/Demati/Views/AboutUs/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWJvdXRVc1xJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Vusal Dadasov/OneDrive/Masaüstü/Demati-FinalProject_BackEnd-master/Demati/Demati/Views/Account/Login.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxMb2dpbi5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Vusal Dadasov/OneDrive/Masaüstü/Demati-FinalProject_BackEnd-master/Demati/Demati/Views/Account/Profile.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxQcm9maWxlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Vusal Dadasov/OneDrive/Masaüstü/Demati-FinalProject_BackEnd-master/Demati/Demati/Views/Account/Register.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxSZWdpc3Rlci5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Vusal Dadasov/OneDrive/Masaüstü/Demati-FinalProject_BackEnd-master/Demati/Demati/Views/Blog/Detail.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQmxvZ1xEZXRhaWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Vusal Dadasov/OneDrive/Masaüstü/Demati-FinalProject_BackEnd-master/Demati/Demati/Views/Blog/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQmxvZ1xJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Vusal Dadasov/OneDrive/Masaüstü/Demati-FinalProject_BackEnd-master/Demati/Demati/Views/ContactUs/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29udGFjdFVzXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Vusal Dadasov/OneDrive/Masaüstü/Demati-FinalProject_BackEnd-master/Demati/Demati/Views/Home/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Vusal Dadasov/OneDrive/Masaüstü/Demati-FinalProject_BackEnd-master/Demati/Demati/Views/Order/Checkout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcT3JkZXJcQ2hlY2tvdXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Vusal Dadasov/OneDrive/Masaüstü/Demati-FinalProject_BackEnd-master/Demati/Demati/Views/Product/Cart.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvZHVjdFxDYXJ0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Vusal Dadasov/OneDrive/Masaüstü/Demati-FinalProject_BackEnd-master/Demati/Demati/Views/Product/Detail.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvZHVjdFxEZXRhaWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Vusal Dadasov/OneDrive/Masaüstü/Demati-FinalProject_BackEnd-master/Demati/Demati/Views/Product/Wishlist.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvZHVjdFxXaXNobGlzdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Vusal Dadasov/OneDrive/Masaüstü/Demati-FinalProject_BackEnd-master/Demati/Demati/Views/Shared/_AddAddressPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9BZGRBZGRyZXNzUGFydGlhbC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Vusal Dadasov/OneDrive/Masaüstü/Demati-FinalProject_BackEnd-master/Demati/Demati/Views/Shared/_AddressModal.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9BZGRyZXNzTW9kYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Vusal Dadasov/OneDrive/Masaüstü/Demati-FinalProject_BackEnd-master/Demati/Demati/Views/Shared/_AddressPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9BZGRyZXNzUGFydGlhbC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Vusal Dadasov/OneDrive/Masaüstü/Demati-FinalProject_BackEnd-master/Demati/Demati/Views/Shared/_AddReviewPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9BZGRSZXZpZXdQYXJ0aWFsLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Vusal Dadasov/OneDrive/Masaüstü/Demati-FinalProject_BackEnd-master/Demati/Demati/Views/Shared/_BasketCount.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9CYXNrZXRDb3VudC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Vusal Dadasov/OneDrive/Masaüstü/Demati-FinalProject_BackEnd-master/Demati/Demati/Views/Shared/_BasketPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9CYXNrZXRQYXJ0aWFsLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Vusal Dadasov/OneDrive/Masaüstü/Demati-FinalProject_BackEnd-master/Demati/Demati/Views/Shared/_BlogListPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9CbG9nTGlzdFBhcnRpYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Vusal Dadasov/OneDrive/Masaüstü/Demati-FinalProject_BackEnd-master/Demati/Demati/Views/Shared/_CartPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9DYXJ0UGFydGlhbC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Vusal Dadasov/OneDrive/Masaüstü/Demati-FinalProject_BackEnd-master/Demati/Demati/Views/Shared/_CheckoutFormPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9DaGVja291dEZvcm1QYXJ0aWFsLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Vusal Dadasov/OneDrive/Masaüstü/Demati-FinalProject_BackEnd-master/Demati/Demati/Views/Shared/_GiftCardPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9HaWZ0Q2FyZFBhcnRpYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Vusal Dadasov/OneDrive/Masaüstü/Demati-FinalProject_BackEnd-master/Demati/Demati/Views/Shared/_Layout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Vusal Dadasov/OneDrive/Masaüstü/Demati-FinalProject_BackEnd-master/Demati/Demati/Views/Shared/_ModalPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9Nb2RhbFBhcnRpYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Vusal Dadasov/OneDrive/Masaüstü/Demati-FinalProject_BackEnd-master/Demati/Demati/Views/Shared/_ProductLinkDetailPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9Qcm9kdWN0TGlua0RldGFpbFBhcnRpYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Vusal Dadasov/OneDrive/Masaüstü/Demati-FinalProject_BackEnd-master/Demati/Demati/Views/Shared/_ProductLinkPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9Qcm9kdWN0TGlua1BhcnRpYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Vusal Dadasov/OneDrive/Masaüstü/Demati-FinalProject_BackEnd-master/Demati/Demati/Views/Shared/_ProductListPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9Qcm9kdWN0TGlzdFBhcnRpYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Vusal Dadasov/OneDrive/Masaüstü/Demati-FinalProject_BackEnd-master/Demati/Demati/Views/Shared/_SearchPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9TZWFyY2hQYXJ0aWFsLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Vusal Dadasov/OneDrive/Masaüstü/Demati-FinalProject_BackEnd-master/Demati/Demati/Views/Shared/_ShopListPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9TaG9wTGlzdFBhcnRpYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Vusal Dadasov/OneDrive/Masaüstü/Demati-FinalProject_BackEnd-master/Demati/Demati/Views/Shared/_WishlistCount.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9XaXNobGlzdENvdW50LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Vusal Dadasov/OneDrive/Masaüstü/Demati-FinalProject_BackEnd-master/Demati/Demati/Views/Shared/_WishlistPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9XaXNobGlzdFBhcnRpYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Vusal Dadasov/OneDrive/Masaüstü/Demati-FinalProject_BackEnd-master/Demati/Demati/Views/Shop/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hvcFxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Vusal Dadasov/OneDrive/Masaüstü/Demati-FinalProject_BackEnd-master/Demati/Demati/Views/_ViewImports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Vusal Dadasov/OneDrive/Masaüstü/Demati-FinalProject_BackEnd-master/Demati/Demati/Views/_ViewStart.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 

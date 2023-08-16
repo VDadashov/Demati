@@ -1,0 +1,43 @@
+﻿@model RegisterVM
+
+@{
+    ViewData["Title"] = "Register";
+}
+
+@section RegisterStyle{
+    <link href="@Url.Content("~/assets/scss/register/register.css")" rel="stylesheet" type="text/css" />
+}
+
+<section id="register">
+    <div class="container">
+        <div class="register">
+            <h1>Create Account</h1>
+            <form type="post" asp-controller="account" asp-action="register">
+                <div asp-validation-summary="ModelOnly " class="text text-danger"></div>
+                <div class="register__content">
+                    <input asp-for="Name" class="register-fname" placeholder="First Name">
+                    <input asp-for="Surname" class="register-fname" placeholder="Last Name">
+                    <input asp-for="Email" class="register-email" placeholder="Email">
+                    <div class="register-password__content">
+                        <input asp-for="Password" class="register-password" placeholder="Password">
+                        <span id="password-eye"><i class="fa-regular fa-eye"></i></span>
+                    </div>
+                    <div class="register__description">Sign up for early Sale access plus tailored new arrivals, trends and promotions. To opt out, click unsubscribe in our emails.</div>
+                    <button id="registerBtn" class="registerBtn">Register</button>
+                    <a asp-controller="account" asp-action="login">Sign In</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</section>
+
+@section RegisterScript{
+    <script src="~/assets/js/register.js"></script>
+    <!-- Validation Script-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.5/jquery.validate.min.js" integrity="sha512-rstIgDs0xPgmG6RX1Aba4KV5cWJbAMcvRCVmglpam9SoHZiUCyQVDdH2LPlxoHtrv17XWblE/V/PP+Tr04hbtA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validation-unobtrusive/4.0.0/jquery.validate.unobtrusive.min.js" integrity="sha512-xq+Vm8jC94ynOikewaQXMEkJIOBp7iArs3IhFWSWdRT3Pq8wFz46p+ZDFAR7kHnSFf+zUv52B3prRYnbDRdgog==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+}
+
+
+
+

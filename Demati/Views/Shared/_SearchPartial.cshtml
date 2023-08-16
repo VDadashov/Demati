@@ -1,0 +1,28 @@
+﻿@model IEnumerable<Product>
+
+<style>
+    .search-item:hover .search-item-title {
+        color: #47CDE2 !important;
+    }
+</style>
+
+@if(Model.Count() != 0)
+{
+    <div style="display:flex;justify-content:space-between;">
+        <span class="search-result-count">@Model.Count() results</span>
+        <a style="text-decoration:none;color:rgb(134, 134, 134);" asp-controller="shop" asp-action="index" asp-route-id="14">
+            View All<i style="font-weight: 700;
+    margin-left: 6px;" class="fa-solid fa-arrow-right-long"></i>
+        </a>
+    </div>
+    <div style="border-top:1px solid rgb(180,180,180);margin-top:10px;padding-top:35px;" class="search-result-items">
+        @foreach (Product product in Model)
+        {
+            <a style="width:289.93px;text-decoration:none;text-align:start" asp-controller="product" asp-action="detail" asp-route-id="@product.Id" class="d-flex justify-content-between align-items-center search-item">
+                <img style="width:100%;" src="~/assets/images/Product/@product.MainImage" />
+                <p class="search-item-title" style="color:black;margin-top:6px;margin-bottom:8px;">@product.Title</p>
+                <span style="color:rgb(134, 134, 134);" class="price">€@((product.DisCountPrice > 0 ? product.DisCountPrice : product.Price).ToString("F2"))</span>
+            </a>
+        }
+    </div>
+}

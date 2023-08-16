@@ -1,0 +1,72 @@
+﻿@model Review
+
+<style>
+    .fa-star:hover{
+        cursor:pointer;
+    }
+    .fa-star{
+        color: rgb(206,206,206);
+    }
+    .fa-star.active-star{
+        color: rgb(255,164,34);
+    }
+    .fa-star.active-star-hover {
+        color: rgb(255,164,34);
+    }
+</style>
+
+<form method="post" asp-controller="product" asp-action="AddReview">
+    <div class="review__write-content">
+    <h3>Write a review</h3>
+    <input type="hidden" name="ProductId" value="@Model.ProductId" />
+    <div class="review__write-content__form-group">
+        <div class="review__write-content__form-group__item">
+            <label asp-for="Name">Name</label>
+            <input asp-for="Name" placeholder="Enter your name">
+        </div>
+        <div class="review__write-content__form-group__item">
+            <label asp-for="Email">Email</label>
+            <input asp-for="Email" placeholder="john.smith@example.com">
+        </div>
+    </div>
+        <div class="review__write-content__choose-raiting star-rating">
+        <span class="review__write-content__choose-raiting__title">
+            Rating
+        </span>
+            <input style="display:none" id="star-1" type="radio" asp-for="Star" value="1" />
+            <label class="write-content__choose-raiting--star" asp-for="Star" for="star-1" title="1 stars">
+                <i class="active fa fa-star" aria-hidden="true"></i>
+            </label>
+            <input style="display:none" id="star-2" type="radio" asp-for="Star" value="2" />
+            <label class="write-content__choose-raiting--star" asp-for="Star" for="star-2" title="2 stars">
+                <i class="active fa fa-star" aria-hidden="true"></i>
+            </label>
+            <input style="display:none" id="star-3" type="radio" asp-for="Star" value="3" />
+            <label class="write-content__choose-raiting--star" asp-for="Star" for="star-3" title="3 stars">
+                <i class="active fa fa-star" aria-hidden="true"></i>
+            </label>
+            <input style="display:none" id="star-4" type="radio" asp-for="Star" value="4" />
+            <label class="write-content__choose-raiting--star" asp-for="Star" for="star-4" title="4 stars">
+                <i class="active fa fa-star" aria-hidden="true"></i>
+            </label>
+            <input style="display:none" id="star-5" type="radio" asp-for="Star" value="5" />
+            <label class="write-content__choose-raiting--star" asp-for="Star" for="star-5" title="5 star">
+                <i class="active fa fa-star" aria-hidden="true"></i>
+            </label>
+    </div>
+    <div class="review__write-content__title">
+        <label asp-for="Title">Review Title</label>
+        <input asp-for="Title" placeholder="Give your review a title">
+    </div>
+    <div class="review__write-content__description">
+        <label asp-for="Description" id="charCount">Body of Review (1500)</label>
+        <textarea asp-for="Description"maxlength="1500" id="review-description"
+         cols="30" rows="10" placeholder="Write your comments here"></textarea>
+    </div>
+    <div class="review__write-content--btn">
+        <button>Sumbit review</button>
+        <span class="text-danger" asp-validation-for="User"></span>
+        <div class="text text-danger my-2" asp-validation-summary="ModelOnly" style="color:red;list-style:none;"></div>
+    </div>
+</div>
+</form>

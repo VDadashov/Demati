@@ -1,0 +1,149 @@
+﻿@model Product
+@{
+    ViewData["Title"] = "Detail";
+}
+
+<style>
+    .card-body{
+        padding:0px !important;
+    }
+
+    .product-description-full{
+        max-width: 400px;
+    }
+
+    .product-description-full p{
+        margin-bottom:0px;
+    }
+
+    .product-description-short p{
+        margin:0px !important;
+    }
+</style>
+
+<div class="content-wrapper">
+    <div style="padding-inline:12px;" class="d-sm-flex align-items-center justify-content-between mb-4">
+        <h1 style="font-size:24px;" class="h3 mb-0 text-gray-800">Product Name : <span class="text-info">@Model.Title</span></h1>
+        <a asp-action="index" asp-controller="product" asp-area="manage" type="button" class="btn btn-primary btn-icon-text">
+            Go Home
+        </a>
+    </div>
+    <div style="background-color:#191C24;padding:21px 0 8px 0;border-radius:5px;margin-inline:12px;">
+        <div style="display:flex;gap:32px;padding-left:21px;">
+            <div class="main-image">
+                <img style="width:100px;" src="~/assets/images/Product/@Model.MainImage" />
+                <h6 class="card-title text-success mt-2" style="text-align:center;"> Main Image</h6>
+            </div>
+            <div class="hover-image">
+                <img style="width:100px;" src="~/assets/images/Product/@Model.HoverImage" />
+                <h6 class="card-title text-success mt-2" style="text-align:center;"> Hover Image</h6>
+            </div>
+        </div>
+
+        <div style="display:flex;gap:32px;padding-left:21px;margin-top:36px;">
+            @foreach (ProductImage productImage in Model.ProductImages)
+            {
+                <div class="detail-image">
+                    <img style="width:100px;" src="~/assets/images/Product/Detail/@productImage.Image" />
+                    <h6 class="card-title text-success mt-2" style="text-align:center;"> Detail Image</h6>
+                </div>
+            }
+        </div>
+
+        <div style="padding-left:21px;margin-bottom:12px;" class=" my-4">
+            <ul style="list-style:none; padding-left:0;">
+                <li>Title: <span class="text-info">@Model.Title</span> </li>
+                <li>Category: <span class="text-info">@string.Join(",",Model.ProductCategories.Select(pt=>pt.Category?.Name))</span> </li>
+                <li>Color: <span class="text-info">@string.Join(",",Model.ProductColors.Select(pt=>pt.Color?.Name))</span> </li>
+                <li>Size: <span class="text-info">@string.Join(",",Model.ProductSizes.Select(pt=>pt.Size?.Name))</span> </li>
+                <li>Count: <span class="text-info">@Model.Count</span> </li>
+                <li> Price: <span class="text-info">€@Model.Price</span></li>
+                <li>Discounted Price: <span class="text-info">€@Model.DisCountPrice</span></li>
+                <li> New Arrival: <span class="text-info">@Model.IsNewArrivals</span></li>
+                <li> BestSeller: <span class="text-info">@Model.IsBestseller</span></li>
+                <li> Featured: <span class="text-info">@Model.IsFeatured</span></li>
+                <li> New In: <span class="text-info">@Model.isNewIn</span></li>
+                <li> Hot: <span class="text-info">@Model.isHot</span></li>
+            </ul>
+        </div>
+
+        <div class="col-lg-12 grid-margin stretch-card" style="padding-inline:21px;">
+            <div class="card">
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th> Created By	</th>
+                                    <th> Created At </th>
+                                    <th> Info </th>
+                                    <th> Description </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <th>@Model.CreatedBy</th>
+                                    <th>@Model.CreatedAt</th>
+                                    <th>
+                                        <div class="product-description-short">
+                                            @if (Model.Info.Length < 40)
+                                            {
+                                                @Model.Info
+
+                                            }
+                                            else
+                                            {
+                                                @Model.Info.Substring(0, 40)
+                                                @if (Model.Info.Length > 40)
+                                                {
+                                                    <a href="#" class="show-more">Show More</a>
+                                                }
+
+                                            }
+
+                                        </div>
+                                        <div class="product-description-full" style="display: none">
+                                            <p>@Model.Info.Substring(0, 46)</p><br />
+                                            <p>@Model.Info.Substring(47, 48)</p><br />
+                                            <p>@Model.Info.Substring(96, 46)</p><br />
+                                            <span>@Model.Info.Substring(142)</span>
+                                            <a href="#" class="show-less">Show Less</a>
+                                        </div>
+                                    </th>
+                                    <th>
+                                        <div class="product-description-short">
+                                            @if (Model.Description.Length < 50)
+                                            {
+                                                @Model.Description
+                                            }
+                                            else
+                                            {
+                                                @Html.Raw(Model.Description.Substring(0, 50))
+                                                @if (Model.Description.Length > 70)
+                                                {
+                                                    <a href="#" class="show-more">Show More</a>
+                                                }
+
+                                            }
+
+                                        </div>
+                                        <div class="product-description-full" style="display: none">
+                                            <p>@Html.Raw(Model.Description.Substring(0, 60))</p><br />
+                                            <p>@Html.Raw(Model.Description.Substring(61, 57))</p><br />
+                                            <p>@Html.Raw(Model.Description.Substring(118, 58))</p><br />
+                                            <p>@Html.Raw(Model.Description.Substring(176, 59))</p><br />
+                                            <p>@Html.Raw(Model.Description.Substring(235,55))</p><br />
+                                            <span>@Html.Raw(Model.Description.Substring(290))</span>
+                                            <a href="#" class="show-less">Show Less</a>
+                                        </div>
+                                    </th>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

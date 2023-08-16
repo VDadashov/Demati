@@ -1,0 +1,1172 @@
+@import url("https://fonts.googleapis.com/css2?family=Outfit:wght@100;200;300;400;500;600;700;800;900&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Outfit", sans-serif;
+}
+
+.container {
+  max-width: 1415.2px !important;
+  margin: auto;
+}
+
+#breadcrumb {
+  padding: 20px;
+}
+#breadcrumb ul {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  list-style: none;
+}
+#breadcrumb ul li {
+  font: normal 400 13px/22px "Outfit", sans-serif;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+#breadcrumb ul li a {
+  text-decoration: none;
+  color: rgb(134, 134, 134);
+}
+#breadcrumb ul li a:hover {
+  color: #41cde2;
+}
+#breadcrumb ul li i {
+  font-size: 9px;
+}
+
+#product-detail-content .container .product-item {
+  display: flex;
+  justify-content: space-between;
+}
+#product-detail-content .container .product-item__image-thumbnails {
+  display: flex;
+  gap: 15px;
+}
+#product-detail-content .container .product-item__images {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+#product-detail-content .container .product-item__image {
+  width: 120px;
+  height: 153.15px;
+  display: grid;
+  place-content: center;
+  cursor: pointer;
+}
+#product-detail-content .container .product-item__image.active {
+  border: 1px solid #000;
+}
+#product-detail-content .container .product-item__image.active img {
+  scale: 0.8;
+  transition: all 0.6;
+}
+#product-detail-content .container .product-item__image:hover {
+  border: 1px solid #000;
+}
+#product-detail-content .container .product-item__image:hover img {
+  scale: 0.8;
+  transition: all 0.6s;
+}
+#product-detail-content .container .product-item__image img {
+  width: 100%;
+  height: 100%;
+  transition: all 0.6s;
+}
+#product-detail-content .container .product-item__main-image-content {
+  width: 673px;
+  height: 861.18px;
+  position: relative;
+}
+#product-detail-content .container .product-item__main-image-content img {
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+}
+#product-detail-content .container .product-item__main-image-content--addition {
+  display: flex;
+  align-items: center;
+  position: absolute;
+  gap: 10px;
+  top: 10px;
+  right: 15px;
+}
+#product-detail-content .container .product-item__main-image-content--new-in {
+  font: normal 400 14px/25px "Outfit", sans-serif;
+  padding: 0 10px;
+  color: white;
+  background-color: #41CDE2;
+}
+#product-detail-content .container .product-item__main-image-content--hot {
+  font: normal 400 14px/25px "Outfit", sans-serif;
+  padding: 0 20px;
+  color: white;
+  background-color: #ec1515;
+}
+#product-detail-content .container .product-item__main-image-item {
+  position: absolute;
+  display: none;
+}
+#product-detail-content .container .product-item__main-image-item.active-m {
+  display: block;
+}
+#product-detail-content .container .product-item__info {
+  width: 525px;
+}
+#product-detail-content .container .product-item--review {
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+#product-detail-content .container .product-item--review-star {
+  color: rgb(182, 173, 173);
+  font: normal 200 11.5px/16px "Outfit", sans-serif;
+}
+#product-detail-content .container .product-item--review-count {
+  margin-left: 3px;
+  color: #868686;
+  font-size: 13px;
+}
+#product-detail-content .container .product-item__title {
+  margin-bottom: 15px;
+}
+#product-detail-content .container .product-item__title h2 {
+  font: normal 300 30px/36px "Outfit", sans-serif;
+}
+#product-detail-content .container .product-item__price {
+  margin-bottom: 14px;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+#product-detail-content .container .product-item--old-price {
+  font: normal 400 18px/14.85px "Outfit", sans-serif;
+  -webkit-text-decoration: line-through rgba(0, 0, 0, 0.6);
+          text-decoration: line-through rgba(0, 0, 0, 0.6);
+  opacity: 0.5;
+}
+#product-detail-content .container .product-item--new-price {
+  font: normal 400 20.5px/16px "Outfit", sans-serif;
+  color: red;
+}
+#product-detail-content .container .product-item__vendor {
+  font: normal 400 15px/25.5px 1px solid rgba(70, 68, 68, 0.2);
+  padding-bottom: 30px;
+  margin-bottom: 35px;
+  border-bottom: 1px solid rgba(70, 68, 68, 0.2);
+}
+#product-detail-content .container .product-item__vendor span {
+  color: #41cde2;
+  cursor: pointer;
+  position: relative;
+}
+#product-detail-content .container .product-item__vendor span:hover::before {
+  width: 0%;
+  transition: all 0.4s;
+}
+#product-detail-content .container .product-item__vendor span::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -3px;
+  width: 100%;
+  height: 0.5px;
+  background-color: #41CDE2;
+  transition: all 0.4s;
+}
+#product-detail-content .container .product-item__stock {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  margin-bottom: 25px;
+}
+#product-detail-content .container .product-item__stock i {
+  color: #108043;
+}
+#product-detail-content .container .product-item__stock span {
+  font: normal 400 15px/25.5px "Outfit", sans-serif;
+}
+#product-detail-content .container .product-item__size {
+  margin-bottom: 30px;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+#product-detail-content .container .product-item__size__title {
+  text-transform: uppercase;
+  margin-right: 6px;
+  font: normal 400 12px/20.4px "Outfit", sans-serif;
+}
+#product-detail-content .container .product-item__size__value {
+  margin-right: 9px;
+  font: normal 500 13px/18px "Outfit", sans-serif;
+}
+#product-detail-content .container .product-item__size__content {
+  margin-top: 10px;
+  display: flex;
+  gap: 10px;
+}
+#product-detail-content .container .product-item__size__box {
+  width: 41.6px;
+  height: 41.6px;
+  border: 1px solid rgba(70, 68, 68, 0.2);
+  display: grid;
+  place-content: center;
+}
+#product-detail-content .container .product-item__size__box.active-size {
+  background-color: #000;
+  color: #fff;
+}
+#product-detail-content .container .product-item__size__box:hover {
+  cursor: pointer;
+}
+#product-detail-content .container .product-item__size-guide {
+  width: -moz-max-content;
+  width: max-content;
+  display: flex;
+  align-items: center;
+  position: absolute;
+  right: 0;
+}
+#product-detail-content .container .product-item__size-guide:before {
+  content: "";
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  height: 1px;
+  width: 0%;
+  background: #41cde2;
+  transition: all 0.3s ease;
+}
+#product-detail-content .container .product-item__size-guide:hover {
+  cursor: pointer;
+}
+#product-detail-content .container .product-item__size-guide:hover:before {
+  width: 100%;
+  transition: all 0.3s ease;
+}
+#product-detail-content .container .product-item__size-guide:hover i {
+  color: #41CDE2;
+}
+#product-detail-content .container .product-item__size-guide:hover h2 {
+  color: #41CDE2;
+}
+#product-detail-content .container .product-item__size-guide i {
+  margin-right: 6px;
+  font: normal 400 22px/22px;
+  color: rgb(134, 134, 134);
+}
+#product-detail-content .container .product-item__size-guide h2 {
+  font: normal 500 15px/18px "Outfit", sans-serif;
+  color: rgb(134, 134, 134);
+}
+#product-detail-content .container .product-item__color {
+  margin-bottom: 15px;
+  display: flex;
+  flex-direction: column;
+}
+#product-detail-content .container .product-item__color__title {
+  text-transform: uppercase;
+  margin-right: 6px;
+  font: normal 400 12px/20.4px "Outfit", sans-serif;
+  letter-spacing: 1.5px;
+}
+#product-detail-content .container .product-item__color__value {
+  text-transform: uppercase;
+  margin-right: 9px;
+  font: normal 500 12px/20.4px "Outfit", sans-serif;
+  letter-spacing: 1.5px;
+}
+#product-detail-content .container .product-item__color__content {
+  margin-top: 12px;
+  display: flex;
+  gap: 8px;
+}
+#product-detail-content .container .product-item__color__box {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  cursor: pointer;
+}
+#product-detail-content .container .product-item__color__box:hover {
+  border: 1px solid rgba(0, 0, 0, 0.5);
+}
+#product-detail-content .container .product-item__color__box.active-color {
+  border: 1px solid rgba(0, 0, 0, 0.5);
+}
+#product-detail-content .container .product-item__color--box {
+  width: 32px;
+  height: 32px;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  border-radius: 50%;
+}
+#product-detail-content .container .product-item__color--box span {
+  justify-content: center;
+  align-items: center;
+  background-color: #000;
+  display: none;
+  position: relative;
+}
+#product-detail-content .container .product-item__color--box span span {
+  text-align: center;
+  display: inline;
+  width: 60px;
+  padding: 5px 5px;
+  font: normal 400 13px/13px "Outfit", sans-serif;
+  color: white;
+  top: -35px;
+  text-transform: capitalize;
+}
+#product-detail-content .container .product-item__color--box span i {
+  position: absolute;
+  top: -19px;
+  left: 50%;
+  transform: translateX(-50%);
+  color: #000;
+  font-size: 16px;
+}
+#product-detail-content .container .product-item__add-to-card {
+  margin-top: 30px;
+  display: flex;
+}
+#product-detail-content .container .product-item__add-to-card__btn {
+  margin-left: 10px;
+  width: 293.4px;
+  height: 50px;
+  text-align: center;
+  border: none;
+  background-color: #000;
+  color: #fff;
+}
+#product-detail-content .container .product-item__add-to-card__btn:hover {
+  background-color: #41cde2;
+  color: #fff;
+  cursor: pointer;
+}
+#product-detail-content .container .product-item__count {
+  border: 1px solid rgba(70, 68, 68, 0.2);
+}
+#product-detail-content .container .product-item__count button {
+  width: 38px;
+  height: 48px;
+  border: none;
+  background-color: white;
+}
+#product-detail-content .container .product-item__count button i {
+  font-size: 14px;
+  color: rgb(213, 213, 213);
+}
+#product-detail-content .container .product-item__count button:hover {
+  cursor: pointer;
+}
+#product-detail-content .container .product-item__count button:hover i {
+  color: #000;
+}
+#product-detail-content .container .product-item__count input {
+  text-align: center;
+  border: none;
+  outline: none;
+  width: 64px;
+  height: 48px;
+  font: normal 500 18px/30.6px "Outfit", sans-serif;
+}
+#product-detail-content .container .product-item--wishlist {
+  margin-left: 10px;
+  width: 50px;
+  height: 50px;
+  background-color: #fff;
+  color: #000;
+  border: 1px solid rgba(70, 68, 68, 0.2);
+  transition: all 0.6s;
+}
+#product-detail-content .container .product-item--wishlist.active {
+  background-color: #41CDE2;
+  color: #fff;
+}
+#product-detail-content .container .product-item--wishlist:hover {
+  border: #41CDE2 !important;
+  background-color: #41CDE2 !important;
+  transition: all 0.6s;
+  cursor: pointer;
+}
+#product-detail-content .container .product-item--wishlist:hover i {
+  color: #fff !important;
+}
+#product-detail-content .container .product-item--wishlist i {
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 48px;
+}
+#product-detail-content .container .product-item__ask-share {
+  display: flex;
+  gap: 10px;
+  margin-top: 18px;
+}
+#product-detail-content .container .product-item__ask-share button {
+  margin: 10px 20px 0 0;
+  background-color: #fff;
+  color: #000;
+  border: none;
+  display: flex;
+  gap: 6px;
+  align-items: center;
+  position: relative;
+}
+#product-detail-content .container .product-item__ask-share button::after {
+  content: "";
+  width: 0%;
+  height: 1px;
+  background: #41cde2;
+  bottom: -2px;
+  left: 0;
+  position: absolute;
+  transition: all 0.3s ease;
+}
+#product-detail-content .container .product-item__ask-share button:hover {
+  cursor: pointer;
+}
+#product-detail-content .container .product-item__ask-share button:hover:after {
+  width: 100%;
+  transition: all 0.3s ease;
+}
+#product-detail-content .container .product-item__ask-share button:hover i {
+  color: #41CDE2;
+}
+#product-detail-content .container .product-item__ask-share button:hover span {
+  color: #41CDE2;
+}
+#product-detail-content .container .product-item__ask-share button i {
+  font-size: 16px;
+}
+#product-detail-content .container .product-item__ask-share button span {
+  font: normal 500 15px/25.5px "Outfit", sans-serif;
+}
+#product-detail-content .container .product-item__estimated_delivery {
+  display: flex;
+  align-items: center;
+  padding: 20px 0 15px;
+  margin: 20px 0;
+  border-top: 1px solid #efefef;
+  border-bottom: 1px solid #efefef;
+}
+#product-detail-content .container .product-item__estimated_delivery--icons {
+  padding-right: 15px;
+}
+#product-detail-content .container .product-item__estimated_delivery--icons img {
+  width: 27px;
+}
+#product-detail-content .container .product-item__estimated_delivery__content {
+  padding-left: 15px;
+  flex: 1;
+  max-width: 375px;
+  border-left: 1px solid #d9d9d9;
+  font: normal 400 15px/25.5px "Outfit", sans-serif;
+  color: rgb(134, 134, 134);
+}
+#product-detail-content .container .product-item__estimated_delivery__content span {
+  font-weight: 500;
+  color: #000;
+  position: relative;
+}
+#product-detail-content .container .product-item__trust-barget {
+  text-align: center;
+  color: #000;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin: 25px 0;
+  position: relative;
+}
+#product-detail-content .container .product-item__trust-barget__title {
+  margin-bottom: 0;
+  transform: translateY(50%);
+  background: white;
+  padding: 0 10px;
+  display: inline-block;
+}
+#product-detail-content .container .product-item__trust-barget__content {
+  padding: 35px 25px 30px;
+  border: 1px solid #dedede;
+}
+#product-detail-content .container .product-item-down {
+  margin: 80px 0 20px;
+}
+#product-detail-content .container .product-item-down .product-tab-list__ul {
+  margin-bottom: 60px;
+  display: flex;
+  align-items: center;
+  gap: 60px;
+  justify-content: center;
+  position: relative;
+}
+#product-detail-content .container .product-item-down .product-tab-list__ul:before {
+  content: "";
+  position: absolute;
+  bottom: -10px;
+  width: 100%;
+  height: 1px;
+  background-color: #e8e8e8;
+}
+#product-detail-content .container .product-item-down .product-tab-list__li {
+  position: relative;
+}
+#product-detail-content .container .product-item-down .product-tab-list__li span {
+  font: normal 400 20px/34px "Outfit", sans-serif;
+  color: rgb(134, 134, 134);
+}
+#product-detail-content .container .product-item-down .product-tab-list__li:hover {
+  cursor: pointer;
+}
+#product-detail-content .container .product-item-down .product-tab-list__li.active-selected span {
+  color: #000;
+}
+#product-detail-content .container .product-item-down .product-tab-list__li.active-selected::before {
+  content: "";
+  width: 100%;
+  height: 1px;
+  background-color: #41cde2;
+  position: absolute;
+  bottom: -10px;
+}
+#product-detail-content .container .product-item-down .product-tab-list__content {
+  display: flex;
+  justify-content: center;
+  display: none;
+}
+#product-detail-content .container .product-item-down .product-tab-list__content > * {
+  width: 1170px;
+  animation: fadeDown 0.6s ease-in-out;
+}
+#product-detail-content .container .product-item-down .product-tab-list__content.active-content {
+  display: flex;
+}
+#product-detail-content .container .product-item-down .product-tab-list__content .description p {
+  margin-bottom: 20px;
+  font: normal 400 15px/30px "Outfit", sans-serif;
+  color: rgb(134, 134, 134);
+}
+#product-detail-content .container .product-item-down .product-tab-list__content .description__row {
+  display: flex;
+  gap: 30px;
+}
+#product-detail-content .container .product-item-down .product-tab-list__content .description__col {
+  font: normal 400 15px/30px "Outfit", sans-serif;
+  color: rgb(134, 134, 134);
+}
+#product-detail-content .container .product-item-down .product-tab-list__content .description__col.active-col {
+  margin-right: 80px;
+}
+#product-detail-content .container .product-item-down .product-tab-list__content .description__col h6 {
+  font: normal 600 16px/19.2px "Outfit", sans-serif;
+  color: #000;
+  margin-top: 16px;
+  margin-bottom: 8px;
+}
+#product-detail-content .container .product-item-down .product-tab-list__content .review h2 {
+  margin-bottom: 12px;
+  font: normal 300 30px/36px "Outfit", sans-serif;
+}
+#product-detail-content .container .product-item-down .product-tab-list__content .review__write {
+  margin-bottom: 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+#product-detail-content .container .product-item-down .product-tab-list__content .review__point {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+#product-detail-content .container .product-item-down .product-tab-list__content .review__point span i {
+  font-size: 13.5px;
+  font-weight: 300px;
+  color: rgb(182, 173, 173);
+}
+#product-detail-content .container .product-item-down .product-tab-list__content .review__point--text {
+  margin-top: 3px;
+  margin-left: 5px;
+  color: rgb(134, 134, 134);
+  font: normal 400 15px/20px "Outfit", sans-serif;
+}
+#product-detail-content .container .product-item-down .product-tab-list__content .review--btn button {
+  width: 223.73px;
+  height: 44.6px;
+  text-align: center;
+  font: normal 500 12px/43px "Outfit", sans-serif;
+  border: 1px solid #000;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  background-color: #fff;
+  position: relative;
+}
+#product-detail-content .container .product-item-down .product-tab-list__content .review--btn button:before {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 0%;
+  content: "";
+  transition: all 0.45s ease;
+  background-color: #41cde2;
+}
+#product-detail-content .container .product-item-down .product-tab-list__content .review--btn button span {
+  position: inherit;
+  z-index: 10;
+}
+#product-detail-content .container .product-item-down .product-tab-list__content .review--btn button:hover {
+  cursor: pointer;
+  color: #fff;
+  border: #41CDE2;
+}
+#product-detail-content .container .product-item-down .product-tab-list__content .review--btn button:hover:before {
+  width: 100%;
+  transition: all 0.45s ease;
+}
+#product-detail-content .container .product-item-down .product-tab-list__content .review__comment {
+  padding: 30px 40px;
+  margin: 0 0 15px;
+  position: relative;
+  background: #fff;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+}
+#product-detail-content .container .product-item-down .product-tab-list__content .review__comment--raiting {
+  display: flex;
+  flex-direction: column;
+}
+#product-detail-content .container .product-item-down .product-tab-list__content .review__comment--raiting__content {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+#product-detail-content .container .product-item-down .product-tab-list__content .review__comment--raiting--star i {
+  font-size: 11px;
+  font-weight: 300px;
+  color: rgb(182, 173, 173);
+  margin-right: 5px;
+  min-height: unset;
+  min-width: unset;
+  cursor: pointer;
+}
+#product-detail-content .container .product-item-down .product-tab-list__content .review__comment--raiting__writer {
+  font: normal 400 13px/22.1px "Outfit", sans-serif;
+  color: #aeaeae;
+  margin-left: 4px;
+  margin-top: 4px;
+}
+#product-detail-content .container .product-item-down .product-tab-list__content .review__comment--raiting__title {
+  margin: 7px 0 10px 0;
+  font: normal 500 18px/21px "Outfit", sans-serif;
+}
+#product-detail-content .container .product-item-down .product-tab-list__content .review__comment--raiting__description {
+  font: normal 400 15px/20px "Outfit", sans-serif;
+  color: rgb(134, 134, 134);
+}
+#product-detail-content .container .product-item-down .product-tab-list__content .review__comment--report {
+  font: normal 400 13px/16px "Outfit", sans-serif;
+  color: rgb(174, 174, 174);
+  text-decoration: underline;
+  position: absolute;
+  top: 30px;
+  right: 40px;
+}
+#product-detail-content .container .product-item-down .product-tab-list__content .review__comment--report:hover {
+  color: #41CDE2;
+  cursor: pointer;
+}
+#product-detail-content .container .product-item-down .product-tab-list__content .review__write-content {
+  margin: 50px 0;
+  padding: 50px 0;
+  border-top: 1px solid #ECECEC;
+  flex-direction: column;
+  display: none;
+}
+#product-detail-content .container .product-item-down .product-tab-list__content .review__write-content.active {
+  display: flex;
+}
+#product-detail-content .container .product-item-down .product-tab-list__content .review__write-content h3 {
+  font: normal 300 25px/24px "Outfit", sans-serif;
+  margin-bottom: 25px;
+}
+#product-detail-content .container .product-item-down .product-tab-list__content .review__write-content__form-group {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+#product-detail-content .container .product-item-down .product-tab-list__content .review__write-content__form-group__item {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 20px;
+}
+#product-detail-content .container .product-item-down .product-tab-list__content .review__write-content__form-group__item label {
+  font: normal 400 15px/20px "Outfit", sans-serif;
+}
+#product-detail-content .container .product-item-down .product-tab-list__content .review__write-content__form-group__item input {
+  width: 570px;
+  height: 60px;
+  padding: 14px 20px;
+  font: normal 400 15px/25.5px "Outfit", sans-serif;
+  border: 1px solid rgba(70, 68, 68, 0.2);
+  outline: none;
+}
+#product-detail-content .container .product-item-down .product-tab-list__content .review__write-content__form-group__item input::-moz-placeholder {
+  color: #aaa;
+}
+#product-detail-content .container .product-item-down .product-tab-list__content .review__write-content__form-group__item input::placeholder {
+  color: #aaa;
+}
+#product-detail-content .container .product-item-down .product-tab-list__content .review__write-content__choose-raiting {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  margin: 10px 0 18px;
+}
+#product-detail-content .container .product-item-down .product-tab-list__content .review__write-content__choose-raiting__title {
+  margin-right: 5px;
+  font: normal 400 15px/20px "Outfit", sans-serif;
+}
+#product-detail-content .container .product-item-down .product-tab-list__content .review__write-content__choose-raiting span:hover {
+  cursor: pointer;
+}
+#product-detail-content .container .product-item-down .product-tab-list__content .review__write-content__choose-raiting span i {
+  font-size: 13px;
+  color: rgb(225, 225, 225);
+}
+#product-detail-content .container .product-item-down .product-tab-list__content .review__write-content__title {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 15px;
+}
+#product-detail-content .container .product-item-down .product-tab-list__content .review__write-content__title label {
+  margin-bottom: 8px;
+  font: normal 400 15px/20px "Outfit", sans-serif;
+}
+#product-detail-content .container .product-item-down .product-tab-list__content .review__write-content__title input {
+  font: normal 400 15px/25.5px "Outfit", sans-serif;
+  padding: 14px 20px;
+  height: 60px;
+  border: 1px solid rgba(70, 68, 68, 0.2);
+  outline: none;
+}
+#product-detail-content .container .product-item-down .product-tab-list__content .review__write-content__title input::-moz-placeholder {
+  color: #aaa;
+}
+#product-detail-content .container .product-item-down .product-tab-list__content .review__write-content__title input::placeholder {
+  color: #aaa;
+}
+#product-detail-content .container .product-item-down .product-tab-list__content .review__write-content__description {
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+}
+#product-detail-content .container .product-item-down .product-tab-list__content .review__write-content__description label {
+  margin-bottom: 8px;
+  font: normal 400 15px/20px "Outfit", sans-serif;
+}
+#product-detail-content .container .product-item-down .product-tab-list__content .review__write-content__description textarea {
+  font: normal 400 15px/25.5px "Outfit", sans-serif;
+  padding: 14px 20px;
+  border: 1px solid rgba(70, 68, 68, 0.2);
+  outline: none;
+}
+#product-detail-content .container .product-item-down .product-tab-list__content .review__write-content__description textarea::-moz-placeholder {
+  color: #aaa;
+}
+#product-detail-content .container .product-item-down .product-tab-list__content .review__write-content__description textarea::placeholder {
+  color: #aaa;
+}
+#product-detail-content .container .product-item-down .product-tab-list__content .review__write-content--btn {
+  align-self: center;
+}
+#product-detail-content .container .product-item-down .product-tab-list__content .review__write-content--btn button {
+  width: 209px;
+  height: 60px;
+  text-align: center;
+  background-color: #fff;
+  color: #000;
+  border: 2px solid #000;
+  font: normal 500 12px/18px "Outfit", sans-serif;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+}
+#product-detail-content .container .product-item-down .product-tab-list__content .review__write-content--btn button:hover {
+  background-color: #41cde2;
+  color: #fff;
+  border: #41cde2;
+  cursor: pointer;
+}
+#product-detail-content .container .product-item-down .product-tab-list__content .shipping p {
+  margin-bottom: 20px;
+  font: normal 400 15px/30px "Outfit", sans-serif;
+  color: rgb(134, 134, 134);
+}
+#product-detail-content .container .product-item-down .product-tab-list__content .return {
+  line-height: 2em;
+  font: normal 400 15px/30px "Outfit", sans-serif;
+  color: rgb(134, 134, 134);
+}
+#product-detail-content .container .product-item-down .product-tab-list__content .return p {
+  margin-bottom: 20px;
+}
+#product-detail-content .container .product-item-down .product-tab-list__content .return ul {
+  padding-left: 40px;
+}
+
+.size-modal {
+  display: none;
+  position: fixed;
+  z-index: 999;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.7);
+}
+.size-modal__content {
+  background-color: #fefefe;
+  margin: 5% auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 65%;
+  max-height: 80%;
+  overflow-y: auto;
+}
+.size-modal__content img {
+  padding: 20px;
+  width: 100%;
+}
+.size-modal__content h2 {
+  padding: 20px;
+  padding-bottom: 0;
+}
+.size-modal .close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+  cursor: pointer;
+}
+.size-modal .close:hover, .size-modal .close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.askQuestionModal {
+  display: none;
+  position: fixed;
+  z-index: 999;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.7);
+}
+.askQuestionModal__content {
+  background-color: #fefefe;
+  margin: 5% auto;
+  padding: 30px 45px 20px;
+  border: 1px solid #888;
+  width: 35%;
+  max-height: 85%;
+  overflow-y: auto;
+  position: relative;
+}
+.askQuestionModal__title {
+  width: -moz-max-content;
+  width: max-content;
+  padding-bottom: 12px;
+  font: normal 300 28px/33.6px "Outfit", sans-serif;
+  position: relative;
+}
+.askQuestionModal__title::before {
+  content: "";
+  position: absolute;
+  bottom: 0px;
+  left: 0;
+  width: 100%;
+  background: black;
+  height: 0.6px;
+}
+.askQuestionModal__form {
+  padding-top: 30px;
+  display: flex;
+  flex-direction: column;
+}
+.askQuestionModal__form-group {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 16px;
+}
+.askQuestionModal__form-group input {
+  width: 206.6px;
+  height: 50px;
+  padding-inline: 20px;
+  border: none;
+  outline: none;
+  background-color: rgb(244, 244, 244);
+  font: normal 400 15px/20px "Outfit", sans-serif;
+  color: rgb(134, 134, 134);
+}
+.askQuestionModal__phone {
+  height: 50px;
+  padding-inline: 20px;
+  margin-bottom: 16px;
+  border: none;
+  outline: none;
+  background-color: rgb(244, 244, 244);
+  color: rgb(134, 134, 134);
+  font: normal 400 15px/20px "Outfit", sans-serif;
+}
+.askQuestionModal__textarea {
+  margin-bottom: 16px;
+}
+.askQuestionModal__textarea textarea {
+  padding: 20px;
+  width: 100%;
+  height: 240px;
+  border: none;
+  outline: none;
+  background-color: rgb(244, 244, 244);
+  color: rgb(134, 134, 134);
+  font: normal 400 15px/20px "Outfit", sans-serif;
+}
+.askQuestionModal__form-btn {
+  margin-bottom: 12px;
+}
+.askQuestionModal__form-btn button {
+  width: 100%;
+  height: 50px;
+  border: 1px solid #000;
+  background-color: #fff;
+  font: normal 500 12px/48px "Outfit", sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+.askQuestionModal__form-btn button:hover {
+  background-color: #41CDE2;
+  color: #fff;
+  border: #41CDE2;
+  cursor: pointer;
+}
+.askQuestionModal .askQuestionModal-close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+  cursor: pointer;
+  position: absolute;
+  top: 7px;
+  right: 21px;
+}
+.askQuestionModal .askQuestionModal-close:hover, .askQuestionModal .askQuestionModal-close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.deliveryModal {
+  display: none;
+  position: fixed;
+  z-index: 999;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.7);
+}
+.deliveryModal__content {
+  background-color: #fefefe;
+  margin: 12% auto;
+  padding: 30px 45px 20px;
+  border: 1px solid #888;
+  width: 45%;
+  max-height: 85%;
+  overflow-y: auto;
+  position: relative;
+}
+.deliveryModal__title {
+  width: -moz-max-content;
+  width: max-content;
+  padding-bottom: 12px;
+  font: normal 300 28px/33.6px "Outfit", sans-serif;
+  position: relative;
+  margin-bottom: 25px;
+}
+.deliveryModal__title::before {
+  content: "";
+  position: absolute;
+  bottom: 0px;
+  left: 0;
+  width: 100%;
+  background: black;
+  height: 0.6px;
+}
+.deliveryModal__text {
+  font: normal 400 15px/25.5px "Outfit", sans-serif;
+  color: rgb(134, 134, 134);
+  margin-bottom: 16px;
+}
+.deliveryModal__text strong {
+  color: #000;
+}
+.deliveryModal .deliveryModal-close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+  cursor: pointer;
+  position: absolute;
+  top: 7px;
+  right: 21px;
+}
+.deliveryModal .deliveryModal-close:hover, .deliveryModal .deliveryModal-close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.shareModal {
+  display: none;
+  position: fixed;
+  z-index: 999;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.7);
+}
+.shareModal__content {
+  background-color: #fefefe;
+  margin: 12% auto;
+  padding: 30px 0 20px 30px;
+  border: 1px solid #888;
+  width: 24%;
+  max-height: 85%;
+  overflow-y: auto;
+  position: relative;
+}
+.shareModal__text {
+  font: normal 400 16px/27.2px "Outfit", sans-serif;
+  color: #000;
+}
+.shareModal__copyBtn {
+  margin-top: 8px;
+  display: flex;
+}
+.shareModal__copyBtn input {
+  width: 220px;
+  height: 40px;
+  padding-inline: 10px;
+  font: normal 400 15px/25.5px "Outfit", sans-serif;
+  outline: none;
+  border: 1px solid rgba(70, 68, 68, 0.2);
+}
+.shareModal__copyBtn button {
+  width: 80.35px;
+  height: 40px;
+  background-color: #000;
+  color: #fff;
+}
+.shareModal__copyBtn button:hover {
+  background-color: #41CDE2;
+  border: #41CDE2;
+  cursor: pointer;
+}
+.shareModal__share {
+  margin-top: 30px;
+  display: flex;
+  flex-direction: column;
+}
+.shareModal__share label {
+  margin-bottom: 8px;
+  font: normal 500 16px/27.2px "Outfit", sans-serif;
+}
+.shareModal__social-sharing {
+  display: flex;
+  gap: 6px;
+  margin-bottom: 12px;
+}
+.shareModal__social-sharing a {
+  width: 40px;
+  height: 40px;
+  text-decoration: none;
+  color: #000;
+  border-radius: 50%;
+  border: 1px solid rgba(70, 68, 68, 0.2);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.shareModal__social-sharing a:hover {
+  background-color: #41CDE2;
+  border: #41CDE2;
+  color: #fff;
+}
+.shareModal__social-sharing a i {
+  font-size: 15px;
+}
+.shareModal .shareModal-close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+  cursor: pointer;
+  position: absolute;
+  top: 7px;
+  right: 21px;
+}
+.shareModal .shareModal-close:hover, .shareModal .shareModal-close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.imageModal {
+  display: none;
+  position: fixed;
+  z-index: 999;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.7);
+}
+.imageModal__content {
+  background-color: #fefefe;
+  margin: 4% auto;
+  padding: 30px 30px 20px 30px;
+  border: 1px solid #888;
+  width: 923px;
+  max-height: 85%;
+  overflow-y: auto;
+  position: relative;
+}
+.imageModal .imageModal-close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+  cursor: pointer;
+  position: absolute;
+  top: 0px;
+  right: 10px;
+}
+.imageModal .imageModal-close:hover, .imageModal .imageModal-close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}/*# sourceMappingURL=product-detail.css.map */

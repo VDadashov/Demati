@@ -1,0 +1,10 @@
+﻿@model Product
+
+@{
+    IEnumerable<WishlistVM> wishlistVMs = (IEnumerable<WishlistVM>)ViewBag.Wishlist;
+
+}
+
+<button data-Id="@Model.Id" class="product-item--wishlist wishlistDetailBtn" style="background-color:@((wishlistVMs != null && wishlistVMs.Any(w =>w.Id == Model.Id)) ? "#41CDE2" : "#fff")">
+    <i <i style="color:@((wishlistVMs != null && wishlistVMs.Any(w =>w.Id == Model.Id)) ? "#fff" : "#000")" class="fa-regular fa-heart"></i>
+</button>

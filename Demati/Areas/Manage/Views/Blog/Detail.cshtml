@@ -1,0 +1,46 @@
+﻿@model Blog
+@{
+    ViewData["Title"] = "Detail";
+}
+
+<style>
+    .card-body {
+        padding: 0px !important;
+    }
+
+    .product-description-full {
+        max-width: 400px;
+    }
+
+        .product-description-full p {
+            margin-bottom: 0px;
+        }
+</style>
+
+<div class="content-wrapper">
+    <div style="padding-inline:12px;" class="d-sm-flex align-items-center justify-content-between mb-4">
+        <h1 style="font-size:24px;" class="h3 mb-0 text-gray-800">Product Name : <span class="text-info">@Model.Title</span></h1>
+        <a asp-action="index" asp-controller="blog" asp-area="manage" type="button" class="btn btn-primary btn-icon-text">
+            Go Home
+        </a>
+    </div>
+    <div style="background-color:#191C24;padding:21px 0 8px 0;border-radius:5px;margin-inline:12px;">
+        <div style="display:flex;gap:32px;padding-left:21px;">
+            <div class="image">
+                <img style="width:100px;" src="~/assets/images/Blog/@Model.Image" />
+                <h6 class="card-title text-success mt-2" style="text-align:center;">Blog Image</h6>
+            </div>
+        </div>
+
+        <div style="padding-left:21px;margin-bottom:12px;" class=" my-4">
+            <ul style="list-style:none; padding-left:0;">
+                <li>Title: <span class="text-info">@Model.Title</span> </li>
+                <li>Category: <span class="text-info">@Model.BlogCategory</span></li>
+                <li>Created By: <span class="text-info">@Model.CreatedBy</span> </li>
+                <li>Created At: <span class="text-info">@Model.CreatedAt</span> </li>
+                <li style="margin-top:36px;">Description <span class="text-info">@(Html.Raw(Model.Description))</span> </li>
+            </ul>
+        </div>
+    </div>
+</div>
+

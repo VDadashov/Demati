@@ -1,0 +1,312 @@
+@import url("https://fonts.googleapis.com/css2?family=Outfit:wght@100;200;300;400;500;600;700;800;900&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Outfit", sans-serif;
+}
+
+.container {
+  max-width: 1415.2px !important;
+  margin: auto;
+}
+
+#breadcrumb {
+  padding-top: 45px;
+  padding-bottom: 30px;
+  margin: 0 auto;
+  width: -moz-max-content;
+  width: max-content;
+}
+#breadcrumb h2 {
+  font-size: 50px;
+  font-weight: 300;
+  text-align: center;
+}
+#breadcrumb ul {
+  margin-top: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  list-style: none;
+}
+#breadcrumb ul li {
+  font: normal 400 13px/22px "Outfit", sans-serif;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+#breadcrumb ul li a {
+  text-decoration: none;
+  color: rgb(134, 134, 134);
+}
+#breadcrumb ul li a:hover {
+  color: #41cde2;
+}
+#breadcrumb ul li i {
+  font-size: 9px;
+}
+
+#wishlist-products .container .wishlist-products {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-gap: 30px;
+  grid-row-gap: 35px;
+}
+#wishlist-products .container .wishlist-products > * {
+  animation: fadeDown 0.8s ease-in-out;
+}
+#wishlist-products .container .wishlist-products .product-card {
+  display: flex;
+  flex-direction: column;
+}
+#wishlist-products .container .wishlist-products .product-card:hover .product-card__hover-image {
+  display: inline;
+}
+#wishlist-products .container .wishlist-products .product-card:hover .product-link {
+  display: flex;
+}
+#wishlist-products .container .wishlist-products .product-card__image {
+  width: 330px;
+  height: 422.49px;
+  position: relative;
+}
+#wishlist-products .container .wishlist-products .product-card__image .product-image {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+}
+#wishlist-products .container .wishlist-products .product-card__hover-image {
+  display: none;
+}
+#wishlist-products .container .wishlist-products .product-card--page-link {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: white;
+  font-size: 16px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.4s;
+  animation: fadeDown 0.6s forwards;
+}
+#wishlist-products .container .wishlist-products .product-card--page-link:hover {
+  background-color: #41cde2;
+  cursor: pointer;
+  transition: all 0.4s;
+}
+#wishlist-products .container .wishlist-products .product-card--page-link:hover i {
+  animation: none;
+  color: white;
+}
+#wishlist-products .container .wishlist-products .product-card--page-link:hover span {
+  animation: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#wishlist-products .container .wishlist-products .product-card--page-link:hover span i {
+  position: absolute;
+  bottom: -9px;
+  left: 50%;
+  transform: translateX(-50%);
+  color: #000;
+  font-size: 16px;
+}
+#wishlist-products .container .wishlist-products .product-card .product-link {
+  display: flex;
+  gap: 10px;
+  justify-content: space-between;
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translate(-50%);
+  display: none;
+}
+#wishlist-products .container .wishlist-products .product-card .product-link--hover-text {
+  width: 82.25px;
+  height: 23px;
+  background-color: black;
+  color: white;
+  position: absolute;
+  border-radius: 2px;
+  top: -32px;
+  font: normal 400 12px/23px "Outfit", sans-serif;
+  display: none;
+}
+#wishlist-products .container .wishlist-products .product-card--addition {
+  display: flex;
+  align-items: center;
+  position: absolute;
+  gap: 10px;
+  top: 10px;
+  left: 10px;
+}
+#wishlist-products .container .wishlist-products .product-card--new-in {
+  font: normal 400 14px/25px "Outfit", sans-serif;
+  padding: 0 10px;
+  color: white;
+  background-color: #41CDE2;
+}
+#wishlist-products .container .wishlist-products .product-card--hot {
+  font: normal 400 14px/25px "Outfit", sans-serif;
+  padding: 0 20px;
+  color: white;
+  background-color: #ec1515;
+}
+#wishlist-products .container .wishlist-products .product-card--add-to-card {
+  animation-delay: 0, 1s;
+}
+#wishlist-products .container .wishlist-products .product-card--add-to-card i {
+  font-size: 14px;
+  color: rgb(30, 30, 30);
+}
+#wishlist-products .container .wishlist-products .product-card--wishlist {
+  animation-delay: 0, 3s;
+}
+#wishlist-products .container .wishlist-products .product-card--compare {
+  animation-delay: 0, 5s;
+}
+#wishlist-products .container .wishlist-products .product-card--compare i {
+  font-size: 14px;
+  color: rgb(46, 45, 45);
+}
+#wishlist-products .container .wishlist-products .product-card--quickview {
+  animation-delay: 1, 7s;
+}
+#wishlist-products .container .wishlist-products .product-card__text {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+}
+#wishlist-products .container .wishlist-products .product-card--review {
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  gap: 3px;
+}
+#wishlist-products .container .wishlist-products .product-card--review-star {
+  color: rgb(182, 173, 173);
+  font: normal 200 11px/16px "Outfit", sans-serif;
+}
+#wishlist-products .container .wishlist-products .product-card--review-count {
+  margin-left: 3px;
+  color: #868686;
+  font-size: 13px;
+}
+#wishlist-products .container .wishlist-products .product-card__title {
+  margin-bottom: 9px;
+  width: -moz-max-content;
+  width: max-content;
+}
+#wishlist-products .container .wishlist-products .product-card__title a {
+  text-decoration: none;
+  font: normal 400 15px/25.5px "Outfit", sans-serif;
+  color: #000;
+}
+#wishlist-products .container .wishlist-products .product-card__title:hover a {
+  color: #41cde2;
+  transition: all 0.3s;
+}
+#wishlist-products .container .wishlist-products .product-card__price {
+  margin-bottom: 14px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+#wishlist-products .container .wishlist-products .product-card--old-price {
+  font: normal 400 15px/14.85px "Outfit", sans-serif;
+  -webkit-text-decoration: line-through rgba(0, 0, 0, 0.6);
+          text-decoration: line-through rgba(0, 0, 0, 0.6);
+  opacity: 0.5;
+}
+#wishlist-products .container .wishlist-products .product-card--new-price {
+  font: normal 400 16.5px/16px "Outfit", sans-serif;
+  color: red;
+}
+#wishlist-products .container .wishlist-products .product-card__size {
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+}
+#wishlist-products .container .wishlist-products .product-card__size__title {
+  margin-right: 6px;
+  font: normal 500 13px/22.1px "Outfit", sans-serif;
+}
+#wishlist-products .container .wishlist-products .product-card__size__item {
+  margin-right: 9px;
+  font: normal 500 13px/18px "Outfit", sans-serif;
+  position: relative;
+}
+#wishlist-products .container .wishlist-products .product-card__size__item::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 1px;
+  bottom: -2px;
+  background-color: #000;
+  display: none;
+  transition: all 0.6s;
+}
+#wishlist-products .container .wishlist-products .product-card__size__item:hover {
+  cursor: pointer;
+}
+#wishlist-products .container .wishlist-products .product-card__size__item:hover::before {
+  display: block;
+}
+#wishlist-products .container .wishlist-products .product-card__size__item.size-active::before {
+  display: block;
+}
+#wishlist-products .container .wishlist-products .product-card__color {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+#wishlist-products .container .wishlist-products .product-card__color__content {
+  width: 28px;
+  height: 28px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  cursor: pointer;
+}
+#wishlist-products .container .wishlist-products .product-card__color__content:hover {
+  border: 1px solid rgba(0, 0, 0, 0.5);
+}
+#wishlist-products .container .wishlist-products .product-card__color__content.active-color {
+  border: 1px solid rgba(0, 0, 0, 0.5);
+}
+#wishlist-products .container .wishlist-products .product-card__color--box {
+  width: 20px;
+  height: 20px;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  border-radius: 50%;
+}
+#wishlist-products .container .wishlist-products .product-card__color--box span {
+  justify-content: center;
+  align-items: center;
+  background-color: #000;
+  display: none;
+  position: relative;
+}
+#wishlist-products .container .wishlist-products .product-card__color--box span span {
+  text-align: center;
+  display: inline;
+  width: 60px;
+  padding: 5px 5px;
+  font: normal 400 13px/13px "Outfit", sans-serif;
+  color: white;
+  top: -35px;
+  text-transform: capitalize;
+}
+#wishlist-products .container .wishlist-products .product-card__color--box span i {
+  position: absolute;
+  top: -19px;
+  left: 50%;
+  transform: translateX(-50%);
+  color: #000;
+  font-size: 16px;
+}/*# sourceMappingURL=wishlist.css.map */

@@ -1,0 +1,23 @@
+﻿@model IEnumerable<BasketVM>
+
+@{
+    ViewData["Title"] = "Cart";
+}
+
+@section CartStyle{
+    <link href="@Url.Content("~/assets/scss/viewcart/viewcart.css")" rel="stylesheet" type="text/css" />
+}
+
+<section id="shopping-cart">
+    <div class="container">
+        <div class="shopping-cart">
+            @await Html.PartialAsync("_CartPartial",Model)
+        </div>
+    </div>
+</section>
+
+@section CartScript{
+    <script src="~/assets/js/viewcart.js"></script>
+}
+
+

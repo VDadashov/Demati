@@ -1,0 +1,165 @@
+﻿@model Product
+
+@{
+    ViewData["Title"] = "Create";
+    List<Category> categories = ViewBag.Categories;
+    SelectList selectListItemsCategories = new SelectList(categories, nameof(Category.Id), nameof(Category.Name));
+    List<Size> sizes = ViewBag.Sizes;
+    SelectList selectListItemsSizes = new SelectList(sizes, nameof(Size.Id), nameof(Size.Name));
+    List<Color> colors = ViewBag.Colors;
+    SelectList selectListItemsColors = new SelectList(colors, nameof(Color.Id), nameof(Color.Name));
+}
+
+<style>
+    input {
+        color: #fff !important;
+    }
+
+    .text-danger {
+        font-size: 15px !important;
+    }
+
+    .ck{
+        color:black;
+    }
+</style>
+
+
+<div class="content-wrapper">
+    <div style="padding-inline:12px;" class="d-sm-flex align-items-center justify-content-between mb-4">
+        <h1 style="font-size:24px;" class="h3 mb-0 text-gray-800">Product Create</h1>
+        <a asp-action="index" asp-controller="product" asp-area="manage" type="button" class="btn btn-primary btn-icon-text">
+            Go Home
+        </a>
+    </div>
+
+    <div class="col-12 grid-margin stretch-card">
+        <div class="card">
+            <div class="card-body">
+                <form class="forms-sample" method="post" enctype="multipart/form-data">
+                    <div class="form-group">
+                        <label asp-for="Title"></label>
+                        <input asp-for="Title" minlength="3" class="form-control" placeholder="Title">
+                        <span class="text-danger" asp-validation-for="Title"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Info"></label>
+                        <input asp-for="Info" minlength="10" class="form-control" placeholder="Info" />
+                        <span class="text-danger" asp-validation-for="Info"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Description"></label>
+                        <textarea asp-for="Description" minlength="30" style="color:black !important" class="form-control" placeholder="Description"></textarea>
+                        <span class="text-danger" asp-validation-for="Description"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Count"></label>
+                        <input asp-for="Count" class="form-control" placeholder="Count" />
+                        <span class="text-danger" asp-validation-for="Count"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Price"></label>
+                        <input asp-for="Price" class="form-control" placeholder="Price" />
+                        <span class="text-danger" asp-validation-for="Price"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="DisCountPrice"></label>
+                        <input asp-for="DisCountPrice" class="form-control" placeholder="DisCountPrice" />
+                        <span class="text-danger" asp-validation-for="DisCountPrice"></span>
+                    </div>
+                    <div class="form-check user-select-none mb-2">
+                        <input asp-for="IsBestseller" class="form-check-input">
+                        <label asp-for="IsBestseller" class="form-check-label">Is Bestseller</label>
+                        <span class="text-danger" asp-validation-for="IsBestseller"></span>
+                    </div>
+                    <div class="form-check user-select-none mb-2">
+                        <input asp-for="IsNewArrivals" class="form-check-input">
+                        <label asp-for="IsNewArrivals" class="form-check-label">Is New Arrivals</label>
+                        <span class="text-danger" asp-validation-for="IsNewArrivals"></span>
+                    </div>
+                    <div class="form-check user-select-none mb-2">
+                        <input asp-for="IsFeatured" class="form-check-input">
+                        <label asp-for="IsFeatured" class="form-check-label">Is Featured</label>
+                        <span class="text-danger" asp-validation-for="IsFeatured"></span>
+                    </div>
+                    <div class="form-check user-select-none mb-2">
+                        <input asp-for="isNewIn" class="form-check-input">
+                        <label asp-for="isNewIn" class="form-check-label">Is NewIn</label>
+                        <span class="text-danger" asp-validation-for="isNewIn"></span>
+                    </div>
+                    <div class="form-check user-select-none mb-2">
+                        <input asp-for="isHot" class="form-check-input">
+                        <label asp-for="isHot" class="form-check-label">Is Hot</label>
+                        <span class="text-danger" asp-validation-for="isHot"></span>
+                    </div>
+                    <div style="margin-top:18px;" class="form-group">
+                        <label asp-for="CategoryIds">Categories</label>
+                        <select asp-for=CategoryIds class="form-control" asp-items="selectListItemsCategories">
+                        </select>
+                        <span class="text-danger" asp-validation-for="CategoryIds"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="ColorIds">Colors</label>
+                        <select asp-for=ColorIds class="form-control" asp-items="selectListItemsColors">
+                        </select>
+                        <span class="text-danger" asp-validation-for="CategoryIds"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="SizeIds">Sizes</label>
+                        <select asp-for=SizeIds class="form-control" asp-items="selectListItemsSizes">
+                        </select>
+                        <span class="text-danger" asp-validation-for="SizeIds"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="MainFile"></label>
+                        <input asp-for="MainFile" class="form-control-file" accept="image/*" />
+                        <span class="text-danger" asp-validation-for="MainFile"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="HoverFile"></label>
+                        <input asp-for="HoverFile" class="form-control-file" accept="image/*" />
+                        <span class="text-danger" asp-validation-for="HoverFile"></span>
+                    </div>
+                    <div style="margin-bottom:21px" class="form-group">
+                        <label asp-for="Images">Image</label>
+                        <input asp-for="Images" class="form-control-file" accept="image/*" />
+                        <span class="text-danger" asp-validation-for="Images"></span>
+                    </div>
+                    <button type="submit" class="btn btn-primary mr-2">Edit</button>
+                    <button asp-area="manage" asp-controller="product" asp-action="index" class="btn btn-dark">Cancel</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(document).ready(function () {
+        $(".forms-sample").validate({
+            rules: {
+                Name: {
+                    required: true,
+                    minlength: 3
+                },
+                FileImage: {
+                    required: true
+                }
+            },
+            messages: {
+                Name: {
+                    required: "Name field is required",
+                    minlength: "Name must be at least 3 characters long"
+                },
+                FileImage: {
+                    required: "Please select an image"
+                }
+            }
+        });
+    });
+</script>
+
+@section Scripts{
+    @await Html.PartialAsync("_Validation")
+    @await Html.PartialAsync("_Plugin")
+}
+

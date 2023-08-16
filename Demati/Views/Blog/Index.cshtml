@@ -1,0 +1,54 @@
+﻿@model BLogVM
+
+@{
+    ViewData["Title"] = "Index";
+    var blogCategoryCount = 1;
+}
+
+@section BlogStyle{
+    <link href="@Url.Content("~/assets/scss/blog/blog.css")" rel="stylesheet" type="text/css" />
+}
+
+<section id="blogs">
+    <div id="blog-content">
+        <h2>Blogs</h2>
+        <div class="blog-tab-list">
+            <ul type="none" class="blog-tab-list__ul" role="tablist" aria-orientation="horizontal">
+                @foreach (BlogCategory blogCategory in Model.BlogCategories)
+                {
+                    <li class="blog-tab-list__li @(blogCategoryCount == 1 ? "active-b-selected" : "")"><span>@blogCategory.Name</span></li>
+                    blogCategoryCount++;
+                }
+            </ul>
+            <div class="blog-tab-list__content active-b-content">
+                <div class="blog-card-content beauty">
+                    @await Html.PartialAsync("_BloglistPartial",Model.Beauty)
+                </div>
+            </div>
+            <div class="blog-tab-list__content">
+                <div class="blog-card-content entertainment">
+                    @await Html.PartialAsync("_BloglistPartial",Model.Entertainment)
+                </div>
+            </div>
+            <div class="blog-tab-list__content">
+                <div class="blog-card-content fashion">
+                    @await Html.PartialAsync("_BloglistPartial",Model.Fashion)
+                </div>
+            </div>
+            <div class="blog-tab-list__content">
+                <div class="blog-card-content lifestyle">
+                    @await Html.PartialAsync("_BloglistPartial",Model.Lifestyle)
+                </div>
+            </div>
+            <div class="blog-tab-list__content">
+                <div class="blog-card-content trending">
+                    @await Html.PartialAsync("_BloglistPartial",Model.Trending)
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+@section BlogScript{
+    <script src="~/assets/js/blog.js"></script>
+}

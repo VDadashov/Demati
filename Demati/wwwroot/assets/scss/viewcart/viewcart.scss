@@ -1,0 +1,408 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Outfit', sans-serif;
+}
+
+$custom-font-family: 'Outfit',
+sans-serif;
+$custom-blue-color:#41cde2;
+$custom-text-color:rgb(134, 134, 134);
+$custom-border:1px solid rgba(70, 68, 68, 0.2);
+$modal-background-color: rgba(0, 0, 0, 0.7);
+$modal-content-background-color: #fefefe;
+$modal-content-border-color: #888;
+$close-color: #aaa;
+$close-hover-color: black;
+$submit-button-background-color: #4CAF50;
+$submit-button-hover-background-color: #45a049;
+
+.container {
+    max-width: 1415.200px !important;
+    margin: auto;
+}
+
+
+#shopping-cart {
+    padding: 80px 0 60px;
+
+    .container {
+        .shopping-cart {
+            display: block;
+            width: 1020px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+
+            &__title {
+                margin: 0 0 60px;
+                color: #000;
+                font: normal 500 40px/48px $custom-font-family;
+            }
+
+            &__shipping-proggress--bar {
+                margin-bottom: 20px;
+                width: 450px;
+                height: 3px;
+                background-color: rgb(232, 232, 232);
+            }
+
+            &__shipping-proggress {
+                position: relative;
+                width: 20%;
+                height: 3px;
+                background-color: rgb(255, 188, 18);
+
+                &::before {
+                    position: absolute;
+                    top: -13.5px;
+                    right: -27px;
+                    content: '';
+                    width: 27px;
+                    height: 27px;
+                    background-image: url('../../icons/truck.png');
+                    background-size: cover;
+                }
+            }
+
+            &__title-spend {
+                font: normal 400 15px/25.5px $custom-font-family;
+                color: $custom-text-color;
+                margin-bottom: 20px;
+                margin-top: 4px;
+
+                span {
+                    color: #000;
+                }
+            }
+
+            &__content {
+                margin-top: 50px;
+
+                table {
+                    text-align: left;
+                    width: 1020px;
+                    padding-bottom: 30px;
+                    border-bottom: 1px solid #eaeaea;
+
+                    thead {
+                        tr {
+                            th {
+                                border-bottom: 1px solid #eaeaea;
+                                padding-bottom: 15px;
+                                font: normal 400 17px/28.9px $custom-font-family;
+
+                                &:nth-child(2) {
+                                    text-align: left;
+                                    padding-left: 20px;
+                                }
+
+                                &:nth-child(3) {
+                                    text-align: end;
+                                }
+                            }
+                        }
+                    }
+
+                    tbody {
+                        tr {
+                            td {
+                                font: normal 400 17px/28.9px $custom-font-family;
+
+                                &:nth-child(2) {
+                                    text-align: left;
+                                    padding-right: 70px;
+                                }
+
+                                &:nth-child(3) {
+                                    text-align: end;
+                                }
+                            }
+                        }
+                    }
+
+                    .shopping-cart {
+                        &__item {
+                            width: 370px;
+                            display: flex;
+                            align-items: center;
+                            gap: 20px;
+                            padding-top: 20px;
+                            padding-bottom: 15px;
+
+                            &__main-image {
+                                width: 120px;
+                                height: 154px;
+
+                                img {
+                                    padding-right: 2px;
+                                    width: 100%;
+                                    height: 100%;
+                                }
+                            }
+
+                            &__content {
+                                width: 230px;
+                                display: flex;
+                                flex-direction: column;
+                            }
+
+                            &__title {
+                                font: normal 400 15px/25.5px $custom-font-family;
+
+                                a {
+                                    text-decoration: none;
+                                    color: #000;
+
+                                    &:hover {
+                                        color: $custom-blue-color;
+                                    }
+                                }
+                            }
+
+                            &__features {
+                                display: flex;
+                                gap: 6px;
+                                font: normal 400 12px/20.4px $custom-font-family;
+                                color: $custom-text-color;
+                            }
+
+                            &__price {
+                                font: normal 400 15px/25.5px $custom-font-family;
+                            }
+
+                            &__extension {
+                                display: flex;
+                                flex-direction: column;
+                                align-items: center;
+                                gap: 12px;
+                                margin-top: 8px;
+                                margin-right: 15px;
+                                width: max-content;
+                            }
+
+                            &__count {
+                                width: max-content;
+                                height: max-content;
+                                border: $custom-border;
+
+                                button {
+                                    width: 25px;
+                                    height: 33.4px;
+                                    border: none;
+                                    background-color: white;
+
+                                    i {
+                                        font-size: 13px;
+                                        color: rgb(175, 169, 169);
+                                    }
+
+                                    &:hover {
+                                        cursor: pointer;
+
+                                        i {
+                                            color: #000;
+                                        }
+                                    }
+                                }
+
+                                input {
+                                    text-align: center;
+                                    border: none;
+                                    outline: none;
+                                    width: 48px;
+                                    height: 33.4px;
+                                    font: normal 400 15px/35px $custom-font-family;
+                                }
+                            }
+
+                            &--remove {
+                                width: 42.84px;
+                                height: 20.4px;
+                                border: none;
+                                background-color: #fff;
+                                color: #000;
+                                text-decoration: underline;
+                                transition: color .3s ease;
+                                font: normal 400 12px/20.4px $custom-font-family;
+
+                                &:hover {
+                                    cursor: pointer;
+                                    color: rgb(228, 30, 30);
+                                    text-decoration: none;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+            &__footer {
+                width: 100%;
+                margin-top: 25px;
+                display: flex;
+                justify-content: space-between;
+
+                &__special-instruction{
+                    display: flex;
+                    flex-direction: column;
+
+                    label{
+                        font: normal 400 15px/25.5px $custom-font-family;
+                        margin-bottom: 20px;
+                    }
+                    textarea{
+                        width: 480px;
+                        height: 124.6px;
+                        padding: 11px 20px 12px 20px;
+                        border-color: #e2e2e2;
+                        outline: none;
+                        font: normal 400 15px/20px $custom-font-family;
+                    }
+                }
+                &__coupon{
+                    display: flex;
+                    flex-direction: column;
+                    margin-top: 30px;
+
+                    &__title{
+                        font: normal 400 15px/25.5px $custom-font-family;
+                    }
+                    label{
+                        font: normal 400 15px/25.5px $custom-font-family;
+                        color: $custom-text-color;
+                        margin-bottom: 8px;
+                    }
+                    input{
+                        margin-top: 10px;
+                        width: 480px;
+                        height: 50px;
+                        padding-inline: 20px;
+                        outline: none;
+                        border: 1px solid #e2e2e2;
+                        font: normal 400 15px/50px $custom-font-family;
+                    }
+                }
+
+                
+                &__two{
+                    text-align: end;
+                    display: flex;
+                    flex-direction: column;
+                    align-items: flex-end;
+                }
+            }
+
+            &--subTotal {
+                font: normal 500 17px/28.9px $custom-font-family;
+            }
+
+            &__taxes {
+                font: normal 400 15px/25.5px $custom-font-family;
+                color: $custom-text-color;
+            }
+
+            &__currency {
+                margin-top: 15px;
+                width: 480px;
+                font: normal 400 15px/25.5px $custom-font-family;
+                color: $custom-text-color;
+
+                span {
+                    color: #000;
+                }
+            }
+
+            &__terms-and-conditions {
+                display: flex;
+                align-items: center;
+                margin-top: 16px;
+
+                span {
+                    color: #000;
+                    position: relative;
+
+                    &::before {
+                        content: "";
+                        position: absolute;
+                        bottom: -2px;
+                        left: 0;
+                        width: 100%;
+                        height: 1.5px;
+                        background: black;
+                        transition: all .3s ease;
+                    }
+
+                    &:hover {
+                        &::before {
+                            width: 0%;
+                            transition: all .3s ease;
+                        }
+                    }
+                }
+
+                input[type="checkbox"] {
+                    appearance: none;
+                    -webkit-appearance: none;
+                    -moz-appearance: none;
+                    width: 16px;
+                    height: 16px;
+                    border: 1px solid rgb(188, 182, 182);
+                    border-radius: 50%;
+                    outline: none;
+                    cursor: pointer;
+                    position: relative;
+                }
+
+                input[type="checkbox"]:checked:after {
+                    content: "";
+                    position: absolute;
+                    top: 50%;
+                    left: 50%;
+                    transform: translate(-50%, -50%);
+                    width: 6.5px;
+                    height: 6.5px;
+                    background-color: $custom-blue-color;
+                    border-radius: 50%;
+                }
+
+                label {
+                    font: normal 400 15px/25.5px $custom-font-family;
+                    color: $custom-text-color;
+                    margin-left: 9px;
+                    cursor: pointer
+                }
+            }
+
+            &--checkOut-btn {
+                margin-top: 16px;
+                width: 158px;
+                height: 46.6px;
+                font: normal 500 12px/25px $custom-font-family;
+                text-transform: uppercase;
+                letter-spacing: 2px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                text-decoration: none;
+                background-color: rgba($color: #000000, $alpha: 0.65);
+                color: #fff;
+                border: none;
+                cursor: default;
+
+                &.shopping-cart-activeBtn {
+                    cursor: pointer;
+        
+                    &:hover {
+                        background-color: $custom-blue-color;
+                        color: #fff;
+                    }
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,98 @@
+﻿@model AboutUsVM
+
+@{
+    var ourTeamCount = 1; 
+}
+
+@section AboutUsStyle{
+    <link href="@Url.Content("~/assets/scss/about-us/about-us.css")" rel="stylesheet" type="text/css" />
+}
+
+<section id="about-us-head">
+    <div class="container">
+        <img src="~/assets/images/AboutUs/@Model.Settings.FirstOrDefault(s=>s.Key == "AboutUsHeadImage").Value"
+        alt="@Model.Settings.FirstOrDefault(s=>s.Key == "AboutUsHeadImage").Value">
+    </div>
+</section>
+
+<section id="about-outfie">
+    <div class="container">
+        <div class="about-outfie">
+            <div class="about-outfie__text">
+                <h2 class="about-outfie__text__title">About Outfie</h2>
+                <div class="about-outfie__text__description">
+                    Slowly she drifted to the southeast, rising higher
+                    and higher as the flames ateaway her wooden parts and diminished the weight upon her.
+                    Ascending to the roof of the building I watched her for hours until she was lost in the dim
+                    finally.
+                </div>
+                <div class="about-outfie__text__content">
+                    <h6>Store Hours</h6>
+                    <p>Monday-Saturday : 11am–7pm ET</p>
+                    <p>Sunday : 11am–6pm ET</p>
+                </div>
+            </div>
+            <div class="about-outfie__image">
+                <img src="~/assets/images/AboutUs/img-2.jpg" alt="">
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="about-us-extension">
+    <div class="container">
+        <div class="about-us-extension">
+            <div class="about-us-extension__content">
+                <div class="about-us-extension__item">
+                    <h2 class="about-us-extension__item__title">Free shipping</h2>
+                    <div class="about-us-extension__item__description">
+                        @Html.Raw(Model.Settings.FirstOrDefault(s=>s.Key == "Free shipping").Value)
+                    </div>
+                </div>
+                <div class="about-us-extension__item">
+                    <h2 class="about-us-extension__item__title">Express delivery</h2>
+                    <div class="about-us-extension__item__description">
+                        @Html.Raw(Model.Settings.FirstOrDefault(s=>s.Key == "Express delivery").Value)
+                    </div>
+                </div>
+                <div class="about-us-extension__item">
+                    <h2 class="about-us-extension__item__title">New styles</h2>
+                    <div class="about-us-extension__item__description">
+                        @Html.Raw(Model.Settings.FirstOrDefault(s=>s.Key == "New styles").Value)
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="our-teams">
+    <div class="container">
+        <h2>Our Teams</h2>
+        <div class="our-teams">
+            @foreach (OurTeam ourTeam in Model.OurTeams)
+            {
+                <div class="our-teams__item @(ourTeamCount%2 == 0 ? "our-teams__item--down" : "")">
+                    <div class="our-teams__item__image">
+                        <img src="~/assets/images/AboutUs/@ourTeam.Image" alt="@ourTeam.Image">
+                        <div class="our-teams__item--social-link">
+                            <a href="@ourTeam.Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+                            <a href="@ourTeam.Twitter"><i class="fa-brands fa-twitter"></i></a>
+                            <a href="@ourTeam.Twitter"><i class="fa-brands fa-instagram"></i></a>
+                            <a href="@ourTeam.Youtube"><i class="fa-brands fa-youtube"></i></a>
+                        </div>
+                    </div>
+                    <div class="our-teams__item__info">
+                        <div class="our-teams__item__title">@ourTeam.Name</div>
+                        <div class="our-teams__item__job">@ourTeam.Job</div>
+                    </div>
+                </div>
+                ourTeamCount++;
+            }
+        </div>
+    </div>
+</section>
+
+@section AboutScript{
+    <script src="~/assets/js/about-us.js"></script>
+}

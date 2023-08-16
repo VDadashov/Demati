@@ -1,0 +1,458 @@
+﻿@model ProductReviewVM
+
+@{
+    ViewData["Title"] = "Detail";
+    var countImg = 1;
+    var countMainImg = 1;
+    var countSize = 1;
+    var countColor = 1;
+}
+
+@section ProductDetailStyle{
+    <link href="@Url.Content("~/assets/scss/product-detail/product-detail.css")" rel="stylesheet" type="text/css" />
+}
+
+<style>
+    .product-item__image.active-s{
+        border: 1px solid #000 !important;
+    }
+
+    .product-item__image.active-s img{
+        scale: 0.8 !important;
+        transition: all 0.6s !important;
+    }
+    .product-item__main-image-item.active-m{
+        display:block !important;
+    }
+    .product-item__images{
+        display:flex !important;
+        flex-direction:column !important;
+        justify-content:flex-start !important;
+        gap:23.5px !important;
+    }
+</style>
+
+<section id="breadcrumb">
+    <div class="container">
+        <ul>
+            <li><a asp-controller="home" asp-action="index">Home</a><i class="fa-solid fa-chevron-right"></i></li>
+            <li><a asp-controller="shop" asp-action="index">Shop</a><i class="fa-solid fa-chevron-right"></i></li>
+            <li>@Model.Product.Title</li>
+        </ul>
+    </div>
+</section>
+<section id="product-detail-content">
+    <div class="container">
+        <div class="product-item">
+            <div class="product-item__image-thumbnails">
+                <div class="product-item__images">
+                    @foreach (ProductImage productImage in Model.Product.ProductImages)
+                    {
+                        <div class="product-item__image @(countImg == 1 ? "active-s" : "")">
+                            <img src="~/assets/images/Product/Detail/@productImage.Image" alt="@productImage.Image">
+                        </div>
+
+                        countImg++;
+                    }
+                </div>
+                <div class="product-item__main-image-content">
+                    @foreach (ProductImage productMainImage in Model.Product.ProductImages)
+                    {
+                        <div class="product-item__main-image-item @(countMainImg == 1 ? "active-m" : "")">
+                            <img class="product-item__main-image"
+                             src="~/assets/images/Product/Detail/@productMainImage.Image"
+                             alt="@productMainImage.Image">
+                            <div class="product-item__main-image-content--addition">
+                                @if (Model.Product.isNewIn)
+                                {
+                                    <div class="product-item__main-image-content--new-in">New in</div>
+                                }
+                                @if(Model.Product.isHot){
+                                    <div class="product-item__main-image-content--hot">Hot</div>
+                                }
+                            </div>
+                        </div>
+
+                        countMainImg++;
+                    }
+                </div>
+            </div>
+            <div class="product-item__info">
+                <div class="product-item--review">
+                    @if (Model.Review != null && Model.Product.Reviews.Count() > 0)
+                    {
+                        int sumRatings = 0;
+                        foreach (var review in Model.Product.Reviews)
+                        {
+                            sumRatings += (int)review.Star;
+                        }
+                        int averageRating = sumRatings / Model.Product.Reviews.Count();
+
+                        for (int i = 0; i < 5; i++)
+                        {
+                            <span class="product-item--review-star">
+                                <i style="color: @(i< averageRating ? "rgb(255, 164, 34)":"rgb(182, 173, 173)");" class="@(i< averageRating ? "fa-solid":"fa-regular") fa-star"></i>
+                            </span>
+                        }
+                    }
+                    else
+                    {
+                        for (int i = 0; i < 5; i++)
+                        {
+                            <span class="product-item--review-star">
+                                <i class="fa-regular fa-star"></i>
+                            </span>
+                        }
+                    }
+                    <span class="product-item--review-count">
+                        (@((Model.Review != null && Model.Product.Reviews.Count() > 0) ? Model.Product.Reviews.Count() : 0))
+                    </span>
+                </div>
+                <div class="product-item__title">
+                    <h2>@Model.Product.Title</h2>
+                </div>
+                <div class="product-item__price">
+                    @if (Model.Product.DisCountPrice > 0)
+                    {
+                        <span class="product-item--old-price">€@(Model.Product.Price.ToString("0.00"))</span>
+                        <span class="product-item--new-price">€@(Model.Product.DisCountPrice.ToString("0.00"))</span>
+                    }
+                    else
+                    {
+                        <span class="product-item--new-price">€@(Model.Product.Price.ToString("0.00"))</span>
+                    }
+                </div>
+                <div class="product-item__vendor">
+                    By <span>SE Store</span>
+                </div>
+                <div class="product-item__stock">
+                    @if (Model.Product.Count > 0)
+                    {
+                        <i class="fa-regular fa-circle-check fa-beat-fade"></i>
+                        <span style="color: #108043;">In stock</span>
+                    }
+                    @if (Model.Product.Count == 0)
+                    {
+                        <i style="color:#e52828;" class="fa-regular fa-circle-check fa-beat-fade"></i>
+                        <span style="color: #e52828;">Out of stock</span>
+                    }
+                </div>
+                <div class="product-item__size">
+                    <div class="product-item__size__title">
+                        Size : <span class="product-item__size__value"></span>
+                    </div>
+                    <div class="product-item__size__content">
+                        @foreach (ProductSize productSize in Model.Product.ProductSizes)
+                        {
+                            <div data-sizeId="@productSize.SizeId" class="product-item__size__box @(countSize == 1 ? "active-size" : "")"><span>@productSize.Size?.Name</span></div>
+
+                            countSize++;
+                        }
+                    </div>
+                    <div class="product-item__size-guide" id="sizeGuide">
+                        <i class="fa-solid fa-ruler-horizontal"></i>
+                        <h2>Size Guide</h2>
+                    </div>
+                </div>
+                <div class="product-item__color">
+                    <div class="product-item__color__title">
+                        color : <span class="product-item__color__value">Black</span>
+                    </div>
+                    <div class="product-item__color__content">
+                        @foreach (ProductColor productColor in Model.Product.ProductColors)
+                        {
+                            <div data-colorId="@productColor.ColorId" class="product-item__color__box @(countColor == 1 ? "active-color" : "")">
+                                <div style="background-color: @(productColor.Color?.Name.ToLower());" class="product-item__color--box">
+                                    <span class="product-item__color--box--hover-text">
+                                        <span class="product-item__color--box__text"></span>
+                                        <i class="fa-solid fa-caret-down"></i>
+                                    </span>
+                                </div>
+                            </div>
+                            countColor++;
+                        }
+                    </div>
+                </div>
+                <div class="product-item__add-to-card">
+                    <div class="product-item__count">
+                        <button class="product-item__qty-minus"><i class="fa-solid fa-minus"></i></button>
+                        <input id="product-item--count" type="text" pattern="\d{10}" required value="1">
+                        <button class="product-item__qty-plus"><i class="fa-regular fa-plus"></i></button>
+                    </div>
+                    <button data-id="@Model.Product.Id" class="product-item__add-to-card__btn">
+                        Add To Card
+                    </button>
+                    <div>
+                        @await Html.PartialAsync("_ProductLinkDetailPartial",Model.Product)
+                    </div>
+                </div>
+                <div class="product-item__ask-share">
+                    <button class="product-item__ask-share--item compare">
+                        <i style="font-size: 14.5px;margin-right: 2px;"
+                           class="fa-solid fa-up-right-and-down-left-from-center"></i>
+                        <span>Compare</span>
+                    </button>
+                    <button class="product-item__ask-share--item ask-question" id="askQuestionBtn">
+                        <i class="fa-solid fa-question"></i>
+                        <span>Ask a question</span>
+                    </button>
+                    <button class="product-item__ask-share--item delivery-return" id="deliveryBtn">
+                        <i class="fa-solid fa-truck"></i>
+                        <span>Delivery Return</span>
+                    </button>
+                    <button class="product-item__ask-share--item share" id="shareBtn">
+                        <i class="fa-solid fa-share"></i>
+                        <span>Share</span>
+                    </button>
+                </div>
+                <div class="product-item__estimated_delivery">
+                    <div class="product-item__estimated_delivery--icons">
+                        <img src="~/assets/icons/truck.png" alt="truck.png">
+                    </div>
+                    <div class="product-item__estimated_delivery__content">
+                        Order in the next <span class="time_hour">21</span> hours <span class="time_min">1</span> minutes to get it between <span class="day_start">
+                            Friday,
+                            Jul 14
+                        </span> and <span class="day_stop">Tuesday, Jul 18</span>
+                    </div>
+                </div>
+                <div class="product-item__trust-barget">
+                    <div class="product-item__trust-barget__title">Guarantee safe & secure checkout</div>
+                    <div class="product-item__trust-barget__content">
+                        <img src="~/assets/images/Payment/paymet-1.png" alt="paymet-1.png">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="product-item-down">
+            <div class="product-tab-list">
+                <ul class="product-tab-list__ul" type="none" role="tablist" aria-orientation="horizontal">
+                    <li class="product-tab-list__li active-selected"><span>Description</span></li>
+                    <li class="product-tab-list__li"><span>Review</span></li>
+                    <li class="product-tab-list__li"><span>Shipping</span></li>
+                    <li class="product-tab-list__li"><span>Return</span></li>
+                </ul>
+                <div class="product-tab-list__content active-content">
+                    <div class="product-tab-list__content__item description">
+                        <p>
+                            Get a fresh 'fit for spring with the Free People Love Letter Ivory Floral Jacquard
+                            Cropped Cami Top! Stretchy jacquard fabric, with a textured floral design
+                            throughout, shapes this cami top that has wide straps, a high square neckline, and a
+                            fitted bodice that ends at a cropped hem with lettuce-edge trim.
+                        </p>
+                        <div class="description__row">
+                            <div class="description__col">
+                                <h6 class="bwp-title">Description</h6>
+                                Model size: S<br> Model height: 177 cm <br>Color: Red
+                                <h6 class="bwp-title mt-3">Description</h6>
+                                Model size: S<br> Model height: 177 cm <br>Color: Red
+                                <h6 class="bwp-title mt-3">Care</h6>
+                                <img src="~/assets/images/Product/Detail/Des_test.png" alt="Des_test.png">
+                            </div>
+                            <div class="description__col active-col">
+                                <h6 class="bwp-title">Base fabric</h6>
+                                100% polyester
+                                <h6 class="bwp-title mt-3">Lining</h6>
+                                100% polyester
+                                <h6 class="bwp-title mt-3">Inner</h6>
+                                100% polyester
+                            </div>
+                            <div class="description__col">
+                                <img style="height:330px;width:290px" src="~/assets/images/Product/@Model.Product.MainImage"
+                                     alt="@Model.Product.MainImage">
+                            </div>
+                            <div class="description__col">
+                                <img style="height:330px;width:290px" src="~/assets/images/Product/@Model.Product.HoverImage"
+                                     alt="@Model.Product.HoverImage">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="product-tab-list__content">
+                    <div class="product-tab-list__content__item review">
+                        <h2 class="review__title">Customer Reviews</h2>
+                        <div class="review__write">
+                            <div class="review__point">
+                                @if (Model.Review != null && Model.Product.Reviews.Count() > 0)
+                                {
+                                    int sumRatings = 0;
+                                    foreach (var review in Model.Product.Reviews)
+                                    {
+                                        sumRatings += (int)review.Star;
+                                    }
+                                    int averageRating = sumRatings / Model.Product.Reviews.Count();
+
+                                    for (int i = 0; i < 5; i++)
+                                    {
+                                        <span class="review__comment--raiting--star">
+                                            <i style="color: @(i< averageRating ? "rgb(255, 164, 34)":"rgb(182, 173, 173)");" class="@(i< averageRating ? "fa-solid":"fa-regular") fa-star"></i>
+                                        </span>
+                                    }
+                                }
+                                else
+                                {
+                                    for (int i = 0; i < 5; i++)
+                                    {
+                                        <span class="review__comment--raiting--star">
+                                            <i class="fa-regular fa-star"></i>
+                                        </span>
+                                    }
+                                }
+                                <div class="review__point--text">
+                                    Based on <span class="review__point--count">@((Model.Review != null && Model.Product.Reviews.Count() > 0) ? Model.Product.Reviews.Count() : 0)</span> reviews
+                                </div>
+                            </div>
+                            <div class="review--btn">
+                                <button id="reviewBtn"><span>Write A Review</span></button>
+                            </div>
+                        </div>
+                        @await Html.PartialAsync("_AddReviewPartial",Model.Review)
+                        @if(Model.Product.Reviews != null && Model.Product.Reviews.Count() > 0)
+                        {
+                            foreach (Review review in Model.Product.Reviews)
+                            {
+                                <div class="review__comment">
+                                    <div class="review__comment--raiting">
+                                        <div class="review__comment--raiting__content">
+                                            @for (int i = 1; i <= 5; i++)
+                                            {
+                                                <span class="review__comment--raiting--star">
+                                                    <i style="color: @(i<= review.Star ? "rgb(255, 164, 34)":"rgb(182, 173, 173)");" class="@(i<= review.Star ? "fa-solid":"fa-regular") fa-star"></i>
+                                                </span>
+                                            }
+                                            <div class="review__comment--raiting__writer">
+                                                @review.Name on @review.CreatedAt
+                                            </div>
+                                        </div>
+                                        <div class="review__comment--raiting__title">@review.Title</div>
+                                        <div class="review__comment--raiting__description">@review.Description</div>
+                                    </div>
+                                    <div class="review__comment--report">
+                                        Report as Inappropriate
+                                    </div>
+                                </div>
+                            }
+                        }
+                    </div>
+                </div>
+                <div class="product-tab-list__content">
+                    <div class="product-tab-list__content__item shipping">
+                        <p>
+                            For orders placed before 7am AEDT, we endeavour to process the same business day.
+                            Orders placed after 11am AEDT will be processed the next business day.
+                        </p>
+                        <p>
+                            During sale events and new collection launches, there may be a slighly longer
+                            processing time.
+                        </p>
+                        <p>
+                            All Auguste orders are hand-picked and packed with love from Byron Bay, Australie.
+                        </p>
+                    </div>
+                </div>
+                <div class="product-tab-list__content">
+                    <div class="product-tab-list__content__item return">
+                        <p>You can choose between a refund or a credit note on full priced items.</p>
+                        <ul>
+                            <li>
+                                Item(s) must be returned in their original condition and packaging: unworn,
+                                unwashed and with all tags attached.
+                            </li>
+                            <li>Earrings cannot be returned due to health and safety reasons.</li>
+                            <li>
+                                Return shipping methods and associated costs are the responsibility of the
+                                customer.
+                            </li>
+                            <li>Sale items can not be refunded for change of mind.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<div id="size-modal" class="size-modal">
+    <div class="size-modal__content">
+        <span class="close">&times;</span>
+        <h2>Size Guide</h2>
+        <img src="~/assets/images/size-guide.jpg" alt="">
+        <img src="~/assets/images/size-guide2.webp" alt="">
+    </div>
+</div>
+
+<div id="askQuestionModal" class="askQuestionModal">
+    <div class="askQuestionModal__content">
+        <span class="askQuestionModal-close">&times;</span>
+        <h2 class="askQuestionModal__title">Ask a Question</h2>
+        <form action="#">
+            <div class="askQuestionModal__form">
+                <div class="askQuestionModal__form-group">
+                    <input type="text" id="askQuestionModal-name" placeholder="Your name">
+                    <input type="email" id="askQuestionModal-email" placeholder="Your email">
+                </div>
+                <input type="tel" id="askQuestionModal-phone" class="askQuestionModal__phone"
+                       placeholder="Phone Number">
+                <div class="askQuestionModal__textarea">
+                    <textarea name="askQuestionModal-textarea" id="askQuestionModal-textarea" cols="30" rows="10"
+                              placeholder="Your message..."></textarea>
+                </div>
+                <div class="askQuestionModal__form-btn">
+                    <button>Send Message</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div id="deliveryModal" class="deliveryModal">
+    <div class="deliveryModal__content">
+        <span class="deliveryModal-close">&times;</span>
+        <h2 class="deliveryModal__title">Shipping info</h2>
+        <p class="deliveryModal__text">
+            <strong>Return Policy:</strong> We will gladly accept returns for any reason
+            within 30 days of receipt of delivery.
+        </p>
+        <p class="deliveryModal__text"><strong>Availability:</strong> Ships anywhere in the United States</p>
+        <p class="deliveryModal__text">
+            <strong>Processing Time:</strong> Allow 3-4 business days processing time for
+            your order to ship.
+        </p>
+    </div>
+</div>
+
+<div id="shareModal" class="shareModal">
+    <div class="shareModal__content">
+        <span class="shareModal-close">&times;</span>
+        <span class="shareModal__text">Copy link</span>
+        <div class="shareModal__copyBtn">
+            <input type="text" id="shareModal-input">
+            <button id="shareModal-copy">copy</button>
+        </div>
+        <div class="shareModal__share">
+            <label>Share</label>
+            <div class="shareModal__social-sharing">
+                <a href="facebook.com">
+                    <i class="fa-brands fa-facebook-f"></i>
+                </a>
+                <a href="twitter.com">
+                    <i class="fa-brands fa-twitter"></i>
+                </a>
+                <a href="pinterest.com">
+                    <i class="fa-brands fa-pinterest"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="imageModal" class="imageModal">
+    <div class="imageModal__content">
+        <span class="imageModal-close">&times;</span>
+        <img src="" class="modal-image" alt="Modal Image">
+    </div>
+</div>
+
+@section ProductDetailScript{
+    <script src="~/assets/js/product-detail.js"></script>
+}

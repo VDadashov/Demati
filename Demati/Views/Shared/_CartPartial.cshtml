@@ -1,0 +1,248 @@
+﻿@model IEnumerable<BasketVM>
+
+<style>
+   .shopping-cart--checkOut-btn--check {
+       position: relative;
+   }
+
+   .shopping-cart--checkOut-btn--check:before {
+       content: "";
+       position: absolute;
+       width: 100%;
+       height: 75%;
+       left: 0;
+       bottom: 0;
+   }
+
+   .shopping-cart--checkOut-btn--check.shopping-cart-check-activeBtn::before {
+       content: none;
+   }
+   .page-cart-empty__content .btn:before{
+       content: "";
+        position: absolute;
+        width: 0;
+        height: 100%;
+        left: 0;
+        transition: all .3s ease;
+        background: #41cde2;
+        z-index: -1;
+        top: 0;
+   }
+   .page-cart-empty__content .btn:hover::before{
+       width:100%;
+   }
+
+</style>
+
+@if(Model.Count() != 0)
+{
+    <h2 class="shopping-cart__title">Shopping Cart</h2>
+    <div class="shopping-cart__shipping-proggress--bar">
+        <div class="shopping-cart__shipping-proggress"></div>
+    </div>
+    <div class="shopping-cart__title-spend">
+        Spend <span class="shopping-cart--spend">€52.00</span> more and get <span class="shopping-cart--free-shipping">free shipping!</span>
+    </div>
+    <div style="display:none;margin-bottom:20px;font:normal 400 15px/25.5px Outfit;color:rgb(134, 134, 134);" class="shopping-cart__title-congratulations">
+        <span>Congratulations , you've got free shipping!</span>
+    </div>
+    <form action="#">
+        <div class="shopping-cart__content">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Product</th>
+                        <th>Quantity</th>
+                        <th>Total</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (BasketVM basketVM in Model)
+                    {
+                        <tr>
+                            <td class="shopping-cart__item">
+                                <div class="shopping-cart__item__main-image">
+                                    <a asp-controller="product" asp-action="detail" asp-route-id="@basketVM.Id">
+                                        <img src="~/assets/images/Product/@basketVM.Image"
+                                     alt="@basketVM.Image">
+                                    </a>
+                                </div>
+                                <div class="shopping-cart__item__content">
+                                    <div class="shopping-cart__item__title">
+                                        <a asp-controller="product" asp-action="detail" asp-route-id="@basketVM.Id">@basketVM.Title</a>
+                                    </div>
+                                    <div class="shopping-cart__item__features">
+                                        <span class="shopping-cart__item__color">Color: @basketVM.Color</span>
+                                        <span>|</span>
+                                        <span class="shopping-cart__item__size">Size: @basketVM.Size</span>
+                                    </div>
+                                    <span class="shopping-cart__item__price">€@(basketVM.Price.ToString("F2"))</span>
+                                </div>
+                            </td>
+                            <td style="margin-right:0px;padding:0px;width:300px;" class="shopping-cart__item--count">
+                                <div class="shopping-cart__item__extension">
+                                    <div class="shopping-cart__item__count">
+                                        <button class="shopping-cart__item__qty-minus">
+                                            <i class="fa-solid fa-minus"></i>
+                                        </button>
+                                        <input data-price="@basketVM.Price" data-productId="@basketVM.Id" data-colorId="@basketVM.ColorId" data-sizeId="@basketVM.SizeId" class="shopping-cart__item__input" type="text" pattern="\d{10}"
+                                       required value="@basketVM.Count">
+                                        <button class="shopping-cart__item__qty-plus">
+                                            <i class="fa-regular fa-plus"></i>
+                                        </button>
+                                    </div>
+                                    <button data-Id="@basketVM.Id" data-colorId="@basketVM.ColorId" data-sizeId="@basketVM.SizeId" data-count="@basketVM.Count" class="shopping-cart__item--remove">Remove</button>
+                                </div>
+                            </td>
+                            <td style="width:108px;" data-price="@basketVM.Price" data-productId="@basketVM.Id" class="shopping-cart__item--total">
+                                €@((basketVM.Price * basketVM.Count).ToString("F2"))
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </form>
+    <div class="shopping-cart__footer">
+        <div class="shopping-cart__footer__one">
+            <div class="shopping-cart__footer__special-instruction">
+                <label for="special-instruction">Special instructions for seller</label>
+                <textarea name="special-instruction" id="special-instruction" cols="30" rows="10" placeholder="How can we help you?"></textarea>
+            </div>
+            <div class="shopping-cart__footer__coupon">
+                <div class="shopping-cart__footer__coupon__title">Coupon</div>
+                <label for="sc-coupon">* Discount will be calculated and applied at checkout</label>
+                <input id="sc-coupon" type="text" placeholder="Coupon code">
+            </div>
+        </div>
+        <div class="shopping-cart__footer__two">
+            <div class="shopping-cart--subTotal" data-subTotal="@(ViewBag.subTotal.ToString("F2"))">
+                Subtotal: €@(ViewBag.subTotal.ToString("F2"))
+            </div>
+            <div class="shopping-cart__taxes">
+                Taxes and shipping calculated at checkout
+            </div>
+            <div class="shopping-cart__currency">
+                All charges are billed in <span>USD</span>. While the content of your cart is currently displayed in <span class="selected-currency">EUR</span>, the checkout will use <span>USD</span> at the most current exchange rate.
+            </div>
+            <div class="shopping-cart__terms-and-conditions">
+                <input class="categories-checkbox" type="checkbox" id="terms"
+                   onchange="cartCheckboxChanged()">
+                <label for="terms-and-conditions">I agree with the <span id="termsBtn">terms and conditions</span></label>
+            </div>
+            <div class="shopping-cart--checkOut-btn--check">
+                <a asp-controller="order" asp-action="checkout" class="shopping-cart--checkOut-btn"><span>Check Out</span></a>
+            </div>
+        </div>
+    </div>
+}
+else
+{
+    <div style="padding: 60px 0;text-align: center;" class="page-cart-empty">
+        <p style="margin: 0 0 10px;padding: 6px 0;color: #000;font-family: Outfit;font-size: 20px;font-weight: 400;text-transform: uppercase;" class="page-cart-empty__heading">Your cart is currently empty.</p>
+        <div class="page-cart-empty__content">
+            <p>Before proceed to checkout you must add some products to your shopping cart.<br>
+                You will find a lot of interesting products on our Website.</p>
+            <a style="display: inline-block;
+    background: black;
+    border: 0;
+    letter-spacing: 2px;
+    font-weight: 500;
+    position: relative;
+    z-index: 1;
+    width: 188.03px;
+    margin: 0 auto;
+    height: 38px;
+    margin-top: 27px;
+    padding: 7px 0;
+    text-decoration: none;
+    color: white;" class="btn btn-primary" asp-controller="shop" asp-action="index" asp-route-categoryId="14">Go to shopping</a>
+        </div>
+    </div>
+}
+
+<script>
+    //#region cartCountQty
+    function cartCountQty() {
+        let minusBtns = document.querySelectorAll('.shopping-cart__item__qty-minus');
+        let plusBtns = document.querySelectorAll('.shopping-cart__item__qty-plus');
+        let inputFields = document.querySelectorAll('.shopping-cart__item__input');
+
+        minusBtns.forEach(function (btn, index) {
+            btn.addEventListener('click', function () {
+                let currentValue = parseInt(inputFields[index].value);
+                if (currentValue > 1) {
+                    inputFields[index].value = currentValue - 1;
+                    cartCountInput(inputFields[index], inputFields[index].value);
+                }
+            });
+        });
+
+        plusBtns.forEach(function (btn, index) {
+            btn.addEventListener('click', function () {
+                let currentValue = parseInt(inputFields[index].value);
+                inputFields[index].value = currentValue + 1;
+                cartCountInput(inputFields[index], inputFields[index].value);
+            });
+        });
+
+    }
+    cartCountQty();
+    //#endregion
+
+    //#region cartFreeShipping
+    function cartFreeShipping() {
+        let needFreeShippingPrice = 150;
+        let totalPrice = document.querySelector(".shopping-cart--subTotal").getAttribute("data-subTotal");
+        let freeShippingPercent = parseFloat(totalPrice) * 100 / needFreeShippingPrice;
+
+        let shippingProggress = document.querySelector(".shopping-cart__shipping-proggress");
+        let moneyDemanded = document.querySelector(".shopping-cart--spend");
+        let titleMoneySpend = document.querySelector(".shopping-cart__title-spend");
+        let titleCongratulations = document.querySelector(".shopping-cart__title-congratulations");
+
+
+        if (freeShippingPercent < 100) {
+            shippingProggress.style.width = `${freeShippingPercent}%`;
+            moneyDemanded.textContent = `€${(needFreeShippingPrice - totalPrice).toFixed(2)}`;
+            titleCongratulations.style.display = 'none';
+            titleMoneySpend.style.display = 'block';
+        } else {
+            titleCongratulations.style.display = 'block';
+            titleMoneySpend.style.display = 'none';
+            shippingProggress.style.width = `100%`;
+            shippingProggress.style.backgroundColor = "#41cde2";
+
+        }
+    }
+    cartFreeShipping();
+    //#endregion
+
+    //#region cartCountInput
+    function cartCountInput(input, inputValue) {
+        let inputProductId = input.getAttribute("data-productId");
+        let colorId = input.getAttribute("data-colorId");
+        let sizeId = input.getAttribute("data-sizeId");
+
+        basketFreeShipping();
+
+        fetch("/Basket/CartProductChangeCount?Id=" + inputProductId + "&colorId=" + colorId + "&sizeId=" + sizeId + "&count=" + inputValue)
+            .then(res => res.text())
+            .then(data => {
+                $('.shopping-cart').html(data);
+
+                fetch("/Basket/RefreshBasket?Id=" + inputProductId + "&colorId=" + colorId + "&sizeId=" + sizeId + "&count=" + inputValue)
+                    .then(res => res.text())
+                    .then(data => {
+                        $('.basketModal-content').html(data);
+
+                        fetch("/Basket/RefreshBasketCount")
+                            .then(res2 => res2.text())
+                            .then(data2 => {
+                                $('.header-cart__count').html(data2);
+                            })
+                    })
+            })
+    }
+        //#endregion
+</script>

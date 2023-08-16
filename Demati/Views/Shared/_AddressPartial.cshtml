@@ -1,0 +1,46 @@
+﻿@model IEnumerable<Address>
+
+@if (Model.Count() != 0)
+{
+    @foreach (Address address in Model)
+{
+        <div style="width: 400px;
+                            max-width: 85%;
+                            padding: 15px;" class="addresses__item">
+            <div style="position: relative;
+                                padding: 30px;
+                                border: 1px solid #e5e5e5;
+                                height: 100%;" class="address-card">
+                @if (address.IsMain)
+                {
+                    <div style="position: absolute;
+    top: 0;
+    right: 0;
+    padding: 2px 15px;
+    color: #fff;
+    background-color: #007fd5;
+    font-family: Outfit;
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 20px;
+    text-transform: uppercase;" class="address-default">
+            Default
+        </div>
+                }
+                <div class="address-detail">
+                <p style="color: rgb(134, 134, 134);">@address.User.UserName<br>@address.Country</p>
+        </div>
+        <p class="address-card__update" style="margin-top: 35px;display:flex">
+                    <button data-id="@address.Id" class="edit-address" style="background: white;
+                                        color: green;text-decoration: none;padding: 8.2px 20px;border: 1px solid green;margin-right: 5px;" data-toggle="modal">Edit</button>
+                    <a asp-controller="account" asp-action="DeleteAddress" asp-route-addressId="@address.Id" type="button" class="address-delete" data-target="/account/addresses/7474900271162" data-confirm-message="Are you sure you wish to delete this address?">Delete</a>
+        </p>
+    </div>
+        </div>
+    }
+
+}
+else
+{
+    <span style="margin-left:20px">Nothing</span>
+}

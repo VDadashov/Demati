@@ -1,0 +1,65 @@
+﻿@model Category
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<style>
+    input {
+        color: #fff !important;
+    }
+
+    .text-danger {
+        font-size: 15px !important;
+    }
+</style>
+
+
+<div class="content-wrapper">
+    <div style="padding-inline:12px;" class="d-sm-flex align-items-center justify-content-between mb-4">
+        <h1 style="font-size:24px;" class="h3 mb-0 text-gray-800">Category Create</h1>
+        <a asp-action="index" asp-controller="category" asp-area="manage" type="button" class="btn btn-primary btn-icon-text">
+            Go Home
+        </a>
+    </div>
+
+    <div class="col-12 grid-margin stretch-card">
+        <div class="card">
+            <div class="card-body">
+                <form class="forms-sample" method="post" enctype="multipart/form-data">
+                    <div class="form-group">
+                        <label asp-for="Name">Name</label>
+                        <input asp-for="Name" minlength="3" class="form-control" placeholder="Name">
+                        <span class="text-danger" asp-validation-for="Name"></span>
+                    </div>
+                    <button type="submit" class="btn btn-primary mr-2">Edit</button>
+                    <button asp-area="manage" asp-controller="category" asp-action="index" class="btn btn-dark">Cancel</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(document).ready(function () {
+        $(".forms-sample").validate({
+            rules: {
+                Name: {
+                    required: true,
+                    minlength: 3
+                },
+            },
+            messages: {
+                Name: {
+                    required: "Name field is required",
+                    minlength: "Name must be at least 3 characters long"
+                },
+            }
+        });
+    });
+</script>
+
+@section Scripts{
+    @await Html.PartialAsync("_Validation")
+}
+

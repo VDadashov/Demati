@@ -1,0 +1,436 @@
+﻿@model ProfilVM
+
+@{
+    ViewData["Title"] = "Profile";
+    IEnumerable<Address> addresses = ViewBag.Addresses;
+}
+
+<style>
+    #my-account h1 {
+        font: normal 300 50px/60px 'Outfit';
+        margin: 80px 0;
+    }
+
+    .tab-list__content > *{
+        animation: fadeDown 0.6s ease-in-out;
+    }
+
+    .tablist-account ul {
+        width: 292.5px;
+        padding: 0;
+        list-style: none;
+        background: #f5f5f5;
+        margin: 0;
+    }
+
+        .tablist-account ul li {
+            border-bottom: 1px solid rgba(229,229,229,.5);
+            font-size: 16px;
+        }
+
+            .tablist-account ul li.active-account {
+                background-color: #41cde2;
+            }
+
+                .tablist-account ul li.active-account a {
+                    color: white;
+                }
+
+            .tablist-account ul li a {
+                padding: 10px 20px;
+                display: block;
+                text-decoration: none;
+                color: black;
+            }
+
+    .tab-list__content {
+        display: none;
+    }
+
+        .tab-list__content.active-content {
+            display: block;
+        }
+
+    .address-card__update .edit-address:hover {
+        background-color: green !important;
+        color: white !important;
+        cursor:pointer;
+    }
+
+    .address-card__update .address-delete {
+        color: red;
+        border: 1px solid red;
+        background-color: white;
+        padding: 6.6px 20px;
+        margin-left: 5px;
+        text-decoration:none;
+    }
+
+        .address-card__update .address-delete:hover {
+            cursor: pointer;
+            background-color: red;
+            color: white;
+            border:none;
+        }
+
+    .address-modal {
+        display: none;
+        position: fixed;
+        z-index: 1000;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        overflow: auto;
+        background-color: rgba(0, 0, 0, 0.4);
+    }
+
+    .address-modal-content {
+        background-color: #fefefe;
+        margin: 8.15% auto;
+        padding: 35px 30px 35px;
+        border: 1px solid #888;
+        width: 800px;
+        display: flex;
+        flex-direction: column;
+        position: relative;
+    }
+
+    .address-modal #addressClose {
+        color: #aaa;
+        float: right;
+        font-size: 28px;
+        font-weight: bold;
+        cursor: pointer;
+        position: absolute;
+        top: 5px;
+        right: 10px;
+    }
+
+        .address-modal #addressClose:hover, .address-modal #addressClose:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+    .address-modal2 {
+        display: none;
+        position: fixed;
+        z-index: 1000;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        overflow: auto;
+        background-color: rgba(0, 0, 0, 0.4);
+    }
+
+    .address-modal2-content {
+        background-color: #fefefe;
+        margin: 8.15% auto;
+        padding: 35px 30px 35px;
+        border: 1px solid #888;
+        width: 800px;
+        display: flex;
+        flex-direction: column;
+        position: relative;
+    }
+
+    .address-modal2 #addressClose2 {
+        color: #aaa;
+        float: right;
+        font-size: 28px;
+        font-weight: bold;
+        cursor: pointer;
+        position: absolute;
+        top: 5px;
+        right: 10px;
+    }
+
+        .address-modal2 #addressClose2:hover, .address-modal2 #addressClose2:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+    .modal-body {
+        position: relative;
+        -ms-flex: 1 1 auto;
+        flex: 1 1 auto;
+        padding: 1rem;
+        padding-left: 0;
+        padding-right: 0;
+        margin-top: 16px;
+        border-top: 1px solid rgba(0, 0, 0, 0.3);
+    }
+
+    .address-submit:hover {
+        cursor: pointer;
+    }
+
+    .table {
+        border-collapse: collapse;
+        width: 100%;
+        border: 1px solid #ccc;
+    }
+
+        .table th, .table td {
+            border: 1px solid #ccc;
+            padding: 8px;
+            text-align: center;
+        }
+
+        .table thead th {
+            background-color: #f2f2f2;
+        }
+
+        .table tbody .order-no {
+            color: blue;
+            text-decoration: none;
+        }
+
+        .table tbody tr.hiddenRow {
+            display: none;
+        }
+
+        .table tbody td.col-3 {
+            width: 25%;
+        }
+
+        .table tbody .accordion-body {
+            background-color: #f9f9f9;
+            padding: 10px;
+        }
+
+</style>
+
+<section style="margin-bottom: 120px;" id="my-account">
+            <div class="container">
+                <h1 style="text-align: center;">My Account</h1>
+                <div style="display: flex;justify-content: center;" class="tablist-account">
+                    <ul type="none" class="nav-dashboard" style="margin-right: 24px;height: 122.4px;">
+                        <li class="link--dashboard tab-list__li2 active-account">
+                            <a href="#">Dashboard</a>
+                        </li>
+                        <li class="link--edit-address tab-list__li2">
+                            <a href="#">Orders</a>
+                        </li>
+                        <li class="link--edit-address tab-list__li2">
+                            <a href="#">Addresses (@(addresses.Count() > 0 ? addresses.Count() : 0))</a>
+                        </li>
+                        <li class="link--customer-logout">
+                            <a asp-controller="account" asp-action="Logout" style="color:red;text-decoration:none;background-color: rgb(245,245,245);" data-no-instant="">Log out</a>
+                        </li>
+                    </ul>
+                    <div class="tab-list__content active-content">
+                <p style="color: rgb(134, 134, 134);">Hello <strong>@ViewBag.UserName</strong> ( not <strong>@ViewBag.UserName</strong>? <a asp-controller="account" asp-action="Logout" style="color:red;" id="customer_logout_link">Log Out</a> )</p>
+                        <p style="color: rgb(134, 134, 134);margin-top: 21px;" class="page-account__email">Email: <strong>@ViewBag.Email</strong></p>
+                    </div>
+                    <div class="tab-list__content">
+                <div class="orders-content ">
+                    @if (Model.Orders != null && Model.Orders.Count() > 0)
+                    {
+                        <table class="table table-condensed" style="border-collapse:collapse;width:760px;">
+                            <thead>
+                                <tr>
+                                    <th>Order</th>
+                                    <th>Date</th>
+                                    <th>Status</th>
+                                    <th>Total</th>
+                                    <th>Comment</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @if (Model.Orders != null && Model.Orders.Count() > 0)
+                                {
+                                    foreach (Order order in Model.Orders)
+                                    {
+                                        <tr data-toggle="collapse" data-target="#demo1" class="accordion-toggle">
+                                            <td><a class="order-no" href="#">#@order.No</a></td>
+                                            <td>@order.CreatedAt.ToString("dd MMM yyyy")</td>
+                                            <td>@order.Status </td>
+                                            <td class="text-success">$@(order.OrderItems?.Sum(o => (o.Count * o.Price))) for @order.OrderItems?.Count() items</td>
+                                            <td>@order.Comment</td>
+                                        </tr>
+                                        <tr class="hiddenRow">
+                                            <td colspan="6">
+                                                <div class="accordion-body ">
+                                                    <table style="width:100%;">
+                                                        <thead>
+                                                            <tr>
+                                                                <th class="col-3">Name</th>
+                                                                <th>Count</th>
+                                                                <th>Price</th>
+                                                                <th> Color </th>
+                                                                <th> Size </th>
+                                                                <th>Total</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            @if (order.OrderItems != null && order.OrderItems.Count() > 0)
+                                                            {
+                                                                foreach (OrderItem orderItem in order.OrderItems)
+                                                                {
+                                                                    <tr>
+                                                                        <td>@orderItem.Product?.Title</td>
+                                                                        <td>@orderItem.Count</td>
+                                                                        <td>$@orderItem.Price</td>
+                                                                        <td> @orderItem.Color</td>
+                                                                        <td> @orderItem.Size</td>
+                                                                        <td>$@(orderItem.Price * orderItem.Count)</td>
+                                                                    </tr>
+                                                                }
+
+
+                                                            }
+
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    }
+
+                                }
+                            </tbody>
+                        </table>
+                    }       
+                </div>
+                    </div>
+                    <div class="tab-list__content">
+                        <div class="addresses__creat" style="font-size: 18px;">
+                            You want to create a new address?
+                            <a style="text-decoration: underline;
+                            text-transform: uppercase;
+                            font-size: 16px;
+                            color: green;
+                            font-weight: 500;" href="#" class="addresses__btn-add" data-toggle="modal">
+                                Add a New Address
+                            </a>
+                        </div>
+                        <p style="margin: 30px 0 20px;
+                        color: #000;
+                        font-family: Outfit;
+                        font-size: 30px;
+                        font-weight: 500;">Your Addresses</p>
+                        <div style="display: flex;
+                        flex-flow: row wrap;
+                        margin-left: -15px;
+                        margin-right: -15px;width:800px;" class="addresses__grid">
+                            @await Html.PartialAsync("_AddressPartial",addresses)
+                        </div>
+                <div id="address-modal" class="address-modal">
+                    <div class="address-modal-content">
+                        <span id="addressClose">&times;</span>
+                        <h2 style="color: #000;
+                                font-family: Outfit;
+                                font-size: 30px;
+                                font-weight: 500;">
+                            Add a New Address
+                        </h2>
+                        @await Html.PartialAsync("_AddAddressPartial",new Address())
+                    </div>
+                </div>
+                <div id="address-modal2" class="address-modal2">
+      
+                </div>
+                    </div>  
+                </div>
+            </div>
+        </section>
+
+<script>
+    function myAccountTablist() {
+        let tabLi = document.querySelectorAll('.tab-list__li2');
+        let tabLiContent = document.querySelectorAll('.tab-list__content')
+
+        tabLi.forEach((item, index) => {
+            item.addEventListener('click', () => {
+                tabLi.forEach(item => {
+                    item.classList.remove('active-account')
+                })
+                item.classList.add('active-account');
+
+                tabLiContent.forEach(item => {
+                    item.classList.remove("active-content");
+                })
+                tabLiContent[index].classList.add('active-content');
+
+            })
+        });
+    }
+    myAccountTablist();
+
+    function addressModal() {
+        const addressBtn = document.querySelector('.addresses__btn-add');
+        const addressModal = document.querySelector('#address-modal');
+        const closeButton = document.querySelector('#addressClose');
+
+        addressBtn.addEventListener('click', () => {
+            addressModal.style.display = 'block';
+        });
+
+        closeButton.addEventListener('click', () => {
+            addressModal.style.display = 'none';
+        });
+
+        window.addEventListener('click', (event) => {
+            if (event.target === addressModal) {
+                addressModal.style.display = 'none';
+            }
+        });
+    }
+    addressModal();
+
+    document.addEventListener('click', function (event) {
+        if (event.target.classList.contains('edit-address')) {
+            event.preventDefault();
+
+            let id = event.target.getAttribute('data-Id');
+
+            fetch("/Account/EditAddress?Id=" + id)
+                .then(res => res.text())
+                .then(data => {
+                    document.querySelector('.address-modal2').innerHTML = data;
+
+                    function addressModal2() {
+                        const addressBtn = document.querySelector('.edit-address');
+                        const addressModal = document.querySelector('#address-modal2');
+                        const closeButton = document.querySelector('#addressClose2');
+
+                        addressModal.style.display = 'block';
+
+                        closeButton.addEventListener('click', () => {
+                            addressModal.style.display = 'none';
+                        });
+
+                        window.addEventListener('click', (event) => {
+                            if (event.target === addressModal) {
+                                addressModal.style.display = 'none';
+                            }
+                        });
+                    }
+                    addressModal2();
+                });
+        }
+    });
+
+    // Get all the toggle elements (rows with class "accordion-toggle")
+  const toggleRows = document.querySelectorAll('.accordion-toggle');
+
+  // Add a click event listener to each toggle row
+  toggleRows.forEach(row => {
+    row.addEventListener('click', () => {
+      // Get the next row which is the hidden content row
+      const hiddenRow = row.nextElementSibling;
+
+      // Toggle the display of the hidden content row
+      if (hiddenRow.classList.contains('hiddenRow')) {
+        hiddenRow.classList.remove('hiddenRow');
+      }else{
+        hiddenRow.classList.add('hiddenRow');
+      }
+    });
+  });
+
+</script>

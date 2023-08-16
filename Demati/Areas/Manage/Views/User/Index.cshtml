@@ -1,0 +1,135 @@
+﻿@model PagenatedList<UserVM>
+
+
+@{
+    ViewData["Title"] = "Index";
+    int no = (Model.PageIndex - 1) * 4;
+}
+
+<style>
+    .pagination {
+        display: flex;
+        justify-content: center;
+        padding: 0 12px;
+    }
+
+        .pagination a.active {
+            background-color: #0096FF;
+            color: #FFFFFF;
+            border: 1px solid #0096FF;
+        }
+
+            .pagination a.active:hover {
+                color: #FFFFFF;
+            }
+
+        .pagination a {
+            color: #fff;
+            text-decoration: none;
+        }
+
+            .pagination a:hover {
+                color: #0096FF;
+            }
+
+</style>
+
+<div class="content-wrapper">
+
+    <div style="padding:0 12px;padding: 0 12px;margin-bottom:32px;" class="page-header">
+        <h3 style="align-self: flex-start;font-size:23px;font-weight:400;" class="page-title"> User </h3>
+        @if (TempData["Message"] != null)
+        {
+            <div class="alert alert-success">@TempData["Message"]</div>
+        }
+
+        @if (TempData["ErrorMessage"] != null)
+        {
+            <div class="alert alert-danger">@TempData["ErrorMessage"]</div>
+        }
+    </div>
+
+    <div class="col-lg-12 grid-margin stretch-card">
+        <div class="card">
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th> # </th>
+                                <th> Name </th>
+                                <th> Surname </th>
+                                <th> Email </th>
+                                <th> Username </th>
+                                <th> Role </th>
+                                <th> Settings </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (UserVM userVM in Model)
+                            {
+                                no++;
+                                <tr>
+                                    <td> @no </td>
+                                    <td>
+                                        @userVM.Name
+                                    </td>
+                                    <td> @userVM.Surname</td>
+                                    <td> @userVM.Email</td>
+                                    <td> @userVM.Username</td>
+                                    <td>
+                                        @userVM.RoleName
+                                    </td>
+                                    <td>
+                                        <a asp-area="manage" asp-controller="user" asp-action="ChangeRole" asp-route-userId="@userVM.Id" style="margin-right:8px;padding: 7px 18px;" type="button" class="btn btn-primary btn-icon-text">
+                                            Edit
+                                        </a>
+                                        <a asp-area="manage" asp-controller="user" asp-action="BlockUser" asp-route-userId="@userVM.Id" style="padding: 7px 18px;" type="button" class="btn btn-danger btn-icon-text">
+                                            Block
+                                        </a>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <nav aria-label="Page navigation" class="my-4 d-flex justify-content-center">
+        <ul class="pagination">
+            @if (Model.PageIndex > 1)
+            {
+                <li class="page-item">
+                    <a class="page-link"
+                   asp-area="manage" asp-controller="user" asp-action="index" asp-route-pageIndex="@(Model.PageIndex-1)" aria-label="Previous">
+                        <span aria-hidden="true">&laquo;</span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                </li>
+
+            }
+            @for (int i = Model.StartPage; i <= Model.EndPage; i++)
+            {
+                <li class="page-item @(Model.PageIndex == i ? "active" : "")">
+                    <a class="page-link" asp-area="manage" asp-controller="user" asp-action="index" asp-route-pageIndex="@i">@i</a>
+                </li>
+            }
+
+            @if (Model.PageIndex < Model.TotalPage)
+            {
+                <li class="page-item">
+                    <a class="page-link"
+                   asp-area="manage" asp-controller="user" asp-action="index" asp-route-pageIndex="@(Model.PageIndex+1)" aria-label="Next">
+                        <span aria-hidden="true">&raquo;</span>
+                        <span class="sr-only">Next</span>
+                    </a>
+                </li>
+
+            }
+
+        </ul>
+    </nav>
+</div>
+

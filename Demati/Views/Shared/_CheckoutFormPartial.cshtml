@@ -1,0 +1,213 @@
+﻿@model Order
+
+
+
+<form type="post" asp-controller="order" asp-action="Checkout">
+    <div class="checkout__information__main">
+        <div class="checkout__information__login">
+            <h2>Contact</h2>
+            @*<span>Already have an account? <a href="./login.html">Log in</a></span>*@
+        </div>
+        <div class="checkout__information__email">
+            <span>Email</span>
+            <input asp-for="Email" required="required">
+        </div>
+        <div class="checkout__information__delivery-method">
+            <h2>Delivery method</h2>
+            <div class="checkout__information__ship delivery-radio">
+                <input class="checkout__information__radio" name="delivery" checked="true" type="radio" id="information-ship"
+                       onchange="radioChanged(this)">
+                <span></span>
+                <label for="information-ship">Ship</label>
+            </div>
+            <div class="checkout__information__pick-up delivery-radio">
+                <input class="checkout__information__radio" name="delivery" type="radio" id="information-pick-up"
+                       onchange="radioChanged(this)">
+                <span></span>
+                <label for="information-pick-up">Pick up</label>
+            </div>
+        </div>
+        <div class="shipping-address">
+            <h2>Shipping address</h2>
+            <div class="shipping-address__country">
+                <span>Country/Region</span>
+                <select asp-for="Country" required="" autocomplete="shipping country">
+                    <option value="AF">Afghanistan</option>
+                    <option value="AL">Albania</option>
+                    <option value="DZ">Algeria</option>
+                    <option value="AD">Andorra</option>
+                    <option value="AO">Angola</option>
+                    <option value="AI">Anguilla</option>
+                    <option value="AR">Argentina</option>
+                    <option value="AW">Aruba</option>
+                    <option value="AU">Australia</option>
+                    <option value="AT">Austria</option>
+                    <option selected value="AZ">Azerbaijan</option>
+                    <option value="BS">Bahamas</option>
+                    <option value="BH">Bahrain</option>
+                    <option value="BD">Bangladesh</option>
+                    <option value="BB">Barbados</option>
+                    <option value="BY">Belarus</option>
+                    <option value="BE">Belgium</option>
+                    <option value="BM">Bermuda</option>
+                    <option value="BO">Bolivia</option>
+                    <option value="BA">Bosnia &amp; Herzegovina</option>
+                    <option value="BW">Botswana</option>
+                    <option value="BR">Brazil</option>
+                    <option value="IO">British Indian Ocean Territory</option>
+                    <option value="VG">British Virgin Islands</option>
+                    <option value="DK">Denmark</option>
+                    <option value="DJ">Djibouti</option>
+                    <option value="DM">Dominica</option>
+                    <option value="DO">Dominican Republic</option>
+                    <option value="EC">Ecuador</option>
+                    <option value="EG">Egypt</option>
+                    <option value="FI">Finland</option>
+                    <option value="FR">France</option>
+                    <option value="DE">Germany</option>
+                    <option value="GH">Ghana</option>
+                    <option value="GI">Gibraltar</option>
+                    <option value="GR">Greece</option>
+                    <option value="GL">Greenland</option>
+                    <option value="IS">Iceland</option>
+                    <option value="IN">India</option>
+                    <option value="ID">Indonesia</option>
+                    <option value="IQ">Iraq</option>
+                    <option value="IE">Ireland</option>
+                    <option value="IM">Isle of Man</option>
+                    <option value="IL">Israel</option>
+                    <option value="IT">Italy</option>
+                    <option value="JM">Jamaica</option>
+                    <option value="JP">Japan</option>
+                    <option value="NL">Netherlands</option>
+                    <option value="NC">New Caledonia</option>
+                    <option value="NZ">New Zealand</option>
+                    <option value="NE">Niger</option>
+                    <option value="NG">Nigeria</option>
+                    <option value="MK">North Macedonia</option>
+                    <option value="NO">Norway</option>
+                    <option value="OM">Oman</option>
+                    <option value="PK">Pakistan</option>
+                    <option value="PS">Palestinian Territories</option>
+                    <option value="PA">Panama</option>
+                    <option value="PG">Papua New Guinea</option>
+                    <option value="PY">Paraguay</option>
+                    <option value="PE">Peru</option>
+                    <option value="PH">Philippines</option>
+                    <option value="PN">Pitcairn Islands</option>
+                    <option value="PL">Poland</option>
+                    <option value="PT">Portugal</option>
+                    <option value="QA">Qatar</option>
+                    <option value="RE">Réunion</option>
+                    <option value="RO">Romania</option>
+                    <option value="RU">Russia</option>
+                    <option value="RW">Rwanda</option>
+                    <option value="WS">Samoa</option>
+                    <option value="SM">San Marino</option>
+                    <option value="ST">São Tomé &amp; Príncipe</option>
+                    <option value="SA">Saudi Arabia</option>
+                    <option value="SN">Senegal</option>
+                    <option value="RS">Serbia</option>
+                    <option value="SG">Singapore</option>
+                    <option value="SX">Sint Maarten</option>
+                    <option value="SK">Slovakia</option>
+                    <option value="SI">Slovenia</option>
+                    <option value="SB">Solomon Islands</option>
+                    <option value="SO">Somalia</option>
+                    <option value="ZA">South Africa</option>
+                    <option value="GS">South Georgia &amp; South Sandwich Islands</option>
+                    <option value="KR">South Korea</option>
+                    <option value="SS">South Sudan</option>
+                    <option value="ES">Spain</option>
+                    <option value="LK">Sri Lanka</option>
+                    <option value="SJ">Svalbard &amp; Jan Mayen</option>
+                    <option value="SE">Sweden</option>
+                    <option value="CH">Switzerland</option>
+                    <option value="TO">Tonga</option>
+                    <option value="TT">Trinidad &amp; Tobago</option>
+                    <option value="TA">Tristan da Cunha</option>
+                    <option value="TN">Tunisia</option>
+                    <option value="TR">Turkey</option>
+                    <option value="TM">Turkmenistan</option>
+                    <option value="TC">Turks &amp; Caicos Islands</option>
+                    <option value="TV">Tuvalu</option>
+                    <option value="UM">U.S. Outlying Islands</option>
+                    <option value="UG">Uganda</option>
+                    <option value="UA">Ukraine</option>
+                    <option value="AE">United Arab Emirates</option>
+                    <option value="GB">United Kingdom</option>
+                    <option value="US">United States</option>
+                    <option value="UY">Uruguay</option>
+                    <option value="UZ">Uzbekistan</option>
+                </select>
+                <span asp-validation-for="Country" class="text text-danger"></span>
+            </div>
+            <div class="shipping-address__form-group">
+                <div class="shipping-address__fname">
+                    <span class="placeholder-fname"></span>
+                    <input asp-for="Name" placeholder="First name (optional)" id="shipping-address__fname">
+                    <span asp-validation-for="Name" class="text text-danger"></span>
+                </div>
+                <div class="shipping-address__lname">
+                    <span class="placeholder-lname"></span>
+                    <input asp-for="Surname" placeholder="Last name" id="shipping-address__lname">
+                    <span asp-validation-for="Surname" class="text text-danger"></span>
+                </div>
+            </div>
+            <div class="shipping-address__form-address">
+                <span class="placeholder-address"></span>
+                <input asp-for="AddressLine" placeholder="Address" id="shipping-address__address">
+                <span asp-validation-for="AddressLine" class="text text-danger"></span>
+            </div>
+            <div class="shipping-address__form-apartment">
+                <span class="placeholder-apartment"></span>
+                <input asp-for="Company" placeholder="Company" id="shipping-address__apartment">
+                <span asp-validation-for="Company" class="text text-danger"></span>
+            </div>
+            <div class="shipping-address__form-apartment form-telephone">
+                <span style="position: absolute;
+    top: 5px;
+    left: 14px;
+    font: normal 300 12px/21px Roboto;
+                      color: rgb(134, 134, 134);
+                      display: none;
+                      animation: fadeDown 0.25s ease-in-out;" class="placeholder-phone"></span>
+                <input asp-for="Phone" placeholder="Phone" id="shipping-address__phone">
+                <span asp-validation-for="Phone" class="text text-danger"></span>
+            </div>
+            <div class="shipping-address__form-group">
+                <div class="shipping-address__form-postal-code">
+                    <span class="placeholder-postal-code"></span>
+                    <input asp-for="PostalCode" placeholder="Postal code" id="shipping-address__postal-code">
+                    <span asp-validation-for="PostalCode" class="text text-danger"></span>
+                </div>
+                <div class="shipping-address__form-city">
+                    <span class="placeholder-city"></span>
+                    <input asp-for="City" placeholder="City" id="shipping-address__city">
+                    <span asp-validation-for="City" class="text text-danger"></span>
+                </div>
+            </div>
+        </div>
+        <div class="pickup-locations">
+            <h2>Pickup Locations</h2>
+            <p>There is 1 store with stock close to your location</p>
+            <div class="location">
+                <div class="location__left">
+                    <span>New York</span>
+                    <p>New York, New York NY</p>
+                </div>
+                <div class="location__right">
+                    <span>Free</span>
+                    <p>Usually ready in 4 hours</p>
+                </div>
+            </div>
+        </div>
+        <div class="checkout__return">
+            <a asp-controller="product" asp-action="cart">
+                Return to cart
+                <i class="fa-solid fa-chevron-left"></i>
+            </a>
+            <button type="submit">Continue to shipping</button>
+        </div>
+    </div>
+</form>

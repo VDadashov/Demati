@@ -1,0 +1,100 @@
+﻿@model Order
+
+@{
+    ViewData["Title"] = "Detail";
+    int count = 0;
+}
+
+<div class="content-wrapper">
+    <div style="padding-inline:12px;" class="d-sm-flex align-items-center justify-content-between mb-4">
+        <h1 style="font-size:24px;" class="h3 mb-0 text-gray-800">Order : <span class="text-info">@Model.Status</span></h1>
+        <a asp-action="index" asp-controller="order" asp-area="manage" type="button" class="btn btn-primary btn-icon-text">
+            Go Home
+        </a>
+    </div>
+
+    <div style="background-color:#191C24;padding:21px 0 8px 0;border-radius:5px;margin-inline:12px;">
+        <div style="padding-left:21px;margin-bottom:12px;" class=" my-4">
+            <ul style="list-style:none; padding-left:0;">
+                <li>No: <span class="text-info">@Model.No</span> </li>
+                <li> Full Name: <span class="text-info">@($"{Model.Name} {Model.Surname}")</span></li>
+                <li>Country: <span class="text-info">@Model.Country</span></li>
+                <li>Company: <span class="text-info">@Model.Company</span></li>
+                <li>City: <span class="text-info">@Model.City</span></li>
+                <li>Address: <span class="text-info">@Model.AddressLine</span></li>
+                <li>Zip Code: <span class="text-info" >@Model.PostalCode</span></li>
+                <li>Phone Number: <span class="text-info">@Model.Phone</span></li>
+            </ul>
+        </div>
+
+        <h4 style="padding-left:21px;margin-bottom:8px;">Order Items</h4>
+        <div class="col-lg-12 grid-margin stretch-card" style="padding-inline:21px;">
+            <div class="card">
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th></th>
+                                    <th>Products Name</th>
+                                    <th>Size</th>
+                                    <th>Color</th>
+                                    <th>Price</th>
+                                    <th>Shipping</th>
+                                    <th>Count</th>
+                                    <th>Total Price</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (OrderItem order in Model.OrderItems)
+                                {
+                                    count++;
+                                    var total = (order.Price * order.Count) + (order.Shipping);
+
+                                    <tr>
+                                        <td>@count</td>
+                                        <td>@order.Product.Title</td>
+                                        <td>@order.Size</td>
+                                        <td>@order.Color</td>
+                                        <td>€@order.Price.ToString("F2")</td>
+                                        <td>@(order.Shipping > 0 ? $"€{order.Shipping?.ToString("F2")}" : "Free")</td>
+                                        <td>@order.Count</td>
+                                        <td>€@(total?.ToString("F2"))</td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-6 pt-2 mt-4">
+        <div class="card mb-4">
+            <h5 class="card-header">Change Order Status</h5>
+            <div class="card-body demo-vertical-spacing demo-only-element">
+                <form method="post" asp-action="changeStatus" asp-area="manage" asp-controller="order">
+                    <input type="hidden" name="Id" value="@Model.Id" class="form-control" />
+                    <input type="hidden" value="@Model.No" class="form-control" />
+                    <div class="my-3">
+                        <label asp-for="Status" class="form-label">Status</label>
+                        <select asp-for="Status" class="form-select" asp-items="@Html.GetEnumSelectList<OrderType>()">
+                        </select>
+                        <span asp-validation-for="Status" class="text text-danger"></span>
+                    </div>
+                    <div class="mb-2">
+                        <label asp-for="Comment" class="form-label"></label>
+                        <input asp-for="Comment" class="form-control" />
+                        <span asp-validation-for="Comment" class="text text-danger"></span>
+                    </div>
+                    <button type="submit" class="btn btn-primary my-3 col-12">Change Status</button>
+                </form>
+
+
+
+            </div>
+        </div>
+    </div>
+</div>
+

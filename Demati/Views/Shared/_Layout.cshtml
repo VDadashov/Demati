@@ -1,0 +1,486 @@
+﻿@inject ILayoutService LayoutService
+
+@{
+    IEnumerable<Setting> settings = await LayoutService.GetSettings();
+    IEnumerable<BasketVM> basketVMs = await LayoutService.GetBasket();
+    IEnumerable<Brand> brands = await LayoutService.GetBrands();
+    IEnumerable<WishlistVM> wishlistVMs = await LayoutService.GetWishlist();
+}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+        integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" type="text/css" href="~/assets/slick/slick.css" />
+    <link rel="stylesheet" type="text/css" href="~/assets/slick/slick-theme.css" />
+    <link rel="stylesheet" href="~/assets/scss/main.css">
+    <link rel="stylesheet" href="~/assets/scss/responsive/main_res.css">
+    @RenderSection("ShopStyle", required: false)
+    @RenderSection("ProductDetailStyle", required: false)
+    @RenderSection("CartStyle", required: false)
+    @RenderSection("BlogStyle", required: false)
+    @RenderSection("BlogDetailStyle", required: false)
+    @RenderSection("AboutUsStyle", required: false)
+    @RenderSection("ContactUsStyle", required: false)
+    @RenderSection("RegisterStyle", required: false)
+    @RenderSection("ProfileStyle", required: false)
+    @RenderSection("orderstyle", required: false)
+    @RenderSection("WishlistStyle", required: false)
+    <title>Demati</title>
+    @RenderSection("ShopStyleFilter", required: false)
+    <style>
+        #searchBtn:hover{
+            color: #47CDE2;
+            cursor:pointer;
+        }
+        .search-result-items{
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-gap: 25px;
+            grid-row-gap: 30px;
+        }
+
+        .search-modal-text::-webkit-scrollbar {
+            width: 2px !important;
+        }
+
+        .search-modal-text::-webkit-scrollbar-thumb {
+            background-color: #000 !important;
+        }
+
+        .search-modal-text::-webkit-scrollbar-track{
+            background-color: #e3dcdc !important;
+        }
+
+    </style>
+</head>
+<body>
+    <div id="header-topbar">
+        <div class="container">
+            <div class="content-topbar">
+                <div class="content-topbar__text-with-icon">
+                    <div class="content-topbar__text-with-icon__text-icon-1">
+                        <a href="#">
+                            <i style="margin-right: 5px;" class="fa-solid fa-phone"></i>
+                            <span>@Html.Raw(settings.FirstOrDefault(s=>s.Key == "SupportPhone").Value)</span>
+                        </a>
+                    </div>
+                    <div class="content-topbar__text-with-icon__text-icon-2">
+                        <div class="d-flex align-items-center">
+                            <i style="margin-right: 2px;" class="fa-regular fa-envelope"></i>
+                            <span>@Html.Raw(settings.FirstOrDefault(s=>s.Key == "SupportEmail").Value)</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="content-topbar__custom-text">
+                    <span>Summer sale discount off 30%!</span>
+                    <a asp-controller="shop" asp-action="index" style="color: red; margin-left: 3px;">Shop Now</a>
+                </div>
+                <div class="content-topbar__currency">
+                    <div class="content-topbar__currency__have-flags">
+                        <div id="have-flag-selected" tabindex="0"
+                            class="content-topbar__currency__have-flags__selected">
+                            <img src="~/assets/images/HaveFlags/Europe.png" alt="europe.png">
+                            <span>EUR</span>
+                            <i id="flagsDropdownIcon" class="fa-solid fa-chevron-down"></i>
+                        </div>
+                        <ul id="flagDropdown" type="none" class="content-topbar__currency__have-flags--dropdown">
+                            <li>
+                                <img src="~/assets/images/HaveFlags/Europe.png" alt="">
+                                <span>EUR</span>
+                            </li>
+                            <li>
+                                <img src="~/assets/images/HaveFlags/Azerbaijan.png" alt="">
+                                <span>AZN</span>
+                            </li>
+                            <li>
+                                <img src="~/assets/images/HaveFlags/USD.svg" alt="">
+                                <span>USD</span>
+                            </li>
+                            <li>
+                                <img src="~/assets/images/HaveFlags/GBP.png" alt="">
+                                <span>GBP</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="content-topbar__currency__have-language">
+                        <div id="have-language-selected" class="content-topbar__currency__have-language__selected">
+                            <span>English</span>
+                            <i id="languagesDropdownIcon" class="fa-solid fa-chevron-down"></i>
+                        </div>
+                        <ul id="languageDropdown" type="none" class="content-topbar__currency__have-language--dropdown">
+                            <li>
+                                <a href="#" lang="en">English</a>
+                            </li>
+                            <li>
+                                <a href="#" lang="tr">Turkey</a>
+                            </li>
+                            <li>
+                                <a href="#" lang="az">Azerbaijan</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <header>
+        <div class="container">
+            <div id="header-content">
+                <nav class="header-menu">
+                    <ul class="header-menu__list" type="none">
+                        <li class="header-menu__list__item Home">
+                            <a asp-controller="Home" asp-action="index">Home</a>
+                        </li>
+                        <li class="header-menu__list__item Shop">
+                            <a asp-controller="Shop" asp-action="index">Shop</a>
+                        </li>
+                        <li class="header-menu__list__item Blog">
+                            <a asp-controller="Blog" asp-action="index">Blog</a>
+                        </li>
+                        <li class="header-menu__list__item AboutUs">
+                            <a asp-controller="AboutUs" asp-action="index" >About Us</a>
+                        </li>
+                        <li class="header-menu__list__item ContactUs">
+                            <a asp-controller="ContactUs" asp-action="index">Contact Us</a>
+                        </li>
+                    </ul>
+                </nav>
+                <div id="header-logo">
+                    <a asp-controller="home" asp-action="index">
+                        <img id="logo" src="~/assets/icons/@Html.Raw(settings.FirstOrDefault(s=>s.Key == "Logo").Value)" alt="logo">
+                    </a>
+                </div>
+                <div class="header-page-link">
+                    <div class="search-toggle">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                    </div>
+                    @if (User.Identity.IsAuthenticated && User.IsInRole("Member"))
+                    {
+                        <a asp-controller="account" asp-action="profile" style="text-decoration:none;color:black" class="header-account">
+                            <i class="fa-regular fa-user"></i>
+                        </a>
+                    }
+                    else
+                    {
+                        <a asp-controller="account" asp-action="login" style="text-decoration:none;color:black" class="header-account">
+                            <i class="fa-regular fa-user"></i>
+                        </a>
+                    }
+                    <a  asp-controller="product" asp-action="wishlist" class="wishlist" style="color:black;">
+                        <i class="fa-regular fa-heart"></i>
+                        <span class="wishlist__count">@await Html.PartialAsync("_WishlistCount",wishlistVMs)</span>
+                    </a>
+                    <div class="header-cart" id="header-cart">
+                        <i class="fa-solid fa-basket-shopping"></i>
+                        <span class="header-cart__count">@await Html.PartialAsync("_BasketCount",basketVMs)</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        @RenderBody()
+    </main>
+
+    <section id="popular-brands">
+        <div class="brands-slider">
+            @foreach (Brand brand in brands)
+            {
+                <div class="brands-slider__item">
+                    <a href="#"><img src="~/assets/images/Brands/@brand.Image" alt="@brand.Image"></a>
+                </div>
+            }
+        </div>
+    </section>
+
+    <section id="lookbook">
+        <div class="lookbook-subscribe">
+            <h2>Let's be friends</h2>
+            <span>Subscribe to receive updates, access to exclusive deals, and more.</span>
+            <form action="#">
+                <input type="text" placeholder="Your email">
+                <button>Subscribe</button>
+            </form>
+        </div>
+        <div class="lookbook-instagram">
+            <div class="lookbook-card">
+                <div class="lookbook-card__image">
+                    <a href="#"><img src="~/assets/images/Artboard/Artboard_1.webp" alt="Artboard_1.webp"></a>
+                </div>
+                <button class="lookbook-card--item">
+                    <i class="fa-solid fa-plus"></i>
+                </button>
+            </div>
+            <div class="lookbook-card">
+                <div class="lookbook-card__image">
+                    <a href="#"><img src="~/assets/images/Artboard/Artboard_11.webp" alt="Artboard_11.webp"></a>
+                </div>
+                <button class="lookbook-card--item">
+                    <i class="fa-solid fa-plus"></i>
+                </button>
+            </div>
+            <div class="lookbook-card">
+                <div class="lookbook-card__image">
+                    <a href="#"><img src="~/assets/images/Artboard/Artboard_2.webp" alt="Artboard_2.webp"></a>
+                </div>
+                <button class="lookbook-card--item">
+                    <i class="fa-solid fa-plus"></i>
+                </button>
+            </div>
+            <div class="lookbook-card">
+                <div class="lookbook-card__image">
+                    <a href="#"><img src="~/assets/images/Artboard/Artboard_3.webp" alt="Artboard_3.webp"></a>
+                </div>
+                <button class="lookbook-card--item">
+                    <i class="fa-solid fa-plus"></i>
+                </button>
+            </div>
+            <div class="lookbook-card">
+                <div class="lookbook-card__image">
+                    <a href="#"><img src="~/assets/images/Artboard/Artboard_6.webp" alt="Artboard_6.webp"></a>
+                </div>
+                <button class="lookbook-card--item">
+                    <i class="fa-solid fa-plus"></i>
+                </button>
+            </div>
+            <div class="lookbook-card">
+                <div class="lookbook-card__image">
+                    <a href="#"><img src="~/assets/images/Artboard/Artboard_7.webp" alt="Artboard_7.webp"></a>
+                </div>
+                <button class="lookbook-card--item">
+                    <i class="fa-solid fa-plus"></i>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="content-toggle contact-us-toggle">
+                    <h2 class="content-toggle__title">Contact Us</h2>
+                    <div class="content-toggle__block">
+                        <p><span>Add : </span>@Html.Raw(settings.FirstOrDefault(s=>s.Key == "Add").Value)</p>
+                        <p><span>Tell : </span>@Html.Raw(settings.FirstOrDefault(s=>s.Key == "Tell").Value)</p>
+                        <p><span>HR Fax : </span>@Html.Raw(settings.FirstOrDefault(s=>s.Key == "HR Fax").Value)</p>
+                        <p><span>Email : </span>@Html.Raw(settings.FirstOrDefault(s=>s.Key == "Email").Value)</p>
+                        <ul class="content-toggle__block--social-media" type="none">
+                            <li>
+                                <a href="#"><i class="fa-brands fa-facebook"></i></a>
+                            </li>
+                            <li>
+                                <a href="#"><i class="fa-brands fa-twitter"></i></a>
+                            </li>
+                            <li>
+                                <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                            </li>
+                            <li>
+                                <a href="#"><i class="fa-brands fa-youtube"></i></a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="content-toggle categories-toggle">
+                    <h2 class="content-toggle__title">Categories</h2>
+                    <div class="content-toggle__block">
+                        <ul type="none" class="footer-menu">
+                            <li class="footer-menu__item">
+                                <a class="footer-menu--link" href="#">Tops</a>
+                            </li>
+                            <li class="footer-menu__item">
+                                <a class="footer-menu--link" href="#">Basics</a>
+                            </li>
+                            <li class="footer-menu__item">
+                                <a class="footer-menu--link" href="#">Shirts & Blouses</a>
+                            </li>
+                            <li class="footer-menu__item">
+                                <a class="footer-menu--link" href="#">Pants</a>
+                            </li>
+                            <li class="footer-menu__item">
+                                <a class="footer-menu--link" href="#">Blazers & Vests</a>
+                            </li>
+                            <li class="footer-menu__item">
+                                <a class="footer-menu--link" href="#">Shorts</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="content-toggle services-toggle">
+                    <h2 class="content-toggle__title">Services</h2>
+                    <div class="content-toggle__block">
+                        <ul type="none" class="footer-menu">
+                            <li class="footer-menu__item">
+                                <a class="footer-menu--link" href="#">Sale</a>
+                            </li>
+                            <li class="footer-menu__item">
+                                <a class="footer-menu--link" href="#">Quick Ship</a>
+                            </li>
+                            <li class="footer-menu__item">
+                                <a class="footer-menu--link" href="#">New Designs</a>
+                            </li>
+                            <li class="footer-menu__item">
+                                <a class="footer-menu--link" href="#">Accidental Fabric Protection</a>
+                            </li>
+                            <li class="footer-menu__item">
+                                <a class="footer-menu--link" href="#">Furniture Care</a>
+                            </li>
+                            <li class="footer-menu__item">
+                                <a class="footer-menu--link" href="#">Gift Cards</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="content-toggle join-us-toggle">
+                    <h2 class="content-toggle__title">Join Us</h2>
+                    <p>New subscribers receive 10% off their first purchase</p>
+                    <form action="#">
+                        <input placeholder="Your email" type="email">
+                        <button type="submit">
+                            <i class="fa-sharp fa-regular fa-envelope"></i>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="footer-line"></div>
+        <div class="container">
+            <div class="footer-bottom">
+                <div class="footer-bottom__part-1">
+                    Copyright © 2023. All Right Reserved
+                </div>
+                <div class="footer-bottom__part-2">
+                    <img src="~/assets/images/Payment/paymet-1.png" alt="paymet-1.png">
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <div id="loading-screen">
+        <div class="loader"></div>
+    </div>
+
+    <div id="termsModal" class="termsModal">
+        <div class="termsModal-content">
+            <span id="termsClose">&times;</span>
+            <h2 class="termsModal__title">Terms & Conditions</h2>
+            <div class="termsModal__info">
+                <p>Demati supplies products listed on the Demati, and Demati websites, and in our stores under the following Terms and Conditions. Please read these Terms and Conditions, and our Privacy and Cookie Policies carefully before using any of our websites, or ordering from us.</p>
+                <p>The Terms and Conditions apply to your use of any Demati website and to any products you purchase from them; regardless of how you access the website, including any technologies or devices where our website is available to you at home, on the move or in store</p>
+                <p>We reserve the right to update these Terms and Conditions at any time, and any updates affecting you or your purchases will be notified to you, by us in writing (via email), and on this page.</p>
+                <p>The headings in these Conditions are for convenience only and shall not affect their interpretation.</p>
+                <p>We recommend that you print and keep a copy of these Terms and Conditions for your future reference...</p>
+            </div>
+        </div>
+    </div>
+
+    <div id="basketModal" class="basketModal">
+        <div class="basketModal-content">
+            @await Html.PartialAsync("_BasketPartial",basketVMs)
+        </div>
+    </div>
+
+    <div id="search-modal" class="search-modal">
+        <div class="search-modal-content" >
+            <span id="searchClose">&times;</span>
+            <form class="search-modal-text" action="#" style="overflow-x:auto;max-height:450px;">
+                <div class="search-modal__main">
+                    <div class="search-modal__input" style="position:relative;">
+                        <input autocomplete="off" id="searchModalInput" type="text" placeholder="Search...">
+                        <a asp-controller="shop" asp-action="index" asp-route-categoryId="14" id="searchBtn" style="position:absolute;right: 10px;
+                        top: 15px;
+                        font-size: 20px;color:black;"><i class="fa-solid fa-magnifying-glass"></i></a>
+                    </div>
+                    <div class="search-modal__categories">
+                        <div class="search-modal__categories__title">Top categories:</div>
+                        <ul type="none" class="search-modal__categories__list-category">
+                            <li><a asp-controller="shop" asp-action="index" asp-route-categoryId="14">All-products</a></li>
+                            <li><a asp-controller="shop" asp-action="index" asp-route-categoryId="3">Shoes</a></li>
+                            <li><a asp-controller="shop" asp-action="index" asp-route-categoryId="1">Knitwear</a></li>
+                            <li><a asp-controller="shop" asp-action="index" asp-route-categoryId="4">Sweatshirts</a></li>
+                            <li><a asp-controller="shop" asp-action="index" asp-route-categoryId="5">Tshirts</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="search-result" style="width:929.8px;margin:0 auto;">
+                    
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div style="z-index:993;" id="productModal" class="productModal">
+        <div class="productModal-content">
+        </div>
+    </div>
+
+    <div id="loginModal" class="loginModal">
+        <div class="loginModal-content">
+            <span id="loginClose">&times;</span>
+            <h3>Sign in</h3>
+            <div class="login-content">
+                <form action="#">
+                    <div class="login-info">
+                        <input type="email" placeholder="Email*" required="required">
+                        <div class="password__content">
+                            <input type="password" placeholder="Password*" id="login-password" required="required">
+                            <span id="passwordEye"><i class="fa-regular fa-eye"></i></span>
+                        </div>
+                        <a href="#" id="resetBtn">Lost your password ?</a>
+                        <button id="modal-signIn">Sign in</button>
+                        <a href="./register.html" id="register-account"><span>Create Your Account</span></a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div id="resetPassword" class="resetPassword">
+        <div class="resetPassword-content">
+            <h3>Sign in</h3>
+            <div class="resetPassword-content__info">
+                <h2>Reset your password</h2>
+                <p>We will send you an email to reset your password.</p>
+                <input type="email" placeholder="Email*" required="required">
+                <button>Submit</button>
+                <a href="#" id="resetClose">Cancel</a>
+            </div>
+        </div>
+    </div>
+
+    <button id="scrollButton" onclick="scrollToTop()">
+      </button>
+
+    <div style="right:-42px;top:90px;" class="custom-alert addBasketAlert">
+        Product added to cart!
+    </div>
+
+    <div style="right:-52px;top:90px;" class="custom-alert addWishlistAlert">
+        Product added to wishlist!
+    </div>
+
+    <script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+    <script type="text/javascript" src="~/assets/slick/slick.min.js"></script>
+
+    @RenderSection("ShopScript", required: false)
+    @RenderSection("ProductDetailScript", required: false)
+    @RenderSection("CartScript", required: false)
+    @RenderSection("BlogScript", required: false)
+    @RenderSection("AboutScript", required: false)
+    @RenderSection("RegisterScript", required: false)
+    @RenderSection("MyAccountScript", required: false)
+    <script src="~/assets/js/main.js"></script>
+    <script src="~/assets/js/product-modal.js"></script>
+    <script src="~/assets/js/slider.js"></script>
+    <script src="~/assets/js/custom.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,852 @@
+﻿@model ShopVM
+
+@{
+    var countCategory = 1;
+    var countColor = 1;
+}
+
+<aside class="shop__filter">
+    <div class="shop__filter__categories">
+        <h4 class="shop__filter__categories__title">
+            Categories
+            <div class="shop__filter__categories__title--close">
+                <img src="~/assets/icons/down-arrow.png" alt="">
+            </div>
+        </h4>
+        <div class="shop__filter__categories__display">
+            <ul class="shop__filter__categories__ul" type="none">
+                @foreach (Category category in Model.Categories)
+                {
+                    <li class="shop__filter__categories__item @(countCategory >= 6 ? "deactivate" : "")">
+                        <a class="shop__filter__categories__link" 
+                            data-minPrice="@ViewBag.minPrice"
+                            data-maxPrice="@ViewBag.maxPrice" 
+                            data-categoryId="@category.Id"
+                            data-colorId="@ViewBag.ColorId"
+                            data-sizeId="@ViewBag.SizeId"
+                            data-pageIndex="@ViewBag.pageIndex"
+                            data-availability="@ViewBag.Availability"
+                            data-selectId="@ViewBag.selectId">
+                            <input class="categories-checkbox @(category.Id == ViewBag.categoryId ? "active-checkbox-c" : "")" type="checkbox" id="@category.Name">
+                            <label for="@category.Name">@category.Name</label>
+                            <span class="shop__filter__categories__count">(@category.ProductCategories.Count())</span>
+                        </a>
+                    </li>
+                    countCategory++;
+                }
+                @if (Model.Categories.Count() >= 6)
+                {
+                    <button class="shop__filter__categories--view-more">
+                        <span class="shop__filter__categories--view-more--simvol">+</span>
+                        <span class="shop__filter__categories--view-more--text">View more</span>
+                        <span class="shop__filter__categories--view-more--bar"></span>
+                    </button>
+                }
+            </ul>
+        </div>
+    </div>
+    <div class="shop__filter__availability">
+        <h4 class="shop__filter__availability__title">
+            Availability
+            <div class="shop__filter__availability__title--close">
+                <img src="~/assets/icons/down-arrow.png" alt="">
+            </div>
+        </h4>
+        <div class="shop__filter__availability__display">
+            <ul type="none" class="shop__filter__availability__ul">
+                <li class="shop__filter__availability__item">
+                    <a class="shop__filter__availability__link" href="#"
+                       data-minPrice="@ViewBag.minPrice"
+                       data-maxPrice="@ViewBag.maxPrice"
+                       data-categoryId="@ViewBag.categoryId"
+                       data-colorId="@ViewBag.ColorId"
+                       data-sizeId="@ViewBag.SizeId"
+                       data-pageIndex="@ViewBag.pageIndex"
+                       data-availability="@ViewBag.inStockCount"
+                       data-selectId="@ViewBag.selectId">
+                        <input class="availability-checkbox @(ViewBag.Availability == ViewBag.inStockCount ? "active-checkbox-a" : "")" type="checkbox" id="in-stock">
+                        <label for="in-stock">In stock</label>
+                        <span class="shop__filter__availability__count">(@ViewBag.inStockCount)</span>
+                    </a>
+                </li>
+                <li class="shop__filter__availability__item">
+                    <a class="shop__filter__availability__link" href="#" 
+                       data-minPrice="@ViewBag.minPrice"
+                       data-maxPrice="@ViewBag.maxPrice"
+                       data-categoryId="@ViewBag.categoryId"
+                       data-colorId="@ViewBag.ColorId"
+                       data-sizeId="@ViewBag.SizeId"
+                       data-pageIndex="@ViewBag.pageIndex"
+                       data-availability="@ViewBag.outOfStockCount"
+                       data-selectId="@ViewBag.selectId">
+                        <input class="availability-checkbox @(ViewBag.Availability == ViewBag.outOfStockCount ? "active-checkbox-a" : "")" type="checkbox" id="out-of-stock">
+                        <label for="out-of-stock">Out of stock</label>
+                        <span class="shop__filter__availability__count">(@ViewBag.outOfStockCount)</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="shop__filter__price">
+        <h4 class="shop__filter__price__title">
+            Price
+            <div class="shop__filter__price__title--close">
+                <img src="~/assets/icons/down-arrow.png"
+                     alt="">
+            </div>
+        </h4>
+        <div class="shop__filter__price__display">
+            <div class="slider">
+                <div data-minPrice="@ViewBag.minPrice"
+                     data-maxPrice="@ViewBag.maxPrice"
+                     data-categoryId="@ViewBag.categoryId"
+                     data-colorId="@ViewBag.ColorId"
+                     data-sizeId="@ViewBag.SizeId"
+                     data-pageIndex="@ViewBag.pageIndex"
+                     data-availability="@ViewBag.Availability"
+                     data-selectId="@ViewBag.selectId" class="progress"></div>
+            </div>
+            <div class="range-input">
+                <input type="range" min="0" max="150" value="@ViewBag.minPrice" class="min-range" />
+                <input type="range" min="0" max="150" value="@ViewBag.maxPrice" class="max-range" />
+            </div>
+            <div style="margin-bottom:20px;" class="price-input">
+                <div class="field">
+                    <span>Min</span>
+                    <input type="number" value="@ViewBag.minPrice" class="min-input" />
+                </div>
+                <div class="seperator">-</div>
+                <div class="field">
+                    <span>Max</span>
+                    <input type="number" value="@ViewBag.maxPrice" class="max-input" />
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="shop__filter__color">
+        <h4 class="shop__filter__color__title">
+            Color
+            <div class="shop__filter__color__title--close">
+                <img src="~/assets/icons/down-arrow.png"
+                     alt="">
+            </div>
+        </h4>
+        <div class="shop__filter__color__display">
+            @foreach (Color color in Model.Colors)
+            {
+                <div class="shop__filter__color__content @(color.Id == ViewBag.ColorId ? "active-color" : "")"
+                    onclick="toggleActiveColor(this)"
+                    data-minPrice="@ViewBag.minPrice"
+                    data-maxPrice="@ViewBag.maxPrice"
+                    data-categoryId = "@ViewBag.categoryId"
+                    data-colorId="@color.Id"
+                    data-sizeId="@ViewBag.SizeId"
+                    data-pageIndex="@ViewBag.pageIndex"
+                    data-availability="@ViewBag.Availability"
+                    data-selectId="@ViewBag.selectId">
+                    <div style="background-color: @color.Name.ToLower();" class="shop__filter__color--box">
+                        <span class="shop__filter__color--box--hover-text">
+                            <span class="shop__filter__color--box__text"></span>
+                            <i class="fa-solid fa-caret-down"></i>
+                        </span>
+                    </div>
+                </div>
+                countColor++;
+            }
+        </div>
+    </div>
+    <div class="shop__filter__size">
+        <h4 class="shop__filter__size__title">
+            Size
+            <div class="shop__filter__size__title--close">
+                <img src="~/assets/icons/down-arrow.png"
+                     alt="">
+            </div>
+        </h4>
+        <div class="shop__filter__size__display">
+            @foreach (Size size in Model.Sizes)
+            {
+                <div class="shop__filter__size__item"
+                 data-minPrice="@ViewBag.minPrice"
+                 data-maxPrice="@ViewBag.maxPrice"
+                 data-categoryId="@ViewBag.categoryId"
+                 data-colorId="@ViewBag.ColorId"
+                 data-sizeId="@size.Id"
+                 data-pageIndex="@ViewBag.pageIndex"
+                 data-availability="@ViewBag.Availability"
+                 data-selectId="@ViewBag.selectId">
+                    <button class="shop__filter__size__item--button @(ViewBag.SizeId == size.Id ? "active-filter-size" : "")">@size.Name</button>
+                </div>
+            }
+        </div>
+    </div>
+</aside>
+<div class="shop__content">
+    <div class="shop__content--select">
+        <div class="shop__content--select--icon">
+            <i class="fa-solid fa-arrow-down-wide-short"></i>
+        </div>
+        <select class="shopify-select" id="productFilter">
+            <option data-categoryId="@ViewBag.categoryId"
+                    data-colorId="@ViewBag.ColorId"
+                    data-sizeId="@ViewBag.SizeId"
+                    data-availability="@ViewBag.Availability" 
+                    data-selectId="1" value="Featured" class="@(ViewBag.selectId == 1 ? "active-option" : "")">Featured</option>
+
+            <option data-categoryId="@ViewBag.categoryId"
+                    data-colorId="@ViewBag.ColorId"
+                    data-sizeId="@ViewBag.SizeId"
+                    data-availability="@ViewBag.Availability"
+                    data-selectId="2" value="best-selling" class="@(ViewBag.selectId == 2 ? "active-option" : "")">Best selling</option>
+
+            <option data-categoryId="@ViewBag.categoryId"
+                    data-colorId="@ViewBag.ColorId"
+                    data-sizeId="@ViewBag.SizeId"
+                    data-availability="@ViewBag.Availability"
+                    data-selectId="3" value="new-arrival" class="@(ViewBag.selectId == 3 ? "active-option" : "")">New Arrival</option>
+
+            <option data-categoryId="@ViewBag.categoryId"
+                    data-colorId="@ViewBag.ColorId"
+                    data-sizeId="@ViewBag.SizeId"
+                    data-availability="@ViewBag.Availability"
+                    data-selectId="4" value="title-ascending" class="@(ViewBag.selectId == 4 ? "active-option" : "")">Alphabetically, A-Z</option>
+
+            <option data-categoryId="@ViewBag.categoryId"
+                    data-colorId="@ViewBag.ColorId"
+                    data-sizeId="@ViewBag.SizeId"
+                    data-availability="@ViewBag.Availability"
+                    data-selectId="5" value="title-descending" class="@(ViewBag.selectId == 5 ? "active-option" : "")">Alphabetically, Z-A</option>
+
+            <option data-categoryId="@ViewBag.categoryId"
+                    data-colorId="@ViewBag.ColorId"
+                    data-sizeId="@ViewBag.SizeId"
+                    data-availability="@ViewBag.Availability"
+                    data-selectId="6" value="price-ascending" class="@(ViewBag.selectId == 6 ? "active-option" : "")">Price, low to high</option>
+
+            <option data-categoryId="@ViewBag.categoryId"
+                    data-colorId="@ViewBag.ColorId"
+                    data-sizeId="@ViewBag.SizeId"
+                    data-availability="@ViewBag.Availability"
+                    data-selectId="7" value="price-descending" class="@(ViewBag.selectId == 7 ? "active-option" : "")">Price, high to low</option>
+
+            <option data-categoryId="@ViewBag.categoryId"
+                    data-colorId="@ViewBag.ColorId"
+                    data-sizeId="@ViewBag.SizeId"
+                    data-availability="@ViewBag.Availability"
+                    data-selectId="8" value="created-ascending" class="@(ViewBag.selectId == 8 ? "active-option" : "")">Date, old to new</option>
+
+            <option data-categoryId="@ViewBag.categoryId"
+                    data-colorId="@ViewBag.ColorId"
+                    data-sizeId="@ViewBag.SizeId"
+                    data-availability="@ViewBag.Availability"
+                    data-selectId="9" value="created-descending" class="@(ViewBag.selectId == 9 ? "active-option" : "")">Date, new to old</option>
+        </select>
+        @if(ViewBag.filterCheck == true)
+        {
+            <button class="filter-reset-btn"
+                data-minPrice=""
+                data-maxPrice=""
+                data-categoryId=""
+                data-colorId=""
+                data-sizeId=""
+                data-pageIndex=""
+                data-availability="">
+                <span>Clear all filter</span> <i class="fa-solid fa-xmark"></i>
+            </button>
+        }
+    </div>
+    <div class="shop__content__filter-products">
+        @await Html.PartialAsync("_ProductListPartial",Model.Products)
+    </div>
+    <div class="center">
+        <div class="pagination">
+            @if (ViewBag.PageIndex > 1)
+            {
+                <a style="cursor:pointer;" class="pagination__prev-btn pageIn"
+               data-minPrice="@ViewBag.minPrice"
+               data-maxPrice="@ViewBag.maxPrice"
+               data-categoryId="@ViewBag.categoryId"
+               data-colorId="@ViewBag.ColorId"
+               data-sizeId="@ViewBag.SizeId"
+               data-availability="@ViewBag.Availability"
+               data-pageIndex="@(ViewBag.pageIndex-1)"
+               data-selectId="@ViewBag.selectId">&laquo;</a>
+            }
+            @for (int i = 1; i <= ViewBag.totalPage; i++)
+            {
+                <a style="cursor:pointer;" class="pagination__item pageIn @(ViewBag.pageIndex == i ? "active":"") @(ViewBag.pageIndex == i ? "pagination-active":"")"
+               data-minPrice="@ViewBag.minPrice"
+               data-maxPrice="@ViewBag.maxPrice"
+               data-categoryId="@ViewBag.categoryId" 
+               data-colorId="@ViewBag.ColorId"
+               data-sizeId="@ViewBag.SizeId"
+               data-availability="@ViewBag.Availability"
+               data-pageIndex="@i"
+               data-selectId="@ViewBag.selectId">@i</a>
+            }
+            @if (ViewBag.pageIndex < ViewBag.totalPage)
+            {
+                <a style="cursor:pointer;" class="pagination__next-btn pageIn"
+               data-minPrice="@ViewBag.minPrice"
+               data-maxPrice="@ViewBag.maxPrice"
+               data-categoryId="@ViewBag.categoryId"
+               data-colorId="@ViewBag.ColorId"
+               data-sizeId="@ViewBag.SizeId"
+               data-availability="@ViewBag.Availability"
+               data-pageIndex="@(ViewBag.pageIndex+1)"
+               data-selectId="@ViewBag.selectId">&raquo;</a>
+            }
+        </div>
+    </div>
+</div>
+
+<script>
+    //#region filter-categories-view-more-button=>active
+    function categoriesViewMoreActive2() {
+        let categoryViewMoreBtn = document.querySelector(".shop__filter__categories--view-more");
+        let filterItems = document.querySelectorAll('.shop__filter__categories__item');
+        let categoryViewMoreBtnSimvol = document.querySelector('.shop__filter__categories--view-more--simvol')
+        let categoryViewMoreBtnText = document.querySelector('.shop__filter__categories--view-more--text');
+        categoryViewMoreBtn.addEventListener('click', function () {
+            if (categoryViewMoreBtn.classList.contains('active-c-btn')) {
+                filterItems.forEach((item, index) => {
+                    if (index > 4) {
+                        item.classList.add('deactivate');
+                    }
+                });
+                categoryViewMoreBtnSimvol.textContent = "+";
+                categoryViewMoreBtnText.textContent = "View more";
+                categoryViewMoreBtn.classList.remove('active-c-btn');
+            } else {
+                filterItems.forEach(item => {
+                    item.classList.remove('deactivate');
+                });
+                categoryViewMoreBtnSimvol.textContent = "-";
+                categoryViewMoreBtnText.textContent = "View less";
+                categoryViewMoreBtn.classList.add('active-c-btn');
+            }
+        })
+
+    }
+    categoriesViewMoreActive2();
+    //#endregion
+    //#region filter-categories-display-close
+    function filterCategoryDisplay() {
+        let categoryClose = document.querySelector('.shop__filter__categories__title--close');
+        let categoryDisplay = document.querySelector('.shop__filter__categories__display');
+        const categoriesCloseIcon = categoryClose.children;
+
+
+        categoryClose.addEventListener('click', function () {
+            if (categoryDisplay.classList.contains('display-c-active')) {
+                for (let i = 0; i < categoriesCloseIcon.length; i++) {
+                    const categoryCloseIcon = categoriesCloseIcon[i];
+                    categoryCloseIcon.style.transform = 'rotate(0deg)';
+                }
+                categoryDisplay.classList.remove('display-c-active');
+            } else {
+                for (let i = 0; i < categoriesCloseIcon.length; i++) {
+                    const categoryCloseIcon = categoriesCloseIcon[i];
+                    categoryCloseIcon.style.transform = 'rotate(180deg)';
+                    // categoriesCloseIcon.style.transform = 'all 0.6s'
+                }
+                categoryDisplay.classList.add('display-c-active');
+            }
+        })
+    }
+    filterCategoryDisplay();
+    function categoriestoggleCheck(clickedCheckbox) {
+        const availabilityCheckboxes = document.querySelectorAll('input[type="checkbox"][class^="categories-checkbox"]');
+
+        availabilityCheckboxes.forEach((checkbox) => {
+            if (checkbox !== clickedCheckbox) {
+                checkbox.checked = false;
+            }
+        });
+    }
+    //#endregion
+    //#region filter-price-range-slider
+    function filterPriceRangeSlider() {
+        const priceInputs = document.querySelectorAll(".price-input input");
+        const rangeInputs = document.querySelectorAll(".range-input input");
+        const range = document.querySelector(".slider .progress");
+
+        let priceGap = 9;
+
+        priceInputs.forEach((input) => {
+            input.addEventListener("input", (e) => {
+                let minPrice = parseInt(priceInputs[0].value);
+                let maxPrice = parseInt(priceInputs[1].value);
+
+                if (maxPrice - minPrice >= priceGap && maxPrice <= rangeInputs[1].max) {
+                    if (e.target.className === "min-input") {
+                        rangeInputs[0].value = minPrice;
+                        range.style.left = (minPrice / rangeInputs[0].max) * 100 + "%";
+                    } else {
+                        rangeInputs[1].value = maxPrice;
+                        range.style.right = 100 - (maxPrice / rangeInputs[1].max) * 100 + "%";
+                    }
+                }
+            });
+        });
+
+        rangeInputs.forEach((input) => {
+            input.addEventListener("input", (e) => {
+                let minVal = parseInt(rangeInputs[0].value);
+                let maxVal = parseInt(rangeInputs[1].value);
+
+                if (maxVal - minVal < priceGap) {
+                    if (e.target.className === "min-range") {
+                        rangeInputs[0].value = maxVal - priceGap;
+                    } else {
+                        rangeInputs[1].value = minVal + priceGap;
+                    }
+                } else {
+                    priceInputs[0].value = minVal;
+                    priceInputs[1].value = maxVal;
+                    range.style.left = (minVal / rangeInputs[0].max) * 100 + "%";
+                    range.style.right = 100 - (maxVal / rangeInputs[1].max) * 100 + "%";
+                }
+            });
+
+            let minVal = parseInt(rangeInputs[0].value);
+            let maxVal = parseInt(rangeInputs[1].value);
+
+            if (maxVal - minVal < priceGap) {
+                if (e.target.className === "min-range") {
+                    rangeInputs[0].value = maxVal - priceGap;
+                } else {
+                    rangeInputs[1].value = minVal + priceGap;
+                }
+            } else {
+                priceInputs[0].value = minVal;
+                priceInputs[1].value = maxVal;
+                range.style.left = (minVal / rangeInputs[0].max) * 100 + "%";
+                range.style.right = 100 - (maxVal / rangeInputs[1].max) * 100 + "%";
+            }
+        });
+    }
+    filterPriceRangeSlider();
+    //#endregion
+    //#region filter-avialability-display-close
+    function filterAvailabilityDisplay() {
+        let availabilityClose = document.querySelector('.shop__filter__availability__title--close');
+        let availabilityDisplay = document.querySelector('.shop__filter__availability__display');
+        const availabilitiesCloseIcon = availabilityClose.children;
+
+
+        availabilityClose.addEventListener('click', function () {
+            if (availabilityDisplay.classList.contains('display-a-active')) {
+                for (let i = 0; i < availabilitiesCloseIcon.length; i++) {
+                    const availabilitiyCloseIcon = availabilitiesCloseIcon[i];
+                    availabilitiyCloseIcon.style.transform = 'rotate(0deg)';
+                }
+                availabilityDisplay.classList.remove('display-a-active');
+            } else {
+                for (let i = 0; i < availabilitiesCloseIcon.length; i++) {
+                    const availabilitiyCloseIcon = availabilitiesCloseIcon[i];
+                    availabilitiyCloseIcon.style.transform = 'rotate(180deg)';
+                }
+                availabilityDisplay.classList.add('display-a-active');
+            }
+        })
+    }
+
+    filterAvailabilityDisplay();
+
+    function availabilitytoggleCheck(clickedCheckbox) {
+        const availabilityCheckboxes = document.querySelectorAll('input[type="checkbox"][class^="availability-checkbox"]');
+
+        availabilityCheckboxes.forEach((checkbox) => {
+            if (checkbox !== clickedCheckbox) {
+                checkbox.checked = false;
+            }
+        });
+    }
+    //#endregion
+    //#region filter-price-display-close
+    function filterPriceDisplay() {
+        let priceClose = document.querySelector('.shop__filter__price__title--close');
+        let priceDisplay = document.querySelector('.shop__filter__price__display');
+        const pricesCloseIcon = priceClose.children;
+
+
+        priceClose.addEventListener('click', function () {
+            if (priceDisplay.classList.contains('display-p-active')) {
+                for (let i = 0; i < pricesCloseIcon.length; i++) {
+                    const priceCloseIcon = pricesCloseIcon[i];
+                    priceCloseIcon.style.transform = 'rotate(0deg)';
+                }
+                priceDisplay.classList.remove('display-p-active');
+            } else {
+                for (let i = 0; i < pricesCloseIcon.length; i++) {
+                    const priceCloseIcon = pricesCloseIcon[i];
+                    priceCloseIcon.style.transform = 'rotate(180deg)';
+                }
+                priceDisplay.classList.add('display-p-active');
+            }
+        })
+    }
+
+    filterPriceDisplay();
+    //#endregion
+    //#region filter-color-hover-text
+    function filterColorHoverText() {
+        const colorContentDivs = document.querySelectorAll('.shop__filter__color__content');
+
+        colorContentDivs.forEach(colorContentDiv => {
+            const colorBoxDiv = colorContentDiv.querySelector('.shop__filter__color--box');
+            const hoverTextSpan = colorContentDiv.querySelector('.shop__filter__color--box__text');
+            const hoverTextContent = colorContentDiv.querySelector('.shop__filter__color--box--hover-text');
+
+            colorContentDiv.addEventListener('mouseover', () => {
+                hoverTextSpan.textContent = colorBoxDiv.style.backgroundColor;
+                hoverTextContent.style.display = "flex";
+                hoverTextSpan.style.position = 'absolute';
+            });
+
+            colorContentDiv.addEventListener('mouseout', () => {
+                hoverTextSpan.textContent = '';
+                hoverTextContent.style.display = "none";
+                hoverTextSpan.style.position = '';
+            });
+        });
+    }
+    filterColorHoverText();
+    //#endregion
+    //#region filter-color-display-close
+    function filterColorDisplay() {
+        let colorClose = document.querySelector('.shop__filter__color__title--close');
+        let colorDisplay = document.querySelector('.shop__filter__color__display');
+        const colorsCloseIcon = colorClose.children;
+
+
+        colorClose.addEventListener('click', function () {
+            if (colorDisplay.classList.contains('display-c-active')) {
+                for (let i = 0; i < colorsCloseIcon.length; i++) {
+                    const colorCloseIcon = colorsCloseIcon[i];
+                    colorCloseIcon.style.transform = 'rotate(0deg)';
+                }
+                colorDisplay.classList.remove('display-c-active');
+            } else {
+                for (let i = 0; i < colorsCloseIcon.length; i++) {
+                    const colorCloseIcon = colorsCloseIcon[i];
+                    colorCloseIcon.style.transform = 'rotate(180deg)';
+                }
+                colorDisplay.classList.add('display-c-active');
+            }
+        })
+    }
+
+    filterColorDisplay();
+    //#endregion
+    //#region filter-size=>active-filter-size
+    function filterSizeActive() {
+        let allFilterSize = document.querySelectorAll(".shop__filter__size__item");
+
+        allFilterSize.forEach(item => {
+            item.addEventListener('click', function () {
+                sizeBtn = item.querySelector(".shop__filter__size__item--button");
+                if (sizeBtn.classList.contains("active-filter-size")) {
+                    sizeBtn.classList.remove("active-filter-size");
+                } else {
+                    sizeBtn.classList.add("active-filter-size");
+                }
+            })
+        });
+    }
+    filterSizeActive();
+    //#endregion
+    //#region filter-size-display-close
+    function filterSizeDisplay() {
+        let sizeClose = document.querySelector('.shop__filter__size__title--close');
+        let sizeDisplay = document.querySelector('.shop__filter__size__display');
+        const sizesCloseIcon = sizeClose.children;
+
+
+        sizeClose.addEventListener('click', function () {
+            if (sizeDisplay.classList.contains('display-s-active')) {
+                for (let i = 0; i < sizesCloseIcon.length; i++) {
+                    const sizeCloseIcon = sizesCloseIcon[i];
+                    sizeCloseIcon.style.transform = 'rotate(0deg)';
+                }
+                sizeDisplay.classList.remove('display-s-active');
+            } else {
+                for (let i = 0; i < sizesCloseIcon.length; i++) {
+                    const sizeCloseIcon = sizesCloseIcon[i];
+                    sizeCloseIcon.style.transform = 'rotate(180deg)';
+                }
+                sizeDisplay.classList.add('display-s-active');
+            }
+        })
+    }
+    filterSizeDisplay();
+    //#endregion
+    function toggleActiveColor(clickedElement) {
+        const colorContents = document.querySelectorAll('.shop__filter__color__content');
+        colorContents.forEach((element) => {
+            if (element === clickedElement) {
+                element.classList.add('active-color');
+            } else {
+                element.classList.remove('active-color');
+            }
+        });
+    }
+    //#region product-color-hover-text
+    function productColorHoverText() {
+        const colorContentDivs = document.querySelectorAll('.product-card__color__content');
+
+        colorContentDivs.forEach(colorContentDiv => {
+            const colorBoxDiv = colorContentDiv.querySelector('.product-card__color--box');
+            const hoverTextSpan = colorContentDiv.querySelector('.product-card__color--box__text');
+            const hoverTextContent = colorContentDiv.querySelector('.product-card__color--box--hover-text');
+
+            colorContentDiv.addEventListener('mouseover', () => {
+                hoverTextSpan.textContent = colorBoxDiv.style.backgroundColor;
+                hoverTextContent.style.display = "flex";
+                hoverTextSpan.style.position = 'absolute';
+            });
+
+            colorContentDiv.addEventListener('mouseout', () => {
+                hoverTextSpan.textContent = '';
+                hoverTextContent.style.display = "none";
+                hoverTextSpan.style.position = '';
+            });
+        });
+    }
+    productColorHoverText();
+    //#endregion
+    //#region product-size-active
+    function productSizeActive() {
+        let sizeItems = document.querySelectorAll(".product-card__size__item");
+
+        function setActiveSize(event) {
+            let parent = event.currentTarget.parentNode;
+            let sizeItems = parent.querySelectorAll(".product-card__size__item");
+
+            sizeItems.forEach(item => {
+                item.classList.remove("size-active");
+            });
+
+            event.currentTarget.classList.add("size-active");
+        }
+
+        sizeItems.forEach(item => {
+            item.addEventListener("click", setActiveSize);
+        });
+    }
+    productSizeActive();
+    //#endregion
+    //#region categoryCheckboxActive
+    function categoryCheckboxActive(){
+        let checkboxCategory = document.querySelectorAll('.categories-checkbox');
+
+        checkboxCategory.forEach(item =>{
+            if (item.classList.contains("active-checkbox-c")){
+                item.checked = true;
+            }
+        })
+    }
+    categoryCheckboxActive();
+    //#endregion
+    //#region availabilityCheckboxActive
+    function availabilityCheckboxActive() {
+        let checkboxavailability = document.querySelectorAll('.availability-checkbox');
+
+        checkboxavailability.forEach(item => {
+            if (item.classList.contains("active-checkbox-a")) {
+                item.checked = true;
+            }
+        })
+    }
+    availabilityCheckboxActive();
+    //#endregion
+    //#region product-card=>color-active
+    function productCardColorActive() {
+        let productCards = document.querySelectorAll(".product-card");
+
+        function setActiveColor(event) {
+            let parent = event.currentTarget.closest(".product-card");
+            let colorContents = parent.querySelectorAll(".product-card__color__content");
+
+            for (let i = 0; i < colorContents.length; i++) {
+                colorContents[i].classList.remove("active-color");
+            }
+
+            event.currentTarget.classList.add("active-color");
+        }
+
+        for (let i = 0; i < productCards.length; i++) {
+            let colorContents = productCards[i].querySelectorAll(".product-card__color__content");
+
+            for (let j = 0; j < colorContents.length; j++) {
+                colorContents[j].addEventListener("click", setActiveColor);
+            }
+        }
+    }
+    productCardColorActive();
+    //#endregion
+    //active-option
+    var optionsWithActiveClass = document.querySelectorAll('#productFilter option.active-option');
+
+    optionsWithActiveClass.forEach(function (option) {
+        option.selected = true;
+    });
+    $('.modalBtn').click(function (e) {
+        e.preventDefault();
+
+        let url = $(this).attr('href');
+
+        fetch(url)
+            .then(res => res.text())
+            .then(data => {
+                $('.productModal-content').html(data);
+
+                //#region productModal
+                function productModal() {
+                    const productModal = document.querySelector('#productModal');
+                    const productModalClose = document.querySelector('#productModalClose');
+
+                    productModalClose.addEventListener('click', () => {
+                        productModal.style.display = 'none';
+                    });
+
+                    window.addEventListener('click', (event) => {
+                        if (event.target === productModal) {
+                            productModal.style.display = 'none';
+                        }
+                    });
+                }
+                function openModal() {
+                    const productModal = document.querySelector('#productModal');
+                    productModal.style.display = "block";
+                }
+                productModal();
+                //#endregion
+
+                //#region productModalColorHoverSize
+                function modalColorHoverSize() {
+                    const colorContentDivs = document.querySelectorAll('.productModal__color__box');
+
+                    colorContentDivs.forEach(colorContentDiv => {
+                        const colorBoxDiv = colorContentDiv.querySelector('.productModal__color--box');
+                        const hoverTextSpan = colorContentDiv.querySelector('.productModal__color--box__text');
+                        const hoverTextContent = colorContentDiv.querySelector('.productModal__color--box--hover-text');
+
+                        colorContentDiv.addEventListener('mouseover', () => {
+                            hoverTextSpan.textContent = colorBoxDiv.style.backgroundColor;
+                            hoverTextContent.style.display = "flex";
+                            hoverTextSpan.style.position = 'absolute';
+                        });
+
+                        colorContentDiv.addEventListener('mouseout', () => {
+                            hoverTextSpan.textContent = '';
+                            hoverTextContent.style.display = "none";
+                            hoverTextSpan.style.position = '';
+                        });
+                    });
+                }
+                modalColorHoverSize();
+                //#endregion
+
+                //#region productModalColorActive
+                function modalColorActive() {
+                    let colors = document.querySelectorAll('.productModal__color__box');
+                    let colorValue = document.querySelector('.productModal__color__value');
+
+                    colors.forEach(color => {
+                        color.addEventListener('click', function () {
+                            colors.forEach(item => {
+                                item.classList.remove('active-color');
+                            })
+                            colorName = color.querySelector('.productModal__color--box').style.backgroundColor;
+                            colorValue.textContent = colorName;
+                            color.classList.add('active-color');
+                        })
+                        colors.forEach(item => {
+                            if (item.classList.contains('active-color')) {
+                                colorName = item.querySelector('.productModal__color--box').style.backgroundColor;
+                                colorValue.textContent = colorName;
+                            }
+                        })
+                    })
+                }
+                modalColorActive();
+                //#endregion
+
+                //#region productModalSizeActive
+                function modalSizeActive() {
+                    let boxSize = document.querySelectorAll('.productModal__size__box');
+                    let sizeValue = document.querySelector('.productModal__size__value');
+
+                    boxSize.forEach(item => {
+                        item.addEventListener('click', function () {
+                            boxSize.forEach(item => {
+                                item.classList.remove('active-size');
+                            })
+                            let span = item.querySelector('span');
+                            sizeValue.textContent = span.textContent;
+                            item.classList.add('active-size');
+                        })
+                        boxSize.forEach(item => {
+                            if (item.classList.contains('active-size')) {
+                                let span = item.querySelector('span');
+                                sizeValue.textContent = span.textContent;
+                            }
+                        })
+                    });
+                }
+                modalSizeActive();
+                //#endregion
+
+                //#region productModalcountQty
+                function productModalcountQty() {
+                    document.querySelector('.productModal__qty-minus').addEventListener('click', function () {
+                        let inputElement = document.getElementById('productModal--count');
+                        let value = parseInt(inputElement.value);
+
+                        if (value > 1) {
+                            inputElement.value = value - 1;
+                        }
+                    });
+
+                    document.querySelector('.productModal__qty-plus').addEventListener('click', function () {
+                        let inputElement = document.getElementById('productModal--count');
+                        let value = parseInt(inputElement.value);
+
+                        inputElement.value = value + 1;
+                    });
+                }
+                productModalcountQty();
+                //#endregion
+
+                //#region productModal
+                function productModal() {
+                    const productModal = document.querySelector('#productModal');
+                    const productModalClose = document.querySelector('#productModalClose');
+
+                    productModalClose.addEventListener('click', () => {
+                        productModal.style.display = 'none';
+                    });
+
+                    window.addEventListener('click', (event) => {
+                        if (event.target === productModal) {
+                            productModal.style.display = 'none';
+                        }
+                    });
+                }
+                productModal();
+                //#endregion
+
+                //#region productModal-imageThumbnail
+                $('.productModal__imageThumbnail').slick({
+                    dots: true,
+                    infinite: true,
+                    speed: 400,
+                    fade: true,
+                    cssEase: 'linear'
+                });
+                //#endregion
+            });
+    })
+</script>

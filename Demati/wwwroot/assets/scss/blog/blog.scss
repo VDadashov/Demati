@@ -1,0 +1,208 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+@keyframes shimmer-animation {
+    0% {
+        background-position: -1000px 0;
+    }
+
+    100% {
+        background-position: 1000px 0;
+    }
+}
+@keyframes scale-animation {
+    0% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.1);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+@keyframes fadeDown {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0px);
+    }
+}
+
+$custom-font-family: 'Outfit',
+sans-serif;
+$custom-blue-color:#41cde2;
+$custom-text-color:rgb(134, 134, 134);
+
+
+#blogs{
+    margin: 45px 0 0 0;
+    padding-bottom: 60px;
+    #blog-content{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        h2{
+            margin-bottom: 38px;
+            font: normal 300 50px/60px $custom-font-family;
+        }
+        .blog-tab-list{
+            &__ul{
+                margin-bottom: 60px;
+                display: flex;
+                align-items: center;
+                gap: 30px;
+                justify-content: center;
+            }
+            &__li{
+                position: relative;
+                span{
+                    font: normal 400 18px/30.6px $custom-font-family;
+                    color: $custom-text-color;
+                }
+                &:hover{
+                    cursor: pointer;
+                }
+
+                &.active-b-selected{
+                    span{
+                        color: #000;
+                    }
+                    &::before{
+                        content: '';
+                        width: 100%;
+                        height: 0.5px;
+                        background-color: $custom-blue-color;
+                        position: absolute;
+                        bottom: -6px;
+                    }
+                }
+            }
+            &__content {
+                width: 1200px;
+                display: none;
+
+                &>* {
+                    animation: fadeDown 0.8s ease-in-out;
+                }
+
+                &.active-b-content {
+                    display: block;
+                }
+            }
+            .blog-card-content{
+                display: grid;
+                grid-template-columns: repeat(3, 1fr);
+                grid-gap: 10px;
+                grid-row-gap: 40px;
+                .blog-item {
+                    width: 370px;
+                    display: flex;
+                    flex-direction: column;
+        
+                    &:hover {
+                        img {
+                            scale: 1.2;
+                            transition: all 0.6s;
+                        }
+                    }
+        
+                    &__image {
+                        width: 100%;
+                        height: 231.39px;
+                        margin-bottom: 25px;
+                        position: relative;
+                        overflow: hidden;
+        
+                        img {
+                            position: absolute;
+                            width: 100%;
+                            height: 100%;
+                            transition: all 0.6s;
+                        }
+        
+                        &--category {
+                            padding: 0 15px;
+                            display: grid;
+                            place-content: center;
+                            background-color: #fff;
+                            font: normal 400 15px/25px $custom-font-family;
+                            position: absolute;
+                            bottom: 20px;
+                            left: 20px;
+                            z-index: 2;
+
+                            &:hover{
+                                background-color: $custom-blue-color;
+                                cursor:default;
+                                span{
+                                    color: #fff;
+                                }
+                            }
+                        }
+                    }
+        
+                    &__text {
+                        max-width: 370px;
+                        display: flex;
+                        flex-direction: column;
+                    }
+
+                    &__date{
+                        margin-bottom: 7px;
+                        font: normal 400 14px/23.8px $custom-font-family;
+                        color: $custom-text-color;
+                    }
+        
+                    &__title {
+                        margin-bottom: 10px;
+                        color: #000;
+                        text-decoration: none;
+                        font: normal 300 24px/31.2px $custom-font-family;
+        
+                        &:hover {
+                            color: $custom-blue-color;
+                        }
+                    }
+        
+                    &__description {
+                        margin-bottom: 15px;
+                        font: normal 400 15px/30px $custom-font-family;
+                        color: $custom-text-color;
+                    }
+        
+                    &--read-more {
+                        text-decoration: none;
+                        color: #000;
+                        font: normal 400 14px/23.8px $custom-font-family;
+                        position: relative;
+        
+                        &--bar {
+                            position: absolute;
+                            bottom: -2px;
+                            left: 0;
+                            display: inline-block;
+                            width: 68px;
+                            height: 1px;
+                            background-color: #000;
+                            transition: width 0.5s;
+                        }
+        
+                        &:hover {
+                            color: #41cde2;
+        
+                            .blog-item--read-more--bar {
+                                width: 0;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

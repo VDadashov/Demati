@@ -1,0 +1,101 @@
+﻿@model IEnumerable<WishlistVM>
+
+@{
+    ViewData["Title"] = "Wishlist";
+}
+
+@section WishlistStyle {
+    <link href="@Url.Content("~/assets/scss/wishlist/wishlist.css")" rel="stylesheet" type="text/css" />
+}
+
+<section id="breadcrumb">
+    <div class="container">
+        <h2 class="wishlist-title">Wishlist</h2>
+        <ul>
+            <li><a class="home-bredcrumb" asp-controller="home" asp-action="index">Home</a><i class="fa-solid fa-chevron-right"></i></li>
+            <li>Wishlist</li>
+        </ul>
+    </div>
+</section>
+
+<section id="wishlist-products" style="border-bottom: 1px solid rgba(70, 68, 68, 0.2);margin:25px 0 0;padding-bottom:65px;">
+    <div class="container">
+        <div class="wishlist-content">
+            @await Html.PartialAsync("_WishlistPartial",Model)
+        </div>
+    </div>
+</section>
+
+<script>
+    //#region product-color-hover-text
+    function productColorHoverText() {
+        const colorContentDivs = document.querySelectorAll('.product-card__color__content');
+
+        colorContentDivs.forEach(colorContentDiv => {
+            const colorBoxDiv = colorContentDiv.querySelector('.product-card__color--box');
+            const hoverTextSpan = colorContentDiv.querySelector('.product-card__color--box__text');
+            const hoverTextContent = colorContentDiv.querySelector('.product-card__color--box--hover-text');
+
+            colorContentDiv.addEventListener('mouseover', () => {
+                hoverTextSpan.textContent = colorBoxDiv.style.backgroundColor;
+                hoverTextContent.style.display = "flex";
+                hoverTextSpan.style.position = 'absolute';
+            });
+
+            colorContentDiv.addEventListener('mouseout', () => {
+                hoverTextSpan.textContent = '';
+                hoverTextContent.style.display = "none";
+                hoverTextSpan.style.position = '';
+            });
+        });
+    }
+    productColorHoverText();
+    //#endregion
+    //#region product-size-active
+    function productSizeActive() {
+        let sizeItems = document.querySelectorAll(".product-card__size__item");
+
+        function setActiveSize(event) {
+            let parent = event.currentTarget.parentNode;
+            let sizeItems = parent.querySelectorAll(".product-card__size__item");
+
+            sizeItems.forEach(item => {
+                item.classList.remove("size-active");
+            });
+
+            event.currentTarget.classList.add("size-active");
+        }
+
+        sizeItems.forEach(item => {
+            item.addEventListener("click", setActiveSize);
+        });
+    }
+    productSizeActive();
+        //#endregion
+    //#region product-card=>color-active
+    function productCardColorActive() {
+        let productCards = document.querySelectorAll(".product-card");
+
+        function setActiveColor(event) {
+            let parent = event.currentTarget.closest(".product-card");
+            let colorContents = parent.querySelectorAll(".product-card__color__content");
+
+            for (let i = 0; i < colorContents.length; i++) {
+                colorContents[i].classList.remove("active-color");
+            }
+
+            event.currentTarget.classList.add("active-color");
+        }
+
+        for (let i = 0; i < productCards.length; i++) {
+            let colorContents = productCards[i].querySelectorAll(".product-card__color__content");
+
+            for (let j = 0; j < colorContents.length; j++) {
+                colorContents[j].addEventListener("click", setActiveColor);
+            }
+        }
+    }
+    productCardColorActive();
+    //#endregion
+</script>
+

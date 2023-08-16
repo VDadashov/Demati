@@ -1,0 +1,173 @@
+@import url("https://fonts.googleapis.com/css2?family=Outfit:wght@100;200;300;400;500;600;700;800;900&display=swap");
+@keyframes shimmer-animation {
+  0% {
+    background-position: -1000px 0;
+  }
+  100% {
+    background-position: 1000px 0;
+  }
+}
+@keyframes scale-animation {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+@keyframes fadeDown {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0px);
+  }
+}
+#blogs {
+  margin: 45px 0 0 0;
+  padding-bottom: 60px;
+}
+#blogs #blog-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+#blogs #blog-content h2 {
+  margin-bottom: 38px;
+  font: normal 300 50px/60px "Outfit", sans-serif;
+}
+#blogs #blog-content .blog-tab-list__ul {
+  margin-bottom: 60px;
+  display: flex;
+  align-items: center;
+  gap: 30px;
+  justify-content: center;
+}
+#blogs #blog-content .blog-tab-list__li {
+  position: relative;
+}
+#blogs #blog-content .blog-tab-list__li span {
+  font: normal 400 18px/30.6px "Outfit", sans-serif;
+  color: rgb(134, 134, 134);
+}
+#blogs #blog-content .blog-tab-list__li:hover {
+  cursor: pointer;
+}
+#blogs #blog-content .blog-tab-list__li.active-b-selected span {
+  color: #000;
+}
+#blogs #blog-content .blog-tab-list__li.active-b-selected::before {
+  content: "";
+  width: 100%;
+  height: 0.5px;
+  background-color: #41cde2;
+  position: absolute;
+  bottom: -6px;
+}
+#blogs #blog-content .blog-tab-list__content {
+  width: 1200px;
+  display: none;
+}
+#blogs #blog-content .blog-tab-list__content > * {
+  animation: fadeDown 0.8s ease-in-out;
+}
+#blogs #blog-content .blog-tab-list__content.active-b-content {
+  display: block;
+}
+#blogs #blog-content .blog-tab-list .blog-card-content {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 10px;
+  grid-row-gap: 40px;
+}
+#blogs #blog-content .blog-tab-list .blog-card-content .blog-item {
+  width: 370px;
+  display: flex;
+  flex-direction: column;
+}
+#blogs #blog-content .blog-tab-list .blog-card-content .blog-item:hover img {
+  scale: 1.2;
+  transition: all 0.6s;
+}
+#blogs #blog-content .blog-tab-list .blog-card-content .blog-item__image {
+  width: 100%;
+  height: 231.39px;
+  margin-bottom: 25px;
+  position: relative;
+  overflow: hidden;
+}
+#blogs #blog-content .blog-tab-list .blog-card-content .blog-item__image img {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  transition: all 0.6s;
+}
+#blogs #blog-content .blog-tab-list .blog-card-content .blog-item__image--category {
+  padding: 0 15px;
+  display: grid;
+  place-content: center;
+  background-color: #fff;
+  font: normal 400 15px/25px "Outfit", sans-serif;
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  z-index: 2;
+}
+#blogs #blog-content .blog-tab-list .blog-card-content .blog-item__image--category:hover {
+  background-color: #41cde2;
+  cursor: default;
+}
+#blogs #blog-content .blog-tab-list .blog-card-content .blog-item__image--category:hover span {
+  color: #fff;
+}
+#blogs #blog-content .blog-tab-list .blog-card-content .blog-item__text {
+  max-width: 370px;
+  display: flex;
+  flex-direction: column;
+}
+#blogs #blog-content .blog-tab-list .blog-card-content .blog-item__date {
+  margin-bottom: 7px;
+  font: normal 400 14px/23.8px "Outfit", sans-serif;
+  color: rgb(134, 134, 134);
+}
+#blogs #blog-content .blog-tab-list .blog-card-content .blog-item__title {
+  margin-bottom: 10px;
+  color: #000;
+  text-decoration: none;
+  font: normal 300 24px/31.2px "Outfit", sans-serif;
+}
+#blogs #blog-content .blog-tab-list .blog-card-content .blog-item__title:hover {
+  color: #41cde2;
+}
+#blogs #blog-content .blog-tab-list .blog-card-content .blog-item__description {
+  margin-bottom: 15px;
+  font: normal 400 15px/30px "Outfit", sans-serif;
+  color: rgb(134, 134, 134);
+}
+#blogs #blog-content .blog-tab-list .blog-card-content .blog-item--read-more {
+  text-decoration: none;
+  color: #000;
+  font: normal 400 14px/23.8px "Outfit", sans-serif;
+  position: relative;
+}
+#blogs #blog-content .blog-tab-list .blog-card-content .blog-item--read-more--bar {
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  display: inline-block;
+  width: 68px;
+  height: 1px;
+  background-color: #000;
+  transition: width 0.5s;
+}
+#blogs #blog-content .blog-tab-list .blog-card-content .blog-item--read-more:hover {
+  color: #41cde2;
+}
+#blogs #blog-content .blog-tab-list .blog-card-content .blog-item--read-more:hover .blog-item--read-more--bar {
+  width: 0;
+}/*# sourceMappingURL=blog.css.map */

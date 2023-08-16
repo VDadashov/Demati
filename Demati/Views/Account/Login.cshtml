@@ -1,0 +1,58 @@
+﻿@model LoginVM
+
+@{
+    ViewData["Title"] = "Login";
+}
+
+@section RegisterStyle{
+    <link href="@Url.Content("~/assets/scss/login/login.css")" rel="stylesheet" type="text/css" />
+}
+
+
+<section id="login">
+    <div class="container">
+        <div class="login">
+            <h1>Account</h1>
+            <form type="post" asp-controller="account" asp-action="login">
+                <div class="login__content">
+                    <div class="login__reset-password">
+                        <h2>Reset your password</h2>
+                        <p>We will send you an email to reset your password.</p>
+                        <input type="email" placeholder="Email*" required>
+                        <div class="login__reset-password__submit-content">
+                            <button>Submit</button>
+                            <span id="login-resetClose">Cancel</span>
+                        </div>
+                    </div>
+                    <div class="login__content__one">
+                        <h3>Sign in</h3>
+                        <div asp-validation-summary="ModelOnly " class="text text-danger"></div>
+                        <input asp-for="Email" class="loginEmail" placeholder="Email*">
+                        <div class="password__content">
+                            <input asp-for="Password" placeholder="Password*" id="loginPassword">
+                            <span id="password-eye"><i class="fa-regular fa-eye"></i></span>
+                        </div>
+                        <span id="login-resetBtn">Lost your password ?</span>
+                        <button id="loginBtn">Sign in</button>
+                    </div>
+                    <div class="login__content__two">
+                        <h3>New Customer?</h3>
+                        <div class="login__content__two__description">
+                            Sign up for early Sale access plus tailored new arrivals, trends and promotions. To opt out, click unsubscribe in our emails.
+                        </div>
+                        <a asp-controller="account" asp-action="register" class="login__content__two__registerBtn">Register</a>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</section>
+
+
+@section RegisterScript{
+    <script src="~/assets/js/login.js"></script>
+    <!-- Validation Script-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.5/jquery.validate.min.js" integrity="sha512-rstIgDs0xPgmG6RX1Aba4KV5cWJbAMcvRCVmglpam9SoHZiUCyQVDdH2LPlxoHtrv17XWblE/V/PP+Tr04hbtA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validation-unobtrusive/4.0.0/jquery.validate.unobtrusive.min.js" integrity="sha512-xq+Vm8jC94ynOikewaQXMEkJIOBp7iArs3IhFWSWdRT3Pq8wFz46p+ZDFAR7kHnSFf+zUv52B3prRYnbDRdgog==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+}
+

@@ -1,0 +1,68 @@
+﻿@model Blog
+
+@{
+    ViewData["Title"] = "Detail";
+}
+
+@section BlogDetailStyle{
+    <link href="@Url.Content("~/assets/scss/bog-detail/blog-detail.css")" rel="stylesheet" type="text/css" />
+}
+
+<section id="breadcrumb">
+    <div class="container">
+        <ul>
+            <li><a asp-controller="home" asp-action="index">Home</a><i class="fa-solid fa-chevron-right"></i></li>
+            <li><a asp-controller="blog" asp-action="index">Blog</a><i class="fa-solid fa-chevron-right"></i></li>
+            <li>@Model.Title</li>
+        </ul>
+    </div>
+</section>
+<section id="blog-detail-content">
+    <div class="container">
+        <div class="blog-item">
+            <div class="blog-item__image">
+                <img src="~/assets/images/Blog/@Model.Image" alt="@Model.Image">
+            </div>
+            <div class="blog-item__info">
+                <div class="blog-item__category">
+                    <div class="blog-item--category">
+                        <span>@Model.BlogCategory?.Name</span>
+                    </div>
+                </div>
+                <h1 class="blog-item__title">
+                    @Model.Title
+                </h1>
+                <div class="blog-item__date">
+                    By <span> @Model.CreatedBy </span> on @Model.CreatedAt.ToString("MMM dd, yyyy");
+                </div>
+            </div>
+            <div class="blog-item__description">
+                @Html.Raw(Model.Description);
+            </div>
+        </div>
+    </div>
+</section>
+<section id="blog-detail-comment">
+    <div class="container">
+        <form action="#">
+            <div class="blog-detail-comment">
+                <h2 class="blog-detail-comment-heading">Leave a comment</h2>
+                <div class="blog-detail-comment__form-group">
+                    <div class="blog-detail-comment__form-group__item">
+                        <input type="text" id="name" name="name" placeholder="Name">
+                    </div>
+                    <div class="blog-detail-comment__form-group__item">
+                        <input type="email" id="email" name="email" placeholder="Email">
+                    </div>
+                </div>
+                <div class="blog-detail-comment__text-area">
+                    <textarea name="message" id="message" cols="30" rows="10" placeholder="Message"></textarea>
+                </div>
+                <div class="blog-detail-comment__form-button">
+                    <button><span></span>Post Comment</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</section>
+

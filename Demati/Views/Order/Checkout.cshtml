@@ -1,0 +1,84 @@
+﻿@model OrderVM
+
+@{
+    Layout = null;
+    double subTotal = Convert.ToDouble(ViewBag.subTotal);
+    double shipping = Convert.ToDouble(ViewBag.shipping);
+    double total = subTotal+shipping;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+          integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+          crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="~/assets/scss/checkout/checkout.css">
+    <title>Checkout</title>
+</head>
+
+<body>
+    <div id="checkout">
+        <div class="checkout">
+            <div class="checkout__form">
+                <div class="checkout__information">
+                    <a asp-controller="home" asp-action="index" class="checkout__information__head">
+                        Demati - Multipurpose Shopify Theme
+                    </a>
+                    <div id="breadcrumb">
+                        <ul>
+                            <li><a asp-controller="product" asp-action="cart">Cart</a><i class="fa-solid fa-chevron-right"></i></li>
+                            <li class="active-crumb">Information <i class="fa-solid fa-chevron-right"></i></li>
+                            <li class="shipping-address-breadcrumb">Shipping <i class="fa-solid fa-chevron-right"></i></li>
+                            <li>Payment</li>
+                        </ul>
+                    </div>
+                    @await Html.PartialAsync("_CheckoutFormPartial",Model.Order)
+                </div>
+            </div>
+            <div class="checkout__products">
+                <div class="checkout__products__main">
+                    <div class="checkout__products__content">
+                        @foreach (BasketVM basketVM in Model.BasketVMs)
+                        {
+                            <div class="checkout-product">
+                                <div class="checkout-product__image">
+                                    <img src="~/assets/images/Product/@basketVM.Image" alt="@basketVM.Image">
+                                    <span class="checkout-product--count">@basketVM.Count</span>
+                                </div>
+                                <div class="checkout-product__info">
+                                    <div class="checkout-product__title">@basketVM.Title</div>
+                                    <div class="checkout-product__features">
+                                        <span class="checkout-product__color">@basketVM.Color</span>
+                                        <span>/</span>
+                                        <span class="checkout-product__size">@basketVM.Size</span>
+                                    </div>
+                                </div>
+                                <div class="checkout-product__price">
+                                    €@(basketVM.Price.ToString("F2"))
+                                </div>
+                            </div>
+                        }
+                    </div>
+                    <div>
+                        @await Html.PartialAsync("_GiftCardPartial",new GiftCard())
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="loading-screen">
+        <div class="loader"></div>
+    </div>
+
+    <script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+    <script src="~/assets/js/checkout.js"></script>
+    <script src="~/assets/js/custom.js"></script>
+</body>
+</html>
+

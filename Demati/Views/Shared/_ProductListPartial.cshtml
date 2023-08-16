@@ -1,0 +1,179 @@
+﻿@model IEnumerable<Product>
+
+@{
+    IEnumerable<Product> reviewProducts = ViewBag.reviews;
+    IEnumerable<WishlistVM> wishlistVMs = (IEnumerable<WishlistVM>)ViewBag.Wishlist;
+}
+
+@foreach (Product item in Model)
+{
+    var countSize = 1;
+    var countColor = 1;
+
+    <div class="product-card">
+        <div class="product-card__image">
+            <div class="product-card__main-image">
+                <a asp-controller="product" asp-action="detail" asp-route-id="@item.Id">
+                    <img class="product-image"
+                     src="~/assets/images/Product/@item.MainImage" alt="@item.MainImage">
+                </a>
+            </div>
+            <div class="product-card__hover-image">
+                <a asp-controller="product" asp-action="detail" asp-route-id="@item.Id">
+                    <img class="product-image"
+                     src="~/assets/images/Product/@item.HoverImage" alt="@item.HoverImage">
+                </a>
+            </div>
+            <div class="product-link">
+                <div data-Id="@item.Id" class="product-card--add-to-card product-card--page-link basketBtn">
+                    <i class="fa-solid fa-basket-shopping"></i>
+                    <span class="product-link--hover-text">
+                        <span>Add to Cart</span>
+                        <i style="color:black !important" class="fa-solid fa-caret-down"></i>
+                    </span>
+                </div>
+                <div class="product-link-wishlist">
+                    @await Html.PartialAsync("_ProductLinkPartial",item)
+                </div>
+                <div class="product-card--compare product-card--page-link">
+                    <i class="fa-solid fa-up-right-and-down-left-from-center"></i>
+                    <span class="product-link--hover-text">
+                        <span>Compare</span>
+                        <i style="color:black !important" class="fa-solid fa-caret-down"></i>
+                    </span>
+                </div>
+                <a style="color:black;text-decoration:none;" asp-controller="product" asp-action="modal" asp-route-id="@item.Id" class="product-card--quickview product-card--page-link modalBtn" onclick="openModal()">
+                    <i class="fa-regular fa-eye"></i>
+                    <span class="product-link--hover-text">
+                        <span>Quickview</span>
+                        <i style="color:black !important" class="fa-solid fa-caret-down"></i>
+                    </span>
+                </a>
+            </div>
+            <div class="product-card--addition">
+                @if (item.isNewIn)
+                {
+                    <div class="product-card--new-in">New in</div>
+                }
+                @if (item.isHot)
+                {
+                    <div class="product-card--hot">Hot</div>
+                }
+            </div>
+        </div>
+        <div class="product-card__text">
+            <div class="product-card--review">
+                @if(reviewProducts != null)
+                {
+                    @foreach (Product product in reviewProducts)
+                    {
+                        if (product.Id == item.Id)
+                        {
+                            @if (product.Reviews != null && product.Reviews.Count() > 0)
+                            {
+                                int sumRatings = 0;
+                                foreach (var review in product.Reviews)
+                                {
+                                    sumRatings += (int)review.Star;
+                                }
+                                int averageRating = sumRatings / product.Reviews.Count();
+
+                                for (int i = 0; i < 5; i++)
+                                {
+                                    <span class="product-card--review-star">
+                                        <i style="color: @(i< averageRating ? "rgb(255, 164, 34)":"rgb(182, 173, 173)");" class="@(i< averageRating ? "fa-solid":"fa-regular") fa-star"></i>
+                                    </span>
+                                }
+                            }
+                            else
+                            {
+                                for (int i = 0; i < 5; i++)
+                                {
+                                    <span class="product-card--review-star">
+                                        <i class="fa-regular fa-star"></i>
+                                    </span>
+                                }
+                            }
+                            <span class="product-card--review-count">
+                                (@((product.Reviews != null && product.Reviews.Count() > 0) ? product.Reviews.Count() : 0))
+                            </span>
+                        }
+                    }
+                }
+                else
+                {
+                    @if (item.Reviews != null && item.Reviews.Count() > 0)
+                    {
+                        int sumRatings = 0;
+                        foreach (var review in item.Reviews)
+                        {
+                            sumRatings += (int)review.Star;
+                        }
+                        int averageRating = sumRatings / item.Reviews.Count();
+
+                        for (int i = 0; i < 5; i++)
+                        {
+                            <span class="product-card--review-star">
+                                <i style="color: @(i< averageRating ? "rgb(255, 164, 34)":"rgb(182, 173, 173)");" class="@(i< averageRating ? "fa-solid":"fa-regular") fa-star"></i>
+                            </span>
+                        }
+                    }
+                    else
+                    {
+                        for (int i = 0; i < 5; i++)
+                        {
+                            <span class="product-card--review-star">
+                                <i class="fa-regular fa-star"></i>
+                            </span>
+                        }
+                    }
+                    <span class="product-card--review-count">
+                        (@((item.Reviews != null && item.Reviews.Count() > 0) ? item.Reviews.Count() : 0))
+                    </span>
+                }
+            </div>
+            <div class="product-card__title">
+                <a asp-controller="product" asp-action="detail" asp-route-id="@item.Id">@item.Title</a>
+            </div>
+            <div class="product-card__price">
+                @if (item.DisCountPrice > 0)
+                {
+                    <span class="product-card--old-price">€@(item.Price.ToString("0.00"))</span>
+                    <span class="product-card--new-price">€@(item.DisCountPrice.ToString("0.00"))</span>
+                }
+                else
+                {
+                    <span class="product-card--new-price">€@(item.Price.ToString("0.00"))</span>
+                }
+            </div>
+            @if (item.ProductSizes?.Count() > 0)
+            {
+                <div class="product-card__size">
+                    <div class="product-card__size__title">Size:</div>
+                    @foreach (ProductSize productSize in item.ProductSizes)
+                    {
+                        <div data-Id="@productSize.SizeId" class="product-card__size__item @(countSize == 1 ? "size-active" : "")">
+                            @productSize.Size?.Name
+                        </div>
+
+                        countSize++;
+                    }
+                </div>
+            }
+            <div class="product-card__color">
+                @foreach (ProductColor productColor in item.ProductColors)
+                {
+                    <div data-Id="@productColor.ColorId" class="product-card__color__content @(countColor == 1 ? "active-color" : "")">
+                        <div style="background-color: @(productColor.Color?.Name.ToLower());" class="product-card__color--box">
+                            <span class="product-card__color--box--hover-text">
+                                <span class="product-card__color--box__text"></span>
+                                <i class="fa-solid fa-caret-down"></i>
+                            </span>
+                        </div>
+                    </div>
+                    countColor++;
+                }
+            </div>
+        </div>
+    </div>
+}

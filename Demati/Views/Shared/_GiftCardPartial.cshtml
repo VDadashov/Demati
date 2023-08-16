@@ -1,0 +1,46 @@
+﻿@model GiftCard
+@{
+    Layout = null;
+    double subTotal = Convert.ToDouble(ViewBag.subTotal);
+    double shipping = Convert.ToDouble(ViewBag.shipping);
+    double discountPrice = Convert.ToDouble(ViewBag.discountPrice);
+    double total = subTotal + shipping;
+}
+
+<div class="checkout__products__gift-card">
+        <span class="placeholder-gift-card"></span>
+        <input placeholder="Gift card" id="checkout-gift-card" class="checkout-gift-card">
+        <button data-shipping="@ViewBag.shipping" data-subTotal="@ViewBag.subTotal" class="checkout-gift-card-btn" disabled>Apply</button>
+    @if (TempData["ErrorMessage"] != null)
+    {
+        <div class="alert alert-danger" style="position: absolute;
+    color: red;
+    bottom: -20px;
+    font-size: 15px;">
+            @TempData["ErrorMessage"]
+        </div>
+    }
+    </div>
+
+<div class="checkout__products__down">
+    <div class="checkout__products__sub-total">
+        <span>Subtotal</span><span class="price-bold">€@(subTotal.ToString("F2"))</span>
+    </div>
+    <div class="checkout__products__pick-up">
+        <span>Pickup</span><span>Free</span>
+    </div>
+    <div class="checkout__products__shipping">
+        <span>Shipping</span><span style="color:green;">@(shipping == 0 ? "Free" : $"+€{shipping.ToString("F2")}")</span>
+    </div>
+    @if(Model != null && Model.Code != null && Model.DiscountPercent != null)
+    {
+        <div class="checkout__products__shipping">
+            <span>Discount Price</span><span style="color:red;">-€@(discountPrice.ToString("F2"))</span>
+        </div>
+    }
+    <div class="checkout__products__total">
+        <span class="price-bold price-total">Total</span><span class="price-bold price-total">€@((total - (discountPrice != null ? discountPrice : 0)).ToString("F2"))</span>
+    </div>
+</div>
+
+

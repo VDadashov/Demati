@@ -1,0 +1,85 @@
+﻿@model ShopVM
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+@section ShopStyle {
+    <link href="@Url.Content("~/assets/scss/shop/shop.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/assets/scss/pagination/pagination.css")" rel="stylesheet" type="text/css" />
+}
+
+@section ShopStyleFilter{
+    <style>
+        .price-btn{
+            color: #868686;
+            background-color:white;
+            border: none;
+            font: normal 400 15px/27.5px Outfit, sans-serif;
+            margin-bottom:16px;
+            position:relative;
+            display:flex;
+            gap:4px;
+            align-items:center;
+        }
+        .price-btn:hover{
+            cursor:pointer;
+            color: #41cde2;
+        }
+        .price-btn:hover::before{
+            width:100%;
+        }
+        .price-btn::before{
+            content:"";
+            position: absolute;
+            display: inline-block;
+            transition: all .3s ease;
+            width:0%;
+            left:0px;
+            bottom: 0px;
+            height: 1px;
+            background-color: black;
+        }
+        .filter-reset-btn{
+            background-color:white;
+            color:black;
+            border:none;
+            font: normal 500 15px/25.5px Outfit, sans-serif;
+            position:absolute;
+            right: -102px;
+            height: 37px;
+        }
+        .filter-reset-btn i{
+            font-size:14px;
+            position:absolute;
+            right:-15px;
+            top:12px;
+        }
+
+        .filter-reset-btn:hover{
+            color: #41cde2;
+            cursor:pointer;
+        }
+    </style>
+}
+
+<section id="breadcrumb">
+    <h2>Products</h2>
+    <ul>
+        <li><a asp-controller="home" asp-action="index">Home</a><i class="fa-solid fa-chevron-right"></i></li>
+        <li>Shop</li>
+    </ul>
+</section>
+
+<section id="shop">
+    <div class="container">
+        <div class="shop">
+            @await Html.PartialAsync("_ShopListPartial",Model)
+        </div>
+    </div>
+</section>
+
+@section ShopScript {
+    <script src="~/assets/js/paginationMovie.js"></script>
+}
+

@@ -1,0 +1,157 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Outfit', sans-serif;
+}
+
+$custom-font-family: 'Outfit',
+sans-serif;
+$custom-blue-color:#41cde2;
+$custom-text-color:rgb(134, 134, 134);
+$custom-border:1px solid rgba(70, 68, 68, 0.2);
+
+.container {
+    max-width: 1415.200px !important;
+    margin: auto;
+}
+
+#contact-us-map {
+    margin-bottom: 60px;
+
+    .contact-us-map-content {
+        width: 100%;
+        height: 550.4px;
+
+        iframe {
+            width: 100%;
+            height: 100%;
+        }
+    }
+}
+
+#contact-us-main {
+    padding-bottom: 45px;
+    border-bottom: $custom-border;
+    .container {
+        .get-in-touch {
+            display: flex;
+            justify-content: space-between;
+
+            &__form {
+                width: 963.6px;
+
+                h2 {
+                    text-transform: capitalize;
+                    margin-bottom: 40px;
+                    font: normal 300 30px/36px $custom-font-family;
+                }
+
+                form {
+                    display: flex;
+                    flex-direction: column;
+                }
+
+                &__group {
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+
+                    &__item {
+                        display: flex;
+                        flex-direction: column;
+                        gap: 10px;
+                        position: relative;
+
+                        &::before {
+                            content: "*";
+                            color: red;
+                            position: absolute;
+                            right: 15px;
+                            bottom: 13px;
+                            line-height: 1;
+                            font-size: 20px;
+                        }
+
+                        label {
+                            font: normal 600 14px/23.8px $custom-font-family;
+                        }
+
+                        input {
+                            width: 311.50px;
+                            height: 50px;
+                            padding: 10px 20px;
+                            outline: none;
+                            border: $custom-border;
+                            font: normal 400 15px/20px $custom-font-family;
+                        }
+                    }
+                }
+                &__text-area{
+                    margin-top: 15px;
+                    display: flex;
+                    flex-direction: column;
+
+                    label{
+                        font: normal 600 14px/23.8px $custom-font-family;
+                        margin-bottom: 10px;
+                    }
+                    textarea{
+                        outline: none;
+                        border: $custom-border;
+                        padding: 10px 20px;
+                        font: normal 400 15px/20px $custom-font-family;
+
+                        &::placeholder{
+                            font: normal 400 15px/20px $custom-font-family;
+                        }
+                    }
+                }
+                &__button{
+                    margin-top: 40px;
+
+                    button{
+                        text-align: center;
+                        width: 253.16px;
+                        height: 55px;
+                        background-color: #000;
+                        color: #fff;
+                        font: normal 400 16px/55px $custom-font-family;
+
+                        &:hover{
+                            cursor: pointer;
+                            background-color: #fff;
+                            color: #000;
+                            border: 1px solid #000;
+                        }
+                    }
+                }
+            }
+
+            &__text {
+                width: 386.4px;
+                display: flex;
+                flex-direction: column;
+
+                &__item{
+                    padding-bottom: 20px;
+                    margin-bottom: 25px;
+                    border-bottom: $custom-border;
+                    h2{
+                        font: normal 300 20px/24px $custom-font-family;
+                        margin-bottom: 10px;
+                    }
+                    span{
+                        font: normal 400 15px/25.5px $custom-font-family;
+                    }
+                }
+                .fax{
+                    border-bottom: none;
+                }
+            }
+
+        }
+    }
+}

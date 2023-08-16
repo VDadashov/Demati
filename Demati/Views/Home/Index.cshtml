@@ -1,0 +1,239 @@
+﻿@model HomeVM
+
+@{
+    ViewData["Title"] = "Index";
+    var count = 1;
+    ViewBag.Count = 1;
+}
+
+<style>
+    .product-card--wishlist:hover {
+        background-color: #41CDE2 !important;
+    }
+
+    .product-card--wishlist:hover .wishlistIcon {
+        color: white !important;
+    }
+    body{
+        overflow-x:hidden;
+    }
+</style>
+
+<section id="first-section">
+    <div class="img-slider">
+        @foreach (Slider item in Model.Sliders)
+        {
+            <div class="slide @(count == 1 ? " active" : "" )">
+                <div class="slide-content">
+                    <h2 class="slide-content__title">@Html.Raw(item.Title)</h2>
+                    <span class="slide-content__subtitle">@item.SubTitle</span>
+                    @Html.Raw(item.Link)
+                </div>
+                <img src="~/assets/images/Slider/@item.Image" alt="">
+            </div>
+
+            count++;
+        }
+        <div class="navigation">
+            <div class="btn active"></div>
+            <div class="btn"></div>
+            <div class="btn"></div>
+        </div>
+    </div>
+</section>
+
+<section id="collection">
+    <div class="left-collection">
+        <div class="left-collection__one">
+            <a class="left-collection__dress" asp-controller="shop" asp-action="index" asp-route-categoryId="7"><span class="left-collection--link">Dress</span></a>
+        </div>
+        <div class="left-collection__two">
+            <a class="left-collection__accessories" asp-controller="shop" asp-action="index" asp-route-categoryId="14"><span class="left-collection--link">Accessories</span></a>
+            <a class="left-collection__shose" asp-controller="shop" asp-action="index" asp-route-categoryId="3"><span class="left-collection--link">Shose</span></a>
+        </div>
+    </div>
+    <div class="right-collection">
+        <div class="right-collection__new-arrivals">
+            <div class="right-collection__new-arrivals__content">
+                <span class="right-collection__new-arrivals__subtitle">NEW ARRIVALS</span>
+                <h3 class="right-collection__new-arrivals__title">Blondes <br> width minimalist</h3>
+                <a id="new-arrivals--link" asp-controller="shop" asp-action="index" asp-route-categoryId="5" class="right-collection__new-arrivals--link">
+                    Shop Collection
+                    <span class="right-collection__new-arrivals--link--bar"></span>
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="categories">
+    <span>Shop By Categories</span>
+    <div class="categories-content">
+        <div class="categories-item">
+            <div class="categories-item__title">
+                <a class="categories-item__link" asp-controller="shop" asp-action="index" asp-route-categoryId="1">
+                    Knitwear
+                    <span class="categories-item__link--bar"></span>
+                </a>
+            </div>
+            <div class="categories-item__image">
+                <img src="~/assets/images/Categories/cate-2.webp" alt="cate-2.webp">
+            </div>
+        </div>
+        <div class="categories-item">
+            <div class="categories-item__title">
+                <a class="categories-item__link" asp-controller="shop" asp-action="index" asp-route-categoryId="2">
+                    Men
+                    <span class="categories-item__link--bar"></span>
+                </a>
+            </div>
+            <div class="categories-item__image">
+                <img src="~/assets/images/Categories/cate-1.webp" alt="cate-1.webp">
+            </div>
+        </div>
+        <div class="categories-item">
+            <div class="categories-item__title">
+                <a class="categories-item__link" asp-controller="shop" asp-action="index" asp-route-categoryId="3">
+                    Shoes
+                    <span class="categories-item__link--bar"></span>
+                </a>
+            </div>
+            <div class="categories-item__image">
+                <img src="~/assets/images/Categories/cate-4.webp" alt="cate-4.webp">
+            </div>
+        </div>
+        <div class="categories-item">
+            <div class="categories-item__title">
+                <a class="categories-item__link" asp-controller="shop" asp-action="index" asp-route-categoryId="4">
+                    Sweatshirts
+                    <span class="categories-item__link--bar"></span>
+                </a>
+            </div>
+            <div class="categories-item__image">
+                <img src="~/assets/images/Categories/cate-3.webp" alt="cate-3.webp">
+            </div>
+        </div>
+        <div class="categories-item">
+            <div class="categories-item__title">
+                <a class="categories-item__link" asp-controller="shop" asp-action="index" asp-route-categoryId="5">
+                    T-Shirts
+                    <span class="categories-item__link--bar"></span>
+                </a>
+            </div>
+            <div class="categories-item__image">
+                <img src="~/assets/images/Categories/cate-11.webp" alt="cate-11.webp">
+            </div>
+        </div>
+        <div class="categories-item">
+            <div class="categories-item__title">
+                <a class="categories-item__link" asp-controller="shop" asp-action="index" asp-route-categoryId="6">
+                    Women
+                    <span class="categories-item__link--bar"></span>
+                </a>
+            </div>
+            <div class="categories-item__image">
+                <img src="~/assets/images/Categories/cate-5.webp" alt="cate-5.webp">
+            </div>
+        </div>
+        <div class="categories-item">
+            <div class="categories-item__title">
+                <a class="categories-item__link" asp-controller="shop" asp-action="index" asp-route-categoryId="7">
+                    Dresses
+                    <span class="categories-item__link--bar"></span>
+                </a>
+            </div>
+            <div class="categories-item__image">
+                <img class="categories-item--image" src="~/assets/images/Categories/cate-6.webp" alt="cate-6.webp">
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="weekly-selection">
+    <div class="container">
+        <div id="weekly-selection-content">
+            <h2>Weekly Selection</h2>
+            <div class="tab-list">
+                <ul class="tab-list__ul" type="none" role="tablist" aria-orientation="horizontal">
+                    <li class="tab-list__li active-selected"><span>New arrivals</span></li>
+                    <li class="tab-list__li"><span>Bets sellers</span></li>
+                </ul>
+                <div class="tab-list__content active-content">
+                    <div class="product-card-content new-arrivals">
+                        @await Html.PartialAsync("_ProductListPartial",Model.NewArrivals)
+                    </div>
+                </div>
+                <div class="tab-list__content">
+                    <div class="product-card-content bestsellers">
+                        @await Html.PartialAsync("_ProductListPartial",Model.Bestseller)
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="banner-collection">
+    <div class="container">
+        <div class="banner-collection-content">
+            <div class="weekend-collective">
+                <a class="weekend-collective__link" href="#">
+                    <img src="~/assets/images/Collection/banner5.webp" alt="">
+                </a>
+                <div class="weekend-collective__title">WEEKEND COLLECTIVE</div>
+                <div class="weekend-collective__description">Big on logos</div>
+            </div>
+            <div class="new-topman">
+                <a class="new-topman__link" href="#">
+                    <img src="~/assets/images/Collection/banner6.webp" alt="">
+                </a>
+                <div class="new-topman__title">NEW TOPMAN</div>
+                <div class="new-topman__description">Anti-cold classics</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="featured-products">
+    <div class="container">
+        <div class="featured-products-content">
+            <h2>Featured Products</h2>
+            <div class="featured-products-list">
+                @await Html.PartialAsync("_ProductListPartial",Model.Featured)
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="our-blog">
+    <div class="container">
+        <h2>Our blog</h2>
+        <div class="blog-slider">
+            @foreach (Blog blog in Model.Blogs)
+            {
+                <div style="width:483px;" class="blog-item slide-item">
+                    <div class="blog-item__image">
+                        <a href="./blog-detail.html" class="blog-item__image--link">
+                            <img src="~/assets/images/Blog/@blog.Image" alt="@blog.Image">
+                        </a>
+                        <div style="place-content:center;display:grid;padding:0px;" class="blog-item__image--date">
+                            <span>@blog.CreatedAt.ToString("MMM").ToUpper()-@blog.CreatedAt.Day</span>
+                        </div>
+                    </div>
+                    <div class="blog-item__text">
+                        <a href="./blog-detail.html" class="blog-item__title">@blog.Title</a>
+                        <p class="blog-item__description">
+                            @blog.Description.Substring(3, 92) ...
+                        </p>
+                        <a href="./blog-detail.html" class="blog-item--read-more">
+                            Read more
+                            <span class="blog-item--read-more--bar"></span>
+                        </a>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</section>
+
+

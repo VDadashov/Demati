@@ -1,0 +1,692 @@
+@import url("https://fonts.googleapis.com/css2?family=Outfit:wght@100;200;300;400;500;600;700;800;900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Outfit:wght@100;200;300;400;500;600;700;800;900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Roboto", sans-serif;
+}
+
+@keyframes fadeDown {
+  from {
+    opacity: 0;
+    transform: translateY(5px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0px);
+  }
+}
+#breadcrumb {
+  padding: 15px 20px 20px;
+  padding-left: 0;
+}
+#breadcrumb ul {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  list-style: none;
+}
+#breadcrumb ul li {
+  font: normal 400 12px/22px "Roboto", sans-serif;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: rgb(134, 134, 134);
+}
+#breadcrumb ul li.active-crumb {
+  font-weight: 500;
+  color: #000;
+}
+#breadcrumb ul li a {
+  text-decoration: none;
+  color: #41cde2;
+}
+#breadcrumb ul li a:hover {
+  color: #41cde2;
+}
+#breadcrumb ul li i {
+  font-size: 9px;
+}
+
+#checkout {
+  width: 100%;
+}
+#checkout .checkout {
+  width: 100%;
+  display: flex;
+}
+#checkout .checkout__return {
+  margin: 45px 0 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+#checkout .checkout__return a {
+  width: 97.56px;
+  text-align: end;
+  text-decoration: none;
+  color: rgb(31, 141, 214);
+  font: normal 400 13px/21px "Roboto", sans-serif;
+  position: relative;
+}
+#checkout .checkout__return a i {
+  position: absolute;
+  top: 4px;
+  left: 0;
+}
+#checkout .checkout__return button {
+  width: 177.33px;
+  height: 64.6px;
+  border-radius: 5px;
+  border: 1px solid rgba(70, 68, 68, 0.2);
+  border-color: rgb(16, 89, 137);
+  background-color: rgb(22, 107, 163);
+  color: #fff;
+  transition: all 0.35s ease-in-out;
+  font: normal 500 13px/21px "Roboto", sans-serif;
+}
+#checkout .checkout__return button:hover {
+  cursor: pointer;
+  background-color: rgb(16, 89, 137);
+  transition: all 0.35s ease-in-out;
+}
+#checkout .checkout__form {
+  width: 847.6px;
+  display: flex;
+  justify-content: end;
+}
+#checkout .checkout__information {
+  width: 714.8px;
+  padding: 56px 66px 21px 76.8px;
+}
+#checkout .checkout__information .shipping-address {
+  animation: fadeDown 0.45s ease-in-out;
+}
+#checkout .checkout__information .shipping-address__country {
+  position: relative;
+}
+#checkout .checkout__information .shipping-address__country span {
+  position: absolute;
+  top: 5px;
+  left: 14px;
+  font: normal 300 12px/21px "Roboto", sans-serif;
+  color: rgb(134, 134, 134);
+}
+#checkout .checkout__information .shipping-address__country select {
+  width: 572px;
+  height: 50px;
+  border-radius: 5px;
+  padding: 20.5px 30px 5.5px 11px;
+  border-radius: 5px;
+  border: 1px solid rgba(70, 68, 68, 0.2);
+  color: rgba(0, 0, 0, 0.9);
+  outline-color: #458CBB;
+  outline-width: 3px;
+}
+#checkout .checkout__information .shipping-address__form-group {
+  margin-top: 16px;
+  display: flex;
+  justify-content: space-between;
+}
+#checkout .checkout__information .shipping-address__form-group input {
+  width: 277.4px;
+  height: 48px;
+  border-radius: 5px;
+  border: 1px solid rgba(70, 68, 68, 0.2);
+  padding: 13.5px 11px 13.5px 11px;
+  outline-color: #458CBB;
+  outline-width: 3px;
+  font: normal 400 13px/21px "Roboto", sans-serif;
+}
+#checkout .checkout__information .shipping-address__form-group span {
+  position: absolute;
+  top: 5px;
+  left: 14px;
+  font: normal 300 12px/21px "Roboto", sans-serif;
+  color: rgb(134, 134, 134);
+  display: none;
+  animation: fadeDown 0.25s ease-in-out;
+}
+#checkout .checkout__information .shipping-address__fname {
+  position: relative;
+}
+#checkout .checkout__information .shipping-address__lname {
+  position: relative;
+}
+#checkout .checkout__information .shipping-address__form-address {
+  margin-top: 16px;
+  position: relative;
+}
+#checkout .checkout__information .shipping-address__form-address input {
+  width: 100%;
+  height: 48px;
+  border-radius: 5px;
+  border: 1px solid rgba(70, 68, 68, 0.2);
+  padding: 13.5px 11px 13.5px 11px;
+  outline-color: #458CBB;
+  outline-width: 3px;
+  font: normal 400 13px/21px "Roboto", sans-serif;
+}
+#checkout .checkout__information .shipping-address__form-address .placeholder-address {
+  position: absolute;
+  top: 5px;
+  left: 14px;
+  font: normal 300 12px/21px "Roboto", sans-serif;
+  color: rgb(134, 134, 134);
+  display: none;
+  animation: fadeDown 0.25s ease-in-out;
+}
+#checkout .checkout__information .shipping-address__form-apartment {
+  margin-top: 16px;
+  position: relative;
+}
+#checkout .checkout__information .shipping-address__form-apartment input {
+  width: 100%;
+  height: 48px;
+  border-radius: 5px;
+  border: 1px solid rgba(70, 68, 68, 0.2);
+  padding: 13.5px 11px 13.5px 11px;
+  outline-color: #458CBB;
+  outline-width: 3px;
+  font: normal 400 13px/21px "Roboto", sans-serif;
+}
+#checkout .checkout__information .shipping-address__form-apartment .placeholder-apartment {
+  position: absolute;
+  top: 5px;
+  left: 14px;
+  font: normal 300 12px/21px "Roboto", sans-serif;
+  color: rgb(134, 134, 134);
+  display: none;
+  animation: fadeDown 0.25s ease-in-out;
+}
+#checkout .checkout__information .shipping-address__form-postal-code {
+  position: relative;
+}
+#checkout .checkout__information .shipping-address__form-city {
+  position: relative;
+}
+#checkout .checkout__information .shipping-address__form-save-checkbox {
+  margin-top: 16px;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+#checkout .checkout__information .shipping-address__form-save-checkbox .ui-checkbox {
+  --primary-color: #1677ff;
+  --secondary-color: #fff;
+  --primary-hover-color: #4096ff;
+  --checkbox-diameter: 19.6px;
+  --checkbox-border-radius: 5px;
+  --checkbox-border-color: #d9d9d9;
+  --checkbox-border-width: 1px;
+  --checkbox-border-style: solid;
+  --checkmark-size: 1.2;
+}
+#checkout .checkout__information .shipping-address__form-save-checkbox .ui-checkbox,
+#checkout .checkout__information .shipping-address__form-save-checkbox .ui-checkbox *,
+#checkout .checkout__information .shipping-address__form-save-checkbox .ui-checkbox *::before,
+#checkout .checkout__information .shipping-address__form-save-checkbox .ui-checkbox *::after {
+  box-sizing: border-box;
+}
+#checkout .checkout__information .shipping-address__form-save-checkbox .ui-checkbox {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  width: var(--checkbox-diameter);
+  height: var(--checkbox-diameter);
+  border-radius: var(--checkbox-border-radius);
+  background: var(--secondary-color);
+  border: var(--checkbox-border-width) var(--checkbox-border-style) var(--checkbox-border-color);
+  transition: all 0.3s;
+  cursor: pointer;
+  position: relative;
+}
+#checkout .checkout__information .shipping-address__form-save-checkbox .ui-checkbox::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  box-shadow: 0 0 0 calc(var(--checkbox-diameter) / 2.5) var(--primary-color);
+  border-radius: inherit;
+  opacity: 0;
+  transition: all 0.5s cubic-bezier(0.12, 0.4, 0.29, 1.46);
+}
+#checkout .checkout__information .shipping-address__form-save-checkbox .ui-checkbox::before {
+  top: 40%;
+  left: 50%;
+  content: "";
+  position: absolute;
+  width: 4px;
+  height: 7px;
+  border-right: 2px solid var(--secondary-color);
+  border-bottom: 2px solid var(--secondary-color);
+  transform: translate(-50%, -50%) rotate(45deg) scale(0);
+  opacity: 0;
+  transition: all 0.1s cubic-bezier(0.71, -0.46, 0.88, 0.6), opacity 0.1s;
+}
+#checkout .checkout__information .shipping-address__form-save-checkbox .ui-checkbox:hover {
+  border-color: var(--primary-color);
+}
+#checkout .checkout__information .shipping-address__form-save-checkbox .ui-checkbox:checked {
+  background: var(--primary-color);
+  border-color: transparent;
+}
+#checkout .checkout__information .shipping-address__form-save-checkbox .ui-checkbox:checked::before {
+  opacity: 1;
+  transform: translate(-50%, -50%) rotate(45deg) scale(var(--checkmark-size));
+  transition: all 0.2s cubic-bezier(0.12, 0.4, 0.29, 1.46) 0.1s;
+}
+#checkout .checkout__information .shipping-address__form-save-checkbox .ui-checkbox:active:not(:checked)::after {
+  -webkit-transition: none;
+  -o-transition: none;
+  box-shadow: none;
+  transition: none;
+  opacity: 1;
+}
+#checkout .checkout__information .shipping-address__form-save-checkbox label {
+  color: rgba(0, 0, 0, 0.9);
+  font: normal 400 13.5px/21px "Roboto", sans-serif;
+}
+#checkout .checkout__information .shipping-address__form-save-checkbox label:hover {
+  cursor: pointer;
+}
+#checkout .checkout__information .pickup-locations {
+  animation: fadeDown 0.45s ease-in-out;
+}
+#checkout .checkout__information .pickup-locations p {
+  font: normal 400 14px/20px "Roboto", sans-serif;
+  color: rgb(134, 134, 134);
+}
+#checkout .checkout__information .pickup-locations .location {
+  margin-top: 16px;
+  width: 100%;
+  height: 73px;
+  padding: 17px;
+  border: 1px solid #31abbe;
+  border-radius: 5px;
+  background-color: rgba(54, 84, 175, 0.08);
+  display: flex;
+  justify-content: space-between;
+}
+#checkout .checkout__information .pickup-locations .location__left {
+  display: flex;
+  flex-direction: column;
+}
+#checkout .checkout__information .pickup-locations .location__left span {
+  font: normal 400 13px/21px "Roboto", sans-serif;
+}
+#checkout .checkout__information .pickup-locations .location__left p {
+  font: normal 400 12px/18px "Roboto", sans-serif;
+}
+#checkout .checkout__information .pickup-locations .location__right {
+  display: flex;
+  flex-direction: column;
+  text-align: end;
+}
+#checkout .checkout__information .pickup-locations .location__right span {
+  font: normal 500 14px/21px "Roboto", sans-serif;
+}
+#checkout .checkout__information .pickup-locations .location__right p {
+  font: normal 400 12px/18px "Roboto", sans-serif;
+}
+#checkout .checkout__information__head {
+  text-decoration: none;
+  color: #000;
+  letter-spacing: 0.8px;
+  font: normal 500 23px/24.8px "Roboto", sans-serif;
+}
+#checkout .checkout__information__main {
+  display: flex;
+  flex-direction: column;
+}
+#checkout .checkout__information__main h2 {
+  margin-bottom: 16px;
+  font: normal 500 16px/20.4px "Roboto", sans-serif;
+}
+#checkout .checkout__information__login {
+  margin-top: 5px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+#checkout .checkout__information__login h2 {
+  font: normal 500 16.5px/20.4px "Roboto", sans-serif;
+}
+#checkout .checkout__information__login span {
+  font: normal 400 13px/21px "Roboto", sans-serif;
+}
+#checkout .checkout__information__login span a {
+  color: #41cde2;
+}
+#checkout .checkout__information__email {
+  margin-top: 16px;
+  width: 570.4px;
+  height: 48px;
+  position: relative;
+}
+#checkout .checkout__information__email span {
+  position: absolute;
+  top: 5px;
+  left: 12px;
+  font: normal 300 12px/21px "Roboto", sans-serif;
+  color: rgb(134, 134, 134);
+}
+#checkout .checkout__information__email input {
+  width: 100%;
+  height: 100%;
+  border-radius: 5px;
+  border: 1px solid rgba(70, 68, 68, 0.2);
+  padding: 20.5px 11px 5.5px 11px;
+  font: normal 400 14px/21px "Roboto", sans-serif;
+  color: rgba(0, 0, 0, 0.8);
+  outline-color: #458CBB;
+  outline-width: 3px;
+}
+#checkout .checkout__information__delivery-method {
+  margin-top: 35px;
+  margin-bottom: 40px;
+}
+#checkout .checkout__information__delivery-method h2 {
+  margin-bottom: 16px;
+  font: normal 500 16.5px/20.4px "Roboto", sans-serif;
+}
+#checkout .checkout__information__ship {
+  width: 572px;
+  height: 56.2px;
+  padding-left: 12px;
+  border: 1px solid rgba(70, 68, 68, 0.2);
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  border-bottom: none;
+  display: flex;
+  align-items: center;
+}
+#checkout .checkout__information__ship input[type=radio] {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  width: 20px;
+  height: 20px;
+  border: 1px solid rgb(188, 182, 182);
+  border-radius: 50%;
+  outline: none;
+  cursor: pointer;
+  position: relative;
+}
+#checkout .checkout__information__ship input[type=radio]:checked:after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 8.5px;
+  height: 8.5px;
+  background-color: #41cde2;
+  border-radius: 50%;
+}
+#checkout .checkout__information__ship label {
+  font: normal 400 15px/25.5px "Outfit", sans-serif;
+  color: rgba(0, 0, 0, 0.8);
+  margin-left: 9px;
+  cursor: pointer;
+}
+#checkout .checkout__information__pick-up {
+  width: 572px;
+  height: 56.2px;
+  padding-left: 12px;
+  border: 1px solid rgba(70, 68, 68, 0.2);
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+  display: flex;
+  align-items: center;
+}
+#checkout .checkout__information__pick-up input[type=radio] {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  width: 20px;
+  height: 20px;
+  border: 1px solid rgb(188, 182, 182);
+  border-radius: 50%;
+  outline: none;
+  cursor: pointer;
+  position: relative;
+}
+#checkout .checkout__information__pick-up input[type=radio]:checked:after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 8.5px;
+  height: 8.5px;
+  background-color: #41cde2;
+  border-radius: 50%;
+}
+#checkout .checkout__information__pick-up label {
+  font: normal 400 15px/25.5px "Outfit", sans-serif;
+  color: rgba(0, 0, 0, 0.8);
+  margin-left: 9px;
+  cursor: pointer;
+}
+#checkout .checkout__products {
+  background-color: rgb(245, 245, 245);
+  width: 671.6px;
+  border-left: 1px solid rgb(214, 214, 214);
+  display: flex;
+  justify-content: flex-start;
+}
+#checkout .checkout__products__main {
+  width: 538.8px;
+  padding: 67px 76.8px 21px 44px;
+}
+#checkout .checkout__products__content {
+  padding: 15px 0 10px;
+  padding-right: 12px;
+  margin-bottom: 16px;
+  height: 210px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+#checkout .checkout__products__content::-webkit-scrollbar {
+  width: 2px;
+}
+#checkout .checkout__products__content::-webkit-scrollbar-thumb {
+  background-color: #000;
+}
+#checkout .checkout__products__content::-webkit-scrollbar-track {
+  background-color: #e3dcdc;
+}
+#checkout .checkout__products .checkout-product {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+#checkout .checkout__products .checkout-product__image {
+  position: relative;
+  width: 78px;
+  height: 76px;
+  background-color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  border: 1px solid rgba(70, 68, 68, 0.2);
+}
+#checkout .checkout__products .checkout-product__image img {
+  width: 62px;
+  height: 74px;
+}
+#checkout .checkout__products .checkout-product__image span {
+  position: absolute;
+  width: 21px;
+  height: 21px;
+  border-radius: 50%;
+  background-color: rgba(115, 115, 115, 0.9);
+  color: #fff;
+  display: grid;
+  place-content: center;
+  font: normal 300 12px/16px "Roboto", sans-serif;
+  top: -12px;
+  right: -8px;
+}
+#checkout .checkout__products .checkout-product__info {
+  justify-content: start;
+  margin-left: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  flex-grow: 1;
+}
+#checkout .checkout__products .checkout-product__title {
+  font: normal 500 14px/21px "Roboto", sans-serif;
+}
+#checkout .checkout__products .checkout-product__features {
+  font: normal 400 12px/18px "Roboto", sans-serif;
+  color: rgb(134, 134, 134);
+}
+#checkout .checkout__products__gift-card {
+  padding-right: 12px;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+}
+#checkout .checkout__products__gift-card span {
+  display: none;
+  position: absolute;
+  top: 5px;
+  left: 14px;
+  font: normal 300 12px/21px "Roboto", sans-serif;
+  color: rgb(134, 134, 134);
+}
+#checkout .checkout__products__gift-card input {
+  width: 324.75px;
+  height: 48px;
+  padding: 13.5px 11px;
+  border-radius: 5px;
+  border: 1px solid rgba(70, 68, 68, 0.2);
+  outline-color: #458CBB;
+  outline-width: 3px;
+  font: normal 400 13px/21px "Roboto", sans-serif;
+}
+#checkout .checkout__products__gift-card button {
+  width: 66.65px;
+  height: 48px;
+  border-radius: 5px;
+  border: none;
+  background-color: rgba(110, 110, 110, 0.4);
+  color: #fff;
+  font-size: 13px;
+}
+#checkout .checkout__products__down {
+  padding-right: 12px;
+  margin-top: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+#checkout .checkout__products__down span {
+  font: normal 400 14px/18px "Roboto", sans-serif;
+}
+#checkout .checkout__products__down span.price-bold {
+  font-weight: 600;
+}
+#checkout .checkout__products__down span.price-total {
+  font-size: 17px;
+  line-height: 25.5px;
+}
+#checkout .checkout__products__sub-total {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+#checkout .checkout__products__pick-up {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+#checkout .checkout__products__shipping {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+#checkout .checkout__products__total {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+#loading-screen {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #f1f1f1;
+  z-index: 9999;
+}
+#loading-screen .loader {
+  width: 108px;
+  height: 108px;
+  position: relative;
+  background: #FFF;
+  border-radius: 12px;
+  overflow: hidden;
+}
+#loading-screen .loader:before {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 80px;
+  height: 80px;
+  transform: rotate(45deg) translate(30%, 40%);
+  background: #ff9371;
+  box-shadow: 32px -34px 0 5px #ff3d00;
+  animation: slide 3s infinite ease-in-out alternate;
+}
+#loading-screen .loader:after {
+  content: "";
+  position: absolute;
+  left: 10px;
+  top: 10px;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: #ff3d00;
+  transform: rotate(0deg);
+  transform-origin: 35px 145px;
+  animation: rotate 3s infinite ease-in-out;
+}
+@keyframes slide {
+  0%, 100% {
+    bottom: -70px;
+  }
+  25%, 75% {
+    bottom: -2px;
+  }
+  20%, 80% {
+    bottom: 2px;
+  }
+}
+@keyframes rotate {
+  0% {
+    transform: rotate(-15deg);
+  }
+  25%, 75% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(60deg);
+  }
+}/*# sourceMappingURL=checkout.css.map */

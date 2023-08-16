@@ -1,0 +1,30 @@
+﻿@model IEnumerable<Blog>
+
+@foreach (Blog blog in Model)
+{
+    <div class="blog-item">
+        <div class="blog-item__image">
+            <a asp-controller="blog" asp-action="detail" asp-route-id="@blog.Id" class="blog-item__image--link">
+                <img src="assets/images/Blog/@blog.Image"
+                 alt="@blog.Image">
+            </a>
+            <div class="blog-item__image--category">
+                <span>@blog.BlogCategory?.Name</span>
+            </div>
+        </div>
+        <div class="blog-item__text">
+            <div class="blog-item__date">Oct 12, 2022</div>
+            <a asp-controller="blog" asp-action="detail" asp-route-id="@blog.Id" class="blog-item__title">
+                @blog.Title
+            </a>
+            <p class="blog-item__description">
+                @blog.Description.Substring(3, 92) ...
+            </p>
+            <a href="#" class="blog-item--read-more">
+                Read more
+                <span class="blog-item--read-more--bar"></span>
+            </a>
+        </div>
+    </div>
+}
+

@@ -1,0 +1,71 @@
+﻿@model IEnumerable<Setting>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+@section ContactUsStyle{
+    <link href="@Url.Content("~/assets/scss/contact-us/contact-us.css")" rel="stylesheet" type="text/css" />
+}
+
+<section id="contact-us-map">
+    <div class="contact-us-map-content">
+        @Html.Raw(Model.FirstOrDefault(s=>s.Key == "ContactMap").Value)
+    </div>
+</section>
+<section id="contact-us-main">
+    <div class="container">
+        <div class="get-in-touch">
+            <div class="get-in-touch__form">
+                <h2>Get in Touch</h2>
+                <form action="#">
+                    <div class="get-in-touch__form__group">
+                        <div class="get-in-touch__form__group__item">
+                            <label for="name">Name</label>
+                            <input type="text" id="name" name="name" placeholder="Your Name">
+                        </div>
+                        <div class="get-in-touch__form__group__item">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" name="email" placeholder="Your Email">
+                        </div>
+                        <div class="get-in-touch__form__group__item">
+                            <label for="phone">Phone</label>
+                            <input type="tel" id="phone" name="phone" placeholder="Phone Number">
+                        </div>
+                    </div>
+                    <div class="get-in-touch__form__text-area">
+                        <label for="message">Message</label>
+                        <textarea name="message" id="message" cols="30" rows="10"
+                                  placeholder="Your message..."></textarea>
+                    </div>
+                    <div class="get-in-touch__form__button">
+                        <button>Send Message</button>
+                    </div>
+                </form>
+            </div>
+            <div class="get-in-touch__text">
+                <div class="get-in-touch__text__item address">
+                    <h2>Address</h2>
+                    <span>@Html.Raw(Model.FirstOrDefault(s=>s.Key == "ContactAddress").Value)</span>
+                </div>
+                <div class="get-in-touch__text__item phone">
+                    <h2>Phone</h2>
+                    <span>@Html.Raw(Model.FirstOrDefault(s=>s.Key == "ContactPhone").Value)</span>
+                </div>
+                <div class="get-in-touch__text__item email">
+                    <h2>Email</h2>
+                    <span>@Html.Raw(Model.FirstOrDefault(s=>s.Key == "ContactEmail").Value)</span>
+                </div>
+                <div class="get-in-touch__text__item opening-time">
+                    <h2>Opening Time</h2>
+                    <span>@Html.Raw(Model.FirstOrDefault(s=>s.Key == "ContactOpeningTime").Value)</span>
+                </div>
+                <div class="get-in-touch__text__item fax">
+                    <h2>Fax</h2>
+                    <span>@Html.Raw(Model.FirstOrDefault(s=>s.Key == "ContactFax").Value)</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
