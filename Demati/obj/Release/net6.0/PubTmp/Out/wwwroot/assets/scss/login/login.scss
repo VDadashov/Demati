@@ -1,0 +1,272 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Outfit', sans-serif;
+}
+
+@keyframes shimmer-animation {
+    0% {
+        background-position: -1000px 0;
+    }
+
+    100% {
+        background-position: 1000px 0;
+    }
+}
+
+@keyframes scale-animation {
+    0% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.1);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+@keyframes fadeDown {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0px);
+    }
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+$custom-font-family: 'Outfit',
+sans-serif;
+$custom-blue-color:#41cde2;
+$custom-text-color:rgb(134, 134, 134);
+$custom-border:1px solid rgba(70, 68, 68, 0.2);
+$modal-background-color: rgba(0, 0, 0, 0.6);
+$modal-content-background-color: #fefefe;
+$modal-content-border-color: #888;
+$close-color: #aaa;
+$close-hover-color: black;
+$submit-button-background-color: #4CAF50;
+$submit-button-hover-background-color: #45a049;
+
+.container {
+    max-width: 1415.200px !important;
+    margin: auto;
+}
+
+#login {
+    margin: 80px 0;
+
+    .container {
+        .login {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+
+            h1 {
+                margin-bottom: 80px;
+                font: normal 300 50px/60px $custom-font-family;
+            }
+
+            .login__content {
+                width: 950px;
+                display: flex;
+                justify-content: space-between;
+
+                &__one {
+                    width: 445px;
+                    display: flex;
+                    flex-direction: column;
+
+                    h3 {
+                        margin-bottom: 30px;
+                        font: normal 300 25px/30px $custom-font-family;
+                        color: #000;
+                    }
+
+                    input {
+                        width: 100%;
+                        height: 44px;
+                        margin-bottom: 16px;
+                        padding: 11px 20px 12px 20px;
+                        font: normal 400 15px/20px $custom-font-family;
+                        color: #868686;
+                        border: $custom-border;
+                        outline: none;
+                    }
+                    .password__content{
+                        position: relative;
+    
+                        #password-eye{
+                            position: absolute;
+                            top: 13px;
+                            right: 13px;
+                            opacity: 0.6;
+    
+                            &:hover{
+                                cursor: pointer;
+                                opacity: 1;
+    
+                                &::before{
+                                    opacity: 0.6;
+                                }
+                            }
+    
+                            &::before{
+                                content: '';
+                                position: absolute;
+                                top: 0;
+                                left: -10px;
+                                width: 1px;
+                                height: 100%;
+                                background-color: #aba5a5;
+                            }
+                        }
+                    }
+                    #login-resetBtn {
+                        margin-top: 5px;
+                        margin-bottom:20px;
+                        width: max-content;
+                        text-align: start;
+                        color: #000;
+                        position: relative;
+                        display: inline-block;
+                        text-decoration: none;
+                        font: normal 400 15px/25.5px $custom-font-family;
+    
+                        &:before {
+                            content: "";
+                            position: absolute;
+                            bottom: 1px;
+                            left: 0;
+                            width: 100%;
+                            height: 0.6px;
+                            background: black;
+                            transition: all .3s ease;
+                        }
+    
+                        &:hover {
+                            color: $custom-blue-color;
+                            cursor: pointer;
+    
+                            &:before {
+                                width: 0%;
+                                background-color: $custom-blue-color;
+                                transition: all .3s ease;
+                            }
+                        }
+                    }
+                    #loginBtn {
+                        height: 50px;
+                        font: normal 500 12px/50px $custom-font-family;
+                        letter-spacing: 2px;
+                        text-transform: uppercase;
+                        border: $custom-blue-color;
+                        background-color: #000;
+                        color: #fff;
+    
+                        &:hover {
+                            background-color: $custom-blue-color;
+                            cursor: pointer;
+                        }
+                    }
+                }
+                &__two{
+                    width: 445px;
+                    display: flex;
+                    flex-direction: column;
+
+                    h3{
+                        margin-bottom: 30px;
+                        font: normal 300 25px/30px $custom-font-family;
+                        color: #000;
+                    }
+                    &__description{
+                        font: normal 400 18px/30.6px $custom-font-family;
+                        color: $custom-text-color;
+                    }
+                    a{
+                        margin-top: 30px;
+                        text-transform: uppercase;
+                        text-decoration: none;
+                        width: 130.94px;
+                        height: 45px;
+                        padding: 0 30px;
+                        font: normal 500 12px/45px $custom-font-family;
+                        letter-spacing: 2px;
+                        background-color: #000;
+                        color: #fff;
+                    }
+                }
+            }
+            &__reset-password{
+                width: 445px;
+                display: none;
+
+                h2{
+                    margin-bottom: 15px;
+                    font: normal 500 25px/30px $custom-font-family;
+                }
+                p{
+                    margin-bottom: 20px;
+                    font: normal 400 15px/25.5px $custom-font-family;
+                    color: $custom-text-color;
+                }
+                input{
+                    padding: 11px 20px 12px 20px;
+                    width: 445px;
+                    border: $custom-border;
+                    color: $custom-text-color;
+                    margin-bottom: 16px;
+                }
+                button{
+                    width: 222.5px;
+                    height: 45px;
+                    background-color: #000;
+                    color: #fff;
+                    border: none;
+                    font: normal 500 12px/18px $custom-font-family;
+                    letter-spacing: 2px;
+                    text-transform: uppercase;
+
+                    &:hover{
+                        background-color: $custom-blue-color;
+                        cursor: pointer;
+                    }
+                }
+                span{
+                    width: 222.5px;
+                    display: inline-block;
+                    text-align: center;
+                    text-decoration: underline;
+
+                    &:hover{
+                        cursor: pointer;
+                        color: $custom-blue-color;
+                    }
+                }
+                &__submit-content{
+                    display: flex;
+                    align-items: center;
+                }
+             }
+        }
+    }
+}

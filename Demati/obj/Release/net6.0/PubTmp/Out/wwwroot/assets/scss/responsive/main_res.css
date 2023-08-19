@@ -1,0 +1,416 @@
+@media only screen and (max-width: 1200px) {
+  .container {
+    max-width: 1105.2px;
+  }
+  #first-section .img-slider {
+    height: 544.53px;
+  }
+  #first-section .img-slider .slide {
+    height: 100%;
+  }
+  #first-section .img-slider .slide img {
+    height: 100%;
+  }
+  #first-section .img-slider .slide-content {
+    top: 150px !important;
+  }
+  #first-section .img-slider .slide-content h2 {
+    font: normal 300 50px/60px "Outfit", sans-serif !important;
+  }
+  #collection {
+    top: 14px;
+  }
+  #collection .left-collection {
+    width: 40%;
+  }
+  #collection .left-collection__one {
+    width: 100%;
+    height: 224.46px;
+  }
+  #collection .left-collection__one a {
+    width: 100%;
+    height: 100%;
+  }
+  #collection .left-collection__two {
+    width: 100%;
+    height: 223px;
+  }
+  #collection .left-collection__two a {
+    width: 100%;
+    height: 100%;
+  }
+  #collection .right-collection {
+    width: 60%;
+    height: 449.23px;
+  }
+  #collection .right-collection__new-arrivals {
+    width: 100%;
+    height: 100%;
+  }
+  #collection .right-collection__new-arrivals a {
+    width: 100%;
+    height: 100%;
+  }
+  #collection .right-collection__new-arrivals__content {
+    top: 185px;
+  }
+  #collection .right-collection__new-arrivals__content h3 {
+    font-size: 45px;
+  }
+  #categories .categories-content {
+    max-width: 680px !important;
+  }
+  #categories .categories-item {
+    margin-inline: 25px !important;
+  }
+  #categories .categories-item__link {
+    font-size: 35px !important;
+  }
+  #categories .categories-item__image {
+    top: -210% !important;
+  }
+  #categories .categories-item__image img {
+    width: 280px !important;
+    height: 360px !important;
+  }
+  #weekly-selection #weekly-selection-content {
+    padding-bottom: 40px !important;
+  }
+  #weekly-selection #weekly-selection-content .product-card__image {
+    width: 256px !important;
+    height: 329.75px !important;
+  }
+  #weekly-selection #weekly-selection-content .product-card__image .product-image {
+    width: 100% !important;
+    height: 100% !important;
+    position: absolute;
+  }
+  #banner-collection .banner-collection-content .weekend-collective {
+    width: 48%;
+  }
+  #banner-collection .banner-collection-content .weekend-collective img {
+    width: 100%;
+  }
+  #banner-collection .banner-collection-content .new-topman {
+    width: 48%;
+  }
+  #banner-collection .banner-collection-content .new-topman img {
+    width: 100%;
+  }
+  #featured-products .product-card {
+    width: 290px !important;
+  }
+  #featured-products .product-card__image {
+    width: 261px !important;
+    height: 339.75px !important;
+  }
+  #featured-products .product-card__image .product-image {
+    width: 100% !important;
+    height: 100% !important;
+    position: absolute;
+  }
+  #our-blog .blog-item {
+    width: 382.73px !important;
+  }
+  #our-blog .blog-item__image {
+    width: 346px !important;
+  }
+  #our-blog .blog-item__text {
+    width: 346px !important;
+  }
+  #our-blog .blog-item__title {
+    font-size: 17px !important;
+  }
+  #our-blog .blog-item__description {
+    width: 90% !important;
+    font-size: 14px !important;
+  }
+  #popular-brands .brands-slider__item {
+    width: 180px;
+    display: grid;
+    place-content: center;
+  }
+  #popular-brands .brands-slider__item a {
+    display: inline-block;
+    width: 65%;
+    height: 100%;
+  }
+  #popular-brands .brands-slider__item a img {
+    width: 100% !important;
+  }
+  #lookbook .lookbook-instagram {
+    width: 100%;
+  }
+  #lookbook .lookbook-instagram .lookbook-card {
+    width: 100%;
+    height: 215px !important;
+  }
+}
+@media only screen and (max-width: 1155px) {
+  .container {
+    max-width: 1055px !important;
+  }
+  .header-menu__list__item {
+    padding-right: 30px !important;
+  }
+  #categories .categories-content {
+    max-width: 680px !important;
+  }
+  #categories .categories-item {
+    margin-inline: 22px !important;
+  }
+  #categories .categories-item__image {
+    top: -210% !important;
+  }
+  #categories .categories-item__image img {
+    width: 240px !important;
+    height: 310px !important;
+  }
+  #weekly-selection #weekly-selection-content .product-card__image {
+    width: 246px !important;
+    height: 319.75px !important;
+  }
+  #weekly-selection #weekly-selection-content .product-card__image .product-image {
+    width: 100% !important;
+    height: 100% !important;
+    position: absolute;
+  }
+  #banner-collection .banner-collection-content .weekend-collective {
+    width: 48%;
+  }
+  #banner-collection .banner-collection-content .weekend-collective__title {
+    font-size: 16px !important;
+  }
+  #banner-collection .banner-collection-content .weekend-collective img {
+    width: 100%;
+  }
+  #banner-collection .banner-collection-content .new-topman {
+    width: 48%;
+  }
+  #banner-collection .banner-collection-content .new-topman__title {
+    font-size: 16px !important;
+  }
+  #banner-collection .banner-collection-content .new-topman img {
+    width: 100%;
+  }
+  #featured-products .product-card {
+    width: 270px !important;
+  }
+  #featured-products .product-card__image {
+    width: 246px !important;
+    height: 319.75px !important;
+  }
+  #featured-products .product-card__image .product-image {
+    width: 100% !important;
+    height: 100% !important;
+    position: absolute;
+  }
+  #our-blog h2 {
+    margin-bottom: 32px !important;
+  }
+  #our-blog .blog-item {
+    width: 363.73px !important;
+  }
+  #our-blog .blog-item__image {
+    width: 326px !important;
+    height: 238px !important;
+  }
+  #our-blog .blog-item__text {
+    width: 326px !important;
+  }
+  #our-blog .blog-item__title {
+    font-size: 16px !important;
+  }
+  #our-blog .blog-item__description {
+    width: 85% !important;
+    font-size: 13px !important;
+  }
+  #popular-brands .brands-slider__item {
+    width: 168px;
+  }
+  #lookbook .lookbook-instagram {
+    width: 100%;
+  }
+  #lookbook .lookbook-instagram .lookbook-card {
+    width: 100%;
+    height: 195px !important;
+  }
+}
+@media only screen and (max-width: 1110px) {
+  .container {
+    max-width: 1010px !important;
+  }
+  .header-menu__list__item {
+    padding-right: 27px !important;
+  }
+  #first-section .img-slider {
+    height: 514.53px;
+  }
+  #first-section .img-slider .slide {
+    height: 100%;
+  }
+  #first-section .img-slider .slide img {
+    height: 100%;
+  }
+  #first-section .img-slider .slide-content {
+    top: 150px !important;
+  }
+  #first-section .img-slider .slide-content h2 {
+    font: normal 300 47px/55px "Outfit", sans-serif !important;
+  }
+  #first-section .img-slider .slide-content a {
+    margin-top: 25px !important;
+  }
+  #categories {
+    height: 290px !important;
+  }
+  #categories .categories-content {
+    max-width: 640px !important;
+  }
+  #categories .categories-item {
+    margin-inline: 20px !important;
+  }
+  #categories .categories-item__image {
+    top: -210% !important;
+  }
+  #categories .categories-item__image img {
+    width: 230px !important;
+    height: 280px !important;
+  }
+  #weekly-selection #weekly-selection-content {
+    padding-top: 50px !important;
+    padding-bottom: 25px !important;
+  }
+  #weekly-selection #weekly-selection-content .product-card__image {
+    width: 236px !important;
+    height: 312.75px !important;
+  }
+  #weekly-selection #weekly-selection-content .product-card__image .product-image {
+    width: 100% !important;
+    height: 100% !important;
+    position: absolute;
+  }
+  #weekly-selection #weekly-selection-content .product-card--addition {
+    font-weight: 300 !important;
+    font-size: 12px !important;
+    line-height: 20px !important;
+  }
+  #featured-products .product-card {
+    width: 260px !important;
+  }
+  #featured-products .product-card__image {
+    width: 236px !important;
+    height: 312.75px !important;
+  }
+  #featured-products .product-card__image .product-image {
+    width: 100% !important;
+    height: 100% !important;
+    position: absolute;
+  }
+  #featured-products .product-card--addition {
+    font-weight: 300 !important;
+    font-size: 12px !important;
+    line-height: 20px !important;
+  }
+  #our-blog h2 {
+    margin-bottom: 27px !important;
+  }
+  #our-blog .blog-item {
+    width: 345.73px !important;
+  }
+  #our-blog .blog-item__image {
+    width: 316px !important;
+    height: 218px !important;
+  }
+  #our-blog .blog-item__text {
+    width: 316px !important;
+  }
+  #our-blog .blog-item__title {
+    font-size: 15px !important;
+  }
+  #our-blog .blog-item__description {
+    width: 85% !important;
+    font-size: 14px !important;
+  }
+  #popular-brands .brands-slider__item {
+    width: 158px;
+  }
+  #popular-brands .brands-slider__item img {
+    margin: 35px 30px !important;
+  }
+  #lookbook .lookbook-instagram {
+    width: 100%;
+  }
+  #lookbook .lookbook-instagram .lookbook-card {
+    width: 100%;
+    height: 180px !important;
+  }
+  footer .footer-content .content-toggle__title {
+    font-size: 11px !important;
+    line-height: 11px !important;
+  }
+  footer .footer-content .content-toggle p {
+    font-size: 14px !important;
+    line-height: 20.5px !important;
+  }
+  footer .footer-content .content-toggle__block p {
+    font-size: 14px !important;
+    line-height: 20.5px !important;
+  }
+  footer .footer-content .content-toggle__block a {
+    font-size: 14px !important;
+    list-style: 20.5px !important;
+  }
+}
+@media only screen and (max-width: 1065px) {
+  .container {
+    max-width: 965px !important;
+  }
+  #weekly-selection #weekly-selection-content {
+    padding-bottom: 40px !important;
+  }
+  #weekly-selection #weekly-selection-content .tab-list__content .product-card-content {
+    display: grid !important;
+    grid-template-columns: repeat(3, 1fr) !important;
+    grid-gap: 35px !important;
+    grid-row: 40px !important;
+    width: 100% !important;
+  }
+  #weekly-selection #weekly-selection-content .product-card__image {
+    width: 296px !important;
+    height: 369.75px !important;
+  }
+  #weekly-selection #weekly-selection-content .product-card__image .product-image {
+    width: 100% !important;
+    height: 100% !important;
+    position: absolute;
+  }
+  #featured-products .product-card {
+    width: 334px !important;
+  }
+  #featured-products .product-card__image {
+    width: 296px !important;
+    height: 369.75px !important;
+  }
+  #featured-products .product-card__image .product-image {
+    width: 100% !important;
+    height: 100% !important;
+  }
+  #our-blog .blog-item {
+    width: 513px !important;
+  }
+  #our-blog .blog-item__image {
+    width: 460px !important;
+    height: 290px !important;
+  }
+  #our-blog .blog-item__text {
+    width: 450px !important;
+  }
+  #our-blog .blog-item__title {
+    font-size: 20px !important;
+  }
+  #our-blog .blog-item__description {
+    width: 95% !important;
+    font-size: 16px !important;
+  }
+}/*# sourceMappingURL=main_res.css.map */

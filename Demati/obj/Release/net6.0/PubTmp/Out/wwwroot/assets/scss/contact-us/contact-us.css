@@ -1,0 +1,134 @@
+@import url("https://fonts.googleapis.com/css2?family=Outfit:wght@100;200;300;400;500;600;700;800;900&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Outfit", sans-serif;
+}
+
+.container {
+  max-width: 1415.2px !important;
+  margin: auto;
+}
+
+#contact-us-map {
+  margin-bottom: 60px;
+}
+#contact-us-map .contact-us-map-content {
+  width: 100%;
+  height: 550.4px;
+}
+#contact-us-map .contact-us-map-content iframe {
+  width: 100%;
+  height: 100%;
+}
+
+#contact-us-main {
+  padding-bottom: 45px;
+  border-bottom: 1px solid rgba(70, 68, 68, 0.2);
+}
+#contact-us-main .container .get-in-touch {
+  display: flex;
+  justify-content: space-between;
+}
+#contact-us-main .container .get-in-touch__form {
+  width: 963.6px;
+}
+#contact-us-main .container .get-in-touch__form h2 {
+  text-transform: capitalize;
+  margin-bottom: 40px;
+  font: normal 300 30px/36px "Outfit", sans-serif;
+}
+#contact-us-main .container .get-in-touch__form form {
+  display: flex;
+  flex-direction: column;
+}
+#contact-us-main .container .get-in-touch__form__group {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+#contact-us-main .container .get-in-touch__form__group__item {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  position: relative;
+}
+#contact-us-main .container .get-in-touch__form__group__item::before {
+  content: "*";
+  color: red;
+  position: absolute;
+  right: 15px;
+  bottom: 13px;
+  line-height: 1;
+  font-size: 20px;
+}
+#contact-us-main .container .get-in-touch__form__group__item label {
+  font: normal 600 14px/23.8px "Outfit", sans-serif;
+}
+#contact-us-main .container .get-in-touch__form__group__item input {
+  width: 311.5px;
+  height: 50px;
+  padding: 10px 20px;
+  outline: none;
+  border: 1px solid rgba(70, 68, 68, 0.2);
+  font: normal 400 15px/20px "Outfit", sans-serif;
+}
+#contact-us-main .container .get-in-touch__form__text-area {
+  margin-top: 15px;
+  display: flex;
+  flex-direction: column;
+}
+#contact-us-main .container .get-in-touch__form__text-area label {
+  font: normal 600 14px/23.8px "Outfit", sans-serif;
+  margin-bottom: 10px;
+}
+#contact-us-main .container .get-in-touch__form__text-area textarea {
+  outline: none;
+  border: 1px solid rgba(70, 68, 68, 0.2);
+  padding: 10px 20px;
+  font: normal 400 15px/20px "Outfit", sans-serif;
+}
+#contact-us-main .container .get-in-touch__form__text-area textarea::-moz-placeholder {
+  font: normal 400 15px/20px "Outfit", sans-serif;
+}
+#contact-us-main .container .get-in-touch__form__text-area textarea::placeholder {
+  font: normal 400 15px/20px "Outfit", sans-serif;
+}
+#contact-us-main .container .get-in-touch__form__button {
+  margin-top: 40px;
+}
+#contact-us-main .container .get-in-touch__form__button button {
+  text-align: center;
+  width: 253.16px;
+  height: 55px;
+  background-color: #000;
+  color: #fff;
+  font: normal 400 16px/55px "Outfit", sans-serif;
+}
+#contact-us-main .container .get-in-touch__form__button button:hover {
+  cursor: pointer;
+  background-color: #fff;
+  color: #000;
+  border: 1px solid #000;
+}
+#contact-us-main .container .get-in-touch__text {
+  width: 386.4px;
+  display: flex;
+  flex-direction: column;
+}
+#contact-us-main .container .get-in-touch__text__item {
+  padding-bottom: 20px;
+  margin-bottom: 25px;
+  border-bottom: 1px solid rgba(70, 68, 68, 0.2);
+}
+#contact-us-main .container .get-in-touch__text__item h2 {
+  font: normal 300 20px/24px "Outfit", sans-serif;
+  margin-bottom: 10px;
+}
+#contact-us-main .container .get-in-touch__text__item span {
+  font: normal 400 15px/25.5px "Outfit", sans-serif;
+}
+#contact-us-main .container .get-in-touch__text .fax {
+  border-bottom: none;
+}/*# sourceMappingURL=contact-us.css.map */

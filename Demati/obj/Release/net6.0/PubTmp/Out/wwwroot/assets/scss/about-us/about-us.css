@@ -1,0 +1,213 @@
+@import url("https://fonts.googleapis.com/css2?family=Outfit:wght@100;200;300;400;500;600;700;800;900&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Outfit", sans-serif;
+}
+
+.container {
+  max-width: 1415.2px !important;
+  margin: auto;
+}
+
+#about-us-head {
+  margin: 80px 0;
+}
+#about-us-head .container img {
+  width: 100%;
+  height: 755.13px;
+}
+
+#about-outfie {
+  margin-bottom: 80px;
+}
+#about-outfie .container .about-outfie {
+  padding-inline: 35px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+#about-outfie .container .about-outfie__text {
+  width: 850px;
+  display: flex;
+  flex-direction: column;
+}
+#about-outfie .container .about-outfie__text__title {
+  margin-bottom: 25px;
+  padding-bottom: 25px;
+  font: normal 300 40px/48px "Outfit", sans-serif;
+  position: relative;
+}
+#about-outfie .container .about-outfie__text__title::before {
+  width: 85px;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  background: #E3E3E3;
+  content: "";
+  height: 1px;
+}
+#about-outfie .container .about-outfie__text__description {
+  margin-bottom: 30px;
+  font: normal 400 16px/27.2px "Outfit", sans-serif;
+  color: rgb(134, 134, 134);
+}
+#about-outfie .container .about-outfie__text__content h6 {
+  margin-bottom: 8px;
+  font: normal 500 16px/19.2px "Outfit", sans-serif;
+}
+#about-outfie .container .about-outfie__text__content p {
+  margin-bottom: 10px;
+  font-family: normal 400 16px/27.2px "Outfit", sans-serif;
+  color: rgb(134, 134, 134);
+}
+
+#about-us-extension {
+  margin-bottom: 80px;
+}
+#about-us-extension .container .about-us-extension {
+  background-color: rgb(250, 247, 244);
+  width: 100%;
+  height: 564px;
+  padding: 40px 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#about-us-extension .container .about-us-extension__content {
+  display: flex;
+  flex-direction: column;
+}
+#about-us-extension .container .about-us-extension__item {
+  width: 1200px;
+  display: flex;
+  gap: 30px;
+  align-items: center;
+  padding: 55px 0;
+  border-bottom: 1px solid rgba(70, 68, 68, 0.2);
+}
+#about-us-extension .container .about-us-extension__item:nth-last-child(1) {
+  border-bottom: none;
+}
+#about-us-extension .container .about-us-extension__item__title {
+  width: 360px;
+  height: 36px;
+  font: normal 300 30px/36px "Outfit", sans-serif;
+}
+#about-us-extension .container .about-us-extension__item__description {
+  width: 550px;
+  height: 51px;
+  font: normal 400 15px/25.5px "Outfit", sans-serif;
+  color: rgb(134, 134, 134);
+}
+
+#our-teams {
+  margin-bottom: 50px;
+}
+#our-teams .container h2 {
+  text-align: center;
+  font: normal 300 30px/35px "Outfit", sans-serif;
+  margin-bottom: 40px;
+}
+#our-teams .container .our-teams {
+  padding-inline: 15px;
+  display: flex;
+  justify-content: space-between;
+}
+#our-teams .container .our-teams .slick-prev,
+#our-teams .container .our-teams .slick-next {
+  color: #000;
+  border: none;
+  width: 30px;
+  height: 30px;
+}
+#our-teams .container .our-teams .slick-prev i,
+#our-teams .container .our-teams .slick-next i {
+  position: absolute;
+  top: 6px;
+  left: 8px;
+  font-size: 18px;
+  opacity: 0.8;
+}
+#our-teams .container .our-teams .slick-prev i:hover,
+#our-teams .container .our-teams .slick-next i:hover {
+  color: #41cde2;
+}
+#our-teams .container .our-teams .slick-prev {
+  margin-right: 10px;
+}
+#our-teams .container .our-teams .slick-next {
+  margin-left: 10px;
+}
+#our-teams .container .our-teams__item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-right: 65px;
+}
+#our-teams .container .our-teams__item--down {
+  margin-top: 150px;
+}
+#our-teams .container .our-teams__item:hover .our-teams__item__image:before {
+  content: "";
+  width: 100%;
+  height: 100%;
+  background-color: #000;
+  opacity: 0.3;
+  position: absolute;
+}
+#our-teams .container .our-teams__item:hover .our-teams__item__image .our-teams__item--social-link {
+  display: flex;
+}
+#our-teams .container .our-teams__item__image {
+  width: 421px;
+  height: 481px;
+  position: relative;
+}
+#our-teams .container .our-teams__item__image img {
+  width: 421px;
+  height: 481px;
+}
+#our-teams .container .our-teams__item--social-link {
+  display: flex;
+  gap: 15px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: none;
+}
+#our-teams .container .our-teams__item--social-link a {
+  width: 40px;
+  height: 40px;
+  border: 1px solid #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  text-decoration: none;
+}
+#our-teams .container .our-teams__item--social-link a:hover {
+  background-color: #41cde2;
+  border: #41cde2;
+}
+#our-teams .container .our-teams__item--social-link a i {
+  font-size: 16px;
+  color: #fff;
+}
+#our-teams .container .our-teams__item__info {
+  text-align: center;
+  width: 100%;
+  margin-top: 15px;
+}
+#our-teams .container .our-teams__item__title {
+  font: normal 400 20px/34px "Outfit", sans-serif;
+}
+#our-teams .container .our-teams__item__info {
+  width: 421px;
+}
+#our-teams .container .our-teams__item__job {
+  font: normal 400 16px/27.2px "Outfit", sans-serif;
+  color: rgb(134, 134, 134);
+}/*# sourceMappingURL=about-us.css.map */

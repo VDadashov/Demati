@@ -72,6 +72,15 @@ namespace Demati.Controllers
             //    return View(registerVM);
             //}
 
+            IdentityResult identityResult = await _userManager.CreateAsync(appUser, registerVM.Password);
+            if (!identityResult.Succeeded)
+            {
+                foreach (IdentityError error in identityResult.Errors)
+                {
+                    ModelState.AddModelError("", error.Description);
+                }
+                return View(registerVM);
+            }
 
             await _userManager.AddToRoleAsync(appUser, "Member");
             return RedirectToAction(nameof(Login));

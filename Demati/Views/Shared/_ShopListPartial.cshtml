@@ -29,7 +29,7 @@
                             data-selectId="@ViewBag.selectId">
                             <input class="categories-checkbox @(category.Id == ViewBag.categoryId ? "active-checkbox-c" : "")" type="checkbox" id="@category.Name">
                             <label for="@category.Name">@category.Name</label>
-                            <span class="shop__filter__categories__count">(@category.ProductCategories.Count())</span>
+                            <span class="shop__filter__categories__count">(@category.ProductCategories.Where(c => c.IsDeleted == false).Count())</span>
                         </a>
                     </li>
                     countCategory++;
