@@ -1,3 +1,4 @@
-# Demati
+# Demati => E - Commerce 
+
 
 ## Functionalities:
