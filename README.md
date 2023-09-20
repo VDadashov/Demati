@@ -1,3 +1,3 @@
 DEMATI
 
-Documentation:
+<h1>Functionalities:</h1>
