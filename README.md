@@ -3,7 +3,7 @@
 
 ## Functionalities:
 ```
-🚀 User registration, login and password reset using the secret key used during login 
+🚀 User registration and login
 📋 Filtering of products by category, price and other features (color, size, etc.).
 ♻️ Display of products in ascending and descending order by price
 🔗 Product Details page for products
