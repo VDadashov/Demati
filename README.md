@@ -1,3 +1,3 @@
-# DEMATI
+# Demati
 
 ## Functionalities:
